@@ -25,7 +25,6 @@ It supports these markup tags:
   Example: <a href = "www.roaminggamer.com">Roaming Gamer, LLC.</a>
 
 
-
   <img> - Image tag
   
   Including these options
