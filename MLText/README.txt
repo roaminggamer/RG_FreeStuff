@@ -5,7 +5,7 @@ This is a simple Markup Language Text Object and Image Creator.
 
 It supports these markup tags:
 
- <nowiki>
+ 
  <font></font> - Font Tag
  
  Including the options:
@@ -36,7 +36,6 @@ It supports these markup tags:
   yOffset - Y pixels to offset image. (Not standard HTML)
 
   Note: If width and height are not specified, the image is made with newImage(), otherwise, newImageRect() is used.
- </nowiki>
 
   Please see the example that comes with this code.
 
