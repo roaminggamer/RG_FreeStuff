@@ -5,6 +5,7 @@ This is a simple Markup Language Text Object and Image Creator.
 
 It supports these markup tags:
 
+ <nowiki>
  <font></font> - Font Tag
  
  Including the options:
@@ -20,6 +21,7 @@ It supports these markup tags:
 
  
  <a></a> - Address tag
+ 
   Example: <a href = "www.roaminggamer.com">Roaming Gamer, LLC.</a>
 
 
@@ -34,7 +36,8 @@ It supports these markup tags:
   yOffset - Y pixels to offset image. (Not standard HTML)
 
   Note: If width and height are not specified, the image is made with newImage(), otherwise, newImageRect() is used.
-    
+ </nowiki>
+
   Please see the example that comes with this code.
 
   You are free to modify this library/module as you need.  Have fun!
