@@ -1,92 +1,65 @@
 require "ssk.globals"
 require "ssk.loadSSK"
 
---[[
-local  w = display.contentWidth
-local  h = display.contentHeight
-local  centerX = w/2
-local  centerY = h/2
---]]
+local dg
+local dg2 
 
--- ==
---    string:rpad( len, char ) - Places padding on right side of a string, such that the new string is at least len characters long.
--- ==
-function string:rpad(len, char)
-	local theStr = self
-    if char == nil then char = ' ' end
-    return theStr .. string.rep(char, len - #theStr)
-end
+local genericEventPrinter
+genericEventPrinter = function( group, aTable, xOffset, count, color  )
+	local color = color or _WHITE_
+	local xOffset = xOffset or 0
+	local count = count or 1
+	for k,v in pairs(aTable) do
+		local tmp 
+		if(tonumber(v) ~= nil) then
+			tmp = display.newText( group, tostring(k) .. " : " .. round(tonumber(v),4),  0, 0, native.defaultFont, 10 )
+			tmp.x = centerX + xOffset
+			tmp.y = count * 24 + 40
+			count = count + 1
+			tmp:setTextColor(unpack(color))
 
-
--- ==
---    table.dump( theTable [, padding ] ) - Dumps indexes and values inside single-level table (for debug)
--- ==
-function table.dump(theTable, padding )
-	local padding = padding or 30
-	print("\Table Dump:")
-	print("-----")
-	if(theTable) then
-		for k,v in pairs(theTable) do 
-			local key = tostring(k)
-			local value = tostring(v)
-			local keyType = type(k)
-			local valueType = type(v)
-			local keyString = key .. " (" .. keyType .. ")"
-			local valueString = value .. " (" .. valueType .. ")" 
-
-			keyString = keyString:rpad(padding)
-			valueString = valueString:rpad(padding)
-
-			print( keyString .. " == " .. valueString ) 
-		end
-	else
-		print("empty")
+		elseif(type(v) == "table") then
+			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
+			tmp.x = centerX + xOffset
+			tmp.y = count * 24 + 40
+			count = count + 1
+			tmp:setTextColor(unpack(color))
+			
+			count = genericEventPrinter( v, count)
+		else 
+			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
+			tmp.x = centerX + xOffset
+			tmp.y = count * 24 + 40
+			count = count + 1
+			tmp:setTextColor(unpack(color))
+		end		
 	end
-	print("-----\n")
+	return count
 end
 
 
-local inputObj = display.newText("", 0, 0, native.defaultFont, 24 )
-inputObj.x = centerX
-inputObj.y = centerY
-
-local dg = ""
-
-
--- Called when a key event has been received.
-local function onKeyEvent( event )
-
---[[
-	local key = event.keyName
-	local keyCode = event.nativeKeyCode
-	local isCtrlDown = event.isCtrlDown
-	local isAltDown = event.isAltDown
-	local isShiftDown = event.isShiftDown
-	local phase = event.phase
-
---]]
+local function onGenericEvent( event )
 	safeRemove( dg )
-
 	dg = display.newGroup()
-
-	local count = 1
-	for k,v in pairs(event) do
-		local tmp = display.newText( dg, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 14 )
-		tmp.x = centerX
-		tmp.y = count * 24
-		count = count + 1
-	end
-
-
-
+	genericEventPrinter(dg, event, -160, 1, _WHITE_)
+	return true
 end
+
+local function onAxisEvent( event )
+	safeRemove( dg2 )
+	dg2 = display.newGroup()
+	genericEventPrinter(dg2, event, 160, 1, _YELLOW_)
+	return true
+end
+
 
 -- Add the key event listener.
 timer.performWithDelay(100, 
 	function()
-		Runtime:addEventListener( "key", onKeyEvent );
-		Runtime:addEventListener( "mouse", onKeyEvent )
-		Runtime:addEventListener( "joystick", onKeyEvent )
+		Runtime:addEventListener( "key", onGenericEvent )
+		Runtime:addEventListener( "mouse", onGenericEvent )
+		Runtime:addEventListener( "axis", onAxisEvent )
+
 	end )
 
 
