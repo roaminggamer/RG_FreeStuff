@@ -5,31 +5,36 @@ local dg
 local dg2 
 
 local genericEventPrinter
-genericEventPrinter = function( group, aTable, xOffset, count, color  )
+genericEventPrinter = function( group, aTable, x, count, color  )
 	local color = color or _WHITE_
-	local xOffset = xOffset or 0
+	local x = x or 0
 	local count = count or 1
+
 	for k,v in pairs(aTable) do
+		print(k,v)
 		local tmp 
-		if(tonumber(v) ~= nil) then
+		if(type(v) == "table") then
+			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
+			tmp:setReferencePoint( display.CenterLeftReferencePoint )
+			tmp.x = x
+			tmp.y = count * 24 + 20
+			count = count + 1
+			tmp:setTextColor(unpack(color))	
+			count = genericEventPrinter( group, v, x + 20, count, color  )
+		
+		elseif(tonumber(v) ~= nil) then
 			tmp = display.newText( group, tostring(k) .. " : " .. round(tonumber(v),4),  0, 0, native.defaultFont, 10 )
-			tmp.x = centerX + xOffset
-			tmp.y = count * 24 + 40
+			tmp:setReferencePoint( display.CenterLeftReferencePoint )
+			tmp.x = x
+			tmp.y = count * 24 + 20
 			count = count + 1
 			tmp:setTextColor(unpack(color))
 
-		elseif(type(v) == "table") then
-			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
-			tmp.x = centerX + xOffset
-			tmp.y = count * 24 + 40
-			count = count + 1
-			tmp:setTextColor(unpack(color))
-			
-			count = genericEventPrinter( v, count)
 		else 
 			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
-			tmp.x = centerX + xOffset
-			tmp.y = count * 24 + 40
+			tmp:setReferencePoint( display.CenterLeftReferencePoint )
+			tmp.x = x
+			tmp.y = count * 24 + 20
 			count = count + 1
 			tmp:setTextColor(unpack(color))
 		end		
@@ -41,7 +46,7 @@ end
 local function onGenericEvent( event )
 	safeRemove( dg )
 	dg = display.newGroup()
-	genericEventPrinter(dg, event, -160, 1, _WHITE_)
+	genericEventPrinter(dg, event, 40, 1, _WHITE_)
 	return true
 end
 
