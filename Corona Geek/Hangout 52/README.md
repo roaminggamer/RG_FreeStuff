@@ -1,4 +1,4 @@
-Character Dump
+Character Jump
 ============
 This folder contains these versions of the 'Character Jump' code from Hangout 52.
 
