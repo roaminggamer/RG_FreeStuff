@@ -1,0 +1,17 @@
+-- build.settings for project: RobotWars
+-- Managed with http://CoronaProjectManager.com
+-- Copyright 2012 Brian Burton. All Rights Reserved.
+
+settings = {
+	orientation =
+	{
+		default = "landscapeRight",
+	},
+	iphone =
+	{
+		plist=
+		{
+			--UIStatusBarHidden=true,
+		},
+	},
+}
