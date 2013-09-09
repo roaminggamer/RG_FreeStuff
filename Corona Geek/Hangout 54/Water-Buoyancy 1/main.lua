@@ -2,7 +2,7 @@
 --------------------------------  *** WATER BUOYANCY EXAMPLE ***  -------------------------------------
 -------------------------------------------------------------------------------------------------------
 
--- By iNSERT.CODE - http://insertcode.co.uk
+-- By iNSERT.CODE - http://insertco.de/
 -- Version: 1.0
 -- 
 -- Sample code is MIT licensed
@@ -23,7 +23,7 @@ display.setStatusBar(display.HiddenStatusBar)
 -- INIT PHYSICS
 local physics = require("physics")
 physics.start()
-physics.setGravity( 0, 40 )
+physics.setGravity( 0, 100 )
 physics.setDrawMode( "hybrid" ) 
 local gx, gy = physics.getGravity()
  
@@ -47,7 +47,7 @@ local liquidDensity = 1.0 	-- Sets the desnity of the liquid (e.g. 1.0 default =
 
 local numberOfBoxes = 5		-- Sets the number of boxes
 
-local boxSize = 40 			-- Sets the size of the boxes
+local boxSize = 80 			-- Sets the size of the boxes
 
 
 -------------------------------------------------------------------------------------------------------
@@ -175,13 +175,13 @@ local function float()
                                 submergedPercent = 100
                         end
                         
-                        if submergedPercent > 40 then
+                        if submergedPercent > 1 then
                                 
 								local buoyancyForce = (box.mass * gy)
                                 box:applyForce( 0, buoyancyForce * -0.002, box.x, box.y )
                                 
-								box.linearDamping = 4 * liquidDensity
-								box.angularDamping = 5 * liquidDensity
+								box.linearDamping = 10 -- 4 * liquidDensity
+								box.angularDamping = 0 -- 5 * liquidDensity
                         else
                                 box.linearDamping = 0
                                 box.angularDamping = 0
