@@ -5,7 +5,7 @@ This folder contains code++ discussed during Corona Geek Hangout 54.
 
 Code (Folders)
 ============
-1. Water Buoyancy => Basic water buoyancy example.
+1. Water Buoyancy 1 => Basic water buoyancy example.
 
 2. Water Buoyancy 2 => More realistice (ingeneous!) water buoyancy example.
 
