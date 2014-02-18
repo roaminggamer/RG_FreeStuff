@@ -1,0 +1,32 @@
+--
+--  Adds ability to transition the color of a vector object or 
+--  a text object.
+--
+
+--
+--  #1 Vector Object
+-- 
+
+local circle = display.newCircle( 100, 100, 20 )
+
+transition.fromtocolor( circle, 
+								unpack( _WHITE_ ), unpack( _YELLOW_ ), 
+								1000, 500, easing.inOutQuad )
+
+
+
+
+
+
+
+--
+--  #2 Text Object
+-- 						
+
+local myText = display.newText( "Red to Green", 10, 10, 
+                                   native.systemFont, 12)
+myText:setTextColor( unpack( _RED_ ) )
+
+transition.fromtocolor( myText, 
+								unpack( _RED_ ), unpack( _GREEN ), 
+								1000, 500, easing.inOutQuad )

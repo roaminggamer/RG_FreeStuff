@@ -1,0 +1,26 @@
+-- 
+-- Create Several Randomly Colored Circles
+-- 
+local colors = { 
+	_RED_, _GREEN_, _BLUE_, _YELLOW_, _ORANGE_, 
+	_BRIGHTORANGE_, _PURPLE_, _PINK_, _WHITE_, _BLACK_,
+	_GREY_, _DARKGREY_, _DARKERGREY_, _LIGHTGREY_, 
+	_TRANSPARENT_,
+}
+
+for i = 1, 100 do
+	
+	local x = math.random( 100, 200 )
+	local y = math.random( 100, 200 )
+	local color = colors[ math.random( 1, #colors ) ]
+
+	local circle = display.newCircle( x, y, 20 )
+
+	circle:setFillColor( unpack( color ) )
+end
+
+
+
+
+
+

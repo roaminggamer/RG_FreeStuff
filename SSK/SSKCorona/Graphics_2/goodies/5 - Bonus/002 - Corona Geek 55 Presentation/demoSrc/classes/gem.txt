@@ -1,0 +1,40 @@
+--
+-- Pure
+--
+local fuction myHandler( event )
+	-- Do some work here
+end
+
+local fuction myHandler2( event )
+	-- Do some work here
+end
+
+Runtime:addEventListener( "someEvent", myHandler )
+Runtime:addEventListener( "someOtherEvent", myHandler2 )
+
+
+-- Later you have to clean up ...
+
+Runtime:removeEventListener( "someEvent", myHandler )
+Runtime:removeEventListener( "someOtherEvent", myHandler2 )
+
+
+
+--
+-- SSK - The GEM way
+--
+local fuction myHandler( event )
+	-- Do some work here
+end
+
+local fuction myHandler2( event )
+	-- Do some work here
+end
+
+ssk.gem:add( "someEvent", myHandler , "MainMenu" )
+ssk.gem:add( "someOther", myHandler2, "MainMenu" )
+
+
+-- Now, cleaning up is easy...
+
+ssk.gem:removeGroup( "MainMenu" )

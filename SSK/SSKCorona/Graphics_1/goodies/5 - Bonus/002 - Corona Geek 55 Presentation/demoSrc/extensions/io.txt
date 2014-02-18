@@ -1,0 +1,52 @@
+--
+-- exists, writeFile, appendFile, 
+--
+local words = { "This", "is" , "a", "test." }
+
+for i = 1, #words do
+	if( io.exists( "wordList.txt" ) ) then
+		
+		io.writeFile( "wordList.txt", words[i]
+	
+	else
+
+		io.appendFile( "wordList.txt", words[i] )
+	
+	end
+end
+
+
+
+--
+--  readFile
+--
+local allWords = io.readFile( "wordList.txt" )
+
+print( allWorlds )
+
+-- Prints:
+--This
+--is
+--a
+--test.
+
+
+
+
+
+
+
+
+--
+--  readFileTable
+--
+local words2 = io.readFileTable( "wordList.txt" )
+for i = 1, #words2 do
+	print( words2[i] )	
+end
+
+-- Prints:
+--This
+--is
+--a
+--test.

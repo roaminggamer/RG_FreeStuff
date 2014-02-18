@@ -1,0 +1,26 @@
+
+--
+-- Assuming we have some game objects ...
+--
+local player = createPlayer( ... )
+local enemy  = createEnemy( ... )
+
+--
+-- Making the enemy continously face the player is this easy
+-- 
+ssk.action.aimAtObject( enemy, player, 33 )
+
+
+
+--- Other actions: 
+--
+-- aiming with max distance, 
+--
+-- facing instantaneous and fixed rate (not speed)
+--  Note: uses uses shortest rotation
+--
+-- move to point at fixed speed (not time)
+-- 
+-- seeking with max distance, FOV, re-seeking
+--
+--

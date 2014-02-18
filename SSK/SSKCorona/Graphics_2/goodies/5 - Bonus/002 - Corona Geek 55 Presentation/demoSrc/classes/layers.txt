@@ -1,0 +1,45 @@
+--
+-- Pure
+--
+local group = display.newGroup() 
+
+local layers = display.newGroup()
+group:insert(layers)
+
+layers.bot = display.newGroup()
+layers.mid = display.newGroup()
+layers.top = display.newGroup()
+
+layers:insert( layers.bot )
+layers:insert( layers.mid )
+layers:insert( layers.top )
+
+display.newCircle( layers.mid, 10, 10, 10 )
+
+
+
+--
+-- SSK
+--
+local group = display.newGroup() 
+
+local layers = ssk.display.quickLayers( group, 
+                                        "bot", "mid", "top" )
+
+display.newCircle( layers.mid, 10, 10, 10 )
+
+
+
+--
+-- SSK - More elaborate
+--
+local group = display.newGroup() 
+
+local layers = ssk.display.quickLayers( group, 
+                                        "background", 
+                                        "camera", 
+                                        { "bot", "mid", "top" },
+                                        "interfaces",
+                                        "overlay" )
+
+display.newCircle( layers.mid, 10, 10, 10 )

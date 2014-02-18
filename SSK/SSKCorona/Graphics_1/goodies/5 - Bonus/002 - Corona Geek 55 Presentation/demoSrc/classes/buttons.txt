@@ -1,0 +1,17 @@
+
+local function onPush( event )
+	local target = event.target 
+	local phase  = event.phase
+	print(phase)
+	print( "User pressed button: ", target:getText())
+	return true  
+end
+
+-- Push Button 1
+ssk.buttons:presetPush( 
+	group,				-- Display group button should be put in
+	"default",			-- Button preset name
+	centerX, centerY-45,-- Button Position
+	180, 40,			-- Button Size
+	"Button 1",			-- Button Text
+	onPush)				-- Call to executed on button 'release'

@@ -1,0 +1,32 @@
+--
+-- Pure
+--
+local group = display.newGroup()
+
+local block = display.newRect( group, 0,0,40,40 )
+block.x = w/4
+block.y = centerY+20
+physics.addBody( block, "dynamic", { } )
+
+
+--
+-- SSK
+--
+local group = display.newGroup()
+ssk.display.rect( group, w/4, centerY+20, { }, { } )
+
+
+
+
+
+--
+-- SSK - More Elaborate
+--
+local group = display.newGroup()
+local myFilter = { categoryBits = 2, maskBits = 3 }
+local myShape =  { -20,-10, 20,-10, 20,10, -20,10 }
+ssk.display.rect( group, w/4, centerY+20, { }, 
+                  { isBullet = true, isSensor = true,
+                    linearDamping = 0.7, bounce = 0.2,
+                    isFixedRotation = true,
+                    filter = myFilter, shape = myShape } )
