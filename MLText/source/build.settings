@@ -1,32 +1,16 @@
 settings = 
 {
-
 	orientation = 
 	{
-                --default = "portrait",
+		--default = "portrait",
 		default = "landscapeRight",
 		supported = 
 		{
-                --"portrait", "portraitUpsideDown",
-		"landscapeRight", "landscapeLeft",
+            --"portrait", "portraitUpsideDown",
+			"landscapeRight", "landscapeLeft",
 		},
 					
 	},
 
---	iphone =
---	{
---		plist =
---		{
---                --UIAppFonts = { "Harrowprint.ttf" },
---                CFBundleDisplayName = "Color Picker",
---		UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
---	        CFBundleIconFile = "Icon.png",
---	        CFBundleIconFiles = {
---	           "Icon.png", 
---	           "Icon@2x.png", 
---	           "Icon-72.png", 
---	        },
---		},
---	},
 }
 	
