@@ -6,6 +6,8 @@ local createPad 	= builders.createPad
 local createShip 	= builders.createShip
 local createYinYang = builders.createYinYang
 
+local math2d 		= require "ssk.RGMath2D"
+
 local tmp = display.newText( "Impulses", 0, 0, native.systemFontBold, 32 )
 tmp.x = centerX 
 tmp.y = 20
