@@ -24,10 +24,10 @@ local myTable = {
                  	{ "Roaming Gamer", "ain't to bad", "either"}
                 }
 
-print( "\n\nDump of myTable in main.lua - Notice 'addresses' of sub-tables:")
+print( "\n\nDump of myTable in main.lua - Notice 'addresses' of sub-tables:\n")
 table.dump( myTable )
 
-print( "\n\nRecursiuve print of myTable in main.lua:")
+print( "\n\nRecursiuve print of myTable in main.lua:\n")
 table.print_r( myTable )
 
 local options =
