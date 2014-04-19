@@ -5,42 +5,50 @@ require "ssk.loadSSK"
 local knownFields = {}
 local knownFields2 = {}
 
-local dg
-local dg2 
+local dg 	= display.newGroup()
+local dg2  = display.newGroup()
+
+local function purgeGroup( group )
+	while (group.numChildren > 0 ) do
+		display.remove(group[1])
+	end
+end
 
 local genericEventPrinter
 genericEventPrinter = function( group, aTable, x, count, color  )
 	local color = color or _WHITE_
-	local x = x or 0
+	local x = x or 0 
 	local count = count or 1
+	local tweenY = 16 
+	local fontSize = 14
 
 	for k,v in pairs(aTable) do
 		print(k,v)
 		local tmp 
 		if(type(v) == "table") then
-			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
+			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, fontSize )
 			tmp:setReferencePoint( display.CenterLeftReferencePoint )
 			tmp.x = x
-			tmp.y = count * 24 + 20
+			tmp.y = count * tweenY 
 			count = count + 1
-			tmp:setTextColor(unpack(color))	
+			tmp:setFillColor(unpack(color))	
 			count = genericEventPrinter( group, v, x + 20, count, color  )
 		
 		elseif(tonumber(v) ~= nil) then
-			tmp = display.newText( group, tostring(k) .. " : " .. round(tonumber(v),4),  0, 0, native.defaultFont, 10 )
+			tmp = display.newText( group, tostring(k) .. " : " .. round(tonumber(v),4),  0, 0, native.defaultFont, fontSize )
 			tmp:setReferencePoint( display.CenterLeftReferencePoint )
 			tmp.x = x
-			tmp.y = count * 24 + 20
+			tmp.y = count * tweenY 
 			count = count + 1
-			tmp:setTextColor(unpack(color))
+			tmp:setFillColor(unpack(color))
 
 		else 
-			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, 10 )
+			tmp = display.newText( group, tostring(k) .. " : " .. tostring(v),  0, 0, native.defaultFont, fontSize )
 			tmp:setReferencePoint( display.CenterLeftReferencePoint )
 			tmp.x = x
-			tmp.y = count * 24 + 20
+			tmp.y = count * tweenY 
 			count = count + 1
-			tmp:setTextColor(unpack(color))
+			tmp:setFillColor(unpack(color))
 		end		
 	end
 	return count
@@ -81,17 +89,24 @@ genericFieldPrinter = function( group, kf, x, color  )
 		tmp.x = x
 		tmp.y = count * 12 + 10
 		count = count + 1
-		tmp:setTextColor(unpack(color))
+		tmp:setFillColor(unpack(color))
 	end
 end
 
 
+local getTimer = system.getTimer
+local minTime 	= 100
+local floodTimer = getTimer()
+
 local function onGenericEvent( event )
-	safeRemove( dg )
-	dg = display.newGroup()
-	
-	genericEventPrinter(dg, event, 40, 1, _WHITE_)
-	
+	local curTime = getTimer()
+	if( (curTime - floodTimer) < minTime ) then return true end
+	floodTime = curTime
+
+	purgeGroup( dg )
+
+	genericEventPrinter(dg, event, 10-unusedWidth/2, 1, _WHITE_)
+
 	--genericFieldStripper( knownFields, event)
 	--genericFieldPrinter( dg, knownFields, 40 )
 	
@@ -99,10 +114,13 @@ local function onGenericEvent( event )
 end
 
 local function onAxisEvent( event )
-	safeRemove( dg2 )
-	dg2 = display.newGroup()
+	local curTime = getTimer()
+	if( (curTime - floodTimer) < minTime ) then return true end
+	floodTime = curTime
+
+	purgeGroup( dg2 )
 	
-	genericEventPrinter(dg2, event, 200, 1, _YELLOW_)
+	genericEventPrinter(dg2, event, 240 + unusedWidth/2, 1, _YELLOW_)
 	
 	--genericFieldStripper( knownFields2, event)
 	--genericFieldPrinter(dg2, knownFields2, 200, _YELLOW_)
