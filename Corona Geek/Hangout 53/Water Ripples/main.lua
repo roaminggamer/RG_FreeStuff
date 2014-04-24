@@ -8,7 +8,7 @@ local lastTime = 0
 -- Setup Physics
 physics = require( "physics" )
 physics.start()
-physics.setDrawMode("hybrid")
+--physics.setDrawMode("hybrid")
 
 -- Setup tables
 physicsObjectTable = {}; 	-- Contains all the physics object that need updated

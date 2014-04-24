@@ -7,9 +7,9 @@ application =
 	content =
 	{
 		graphicsCompatibility = 1,
-		--width = 320,
-		--height = 480,
-		--scale = "zoomEven"
+		width = 640,
+		height = 960,
+		scale = "zoomEven"
 	},
 }
 
