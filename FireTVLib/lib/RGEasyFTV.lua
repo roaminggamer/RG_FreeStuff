@@ -161,7 +161,7 @@ onKey = function( event )
 		post( "onFTVKey", event)
 	end
 
-    return false
+    return true
 end
 
 timer.performWithDelay(100, function() Runtime:addEventListener( "key", onKey ) end )
