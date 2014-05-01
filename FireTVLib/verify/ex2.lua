@@ -30,6 +30,8 @@ local function createButton( x, y, w, h, image, mappedKey )
 	local fileName = "images/" .. image .. ".png"
 
 	print(fileName)
+
+	print(fileName)
 	local tmp = display.newImageRect( fileName, w, h)
 	tmp.anchorX = 0.5
 	tmp.anchorY = 0.5
@@ -51,9 +53,9 @@ end
 createButton( 20, 20, 35, 35, "voicesearch", "voicesearch" )  -- not catchable
 createButton( 20, 60, 35, 35, "back", "back" )
 createButton( 20, 100, 35, 35, "home", "home" ) -- not catchable
-createButton( 20, 140, 35, 35, "play_pause", "playPause" ) 
-createButton( 20, 180, 35, 35, "rewind", "rewind" ) 
-createButton( 20, 220, 35, 35, "fastforward", "fastForward" ) 
+createButton( 20, 140, 35, 35, "mediaPlayPause", "mediaPlayPause" ) 
+createButton( 20, 180, 35, 35, "mediaRewind", "mediaRewind" ) 
+createButton( 20, 220, 35, 35, "mediaFastForward", "mediaFastForward" ) 
 
 createButton( 255, 20, 35, 35, "menu", "menu" )
 createButton( 255, 60, 45, 35, "ringup", "up" ) 

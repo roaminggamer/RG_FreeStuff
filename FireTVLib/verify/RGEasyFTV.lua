@@ -83,9 +83,9 @@ local function keyCleaner( event )
 	 	codes[23]   = 'select'
 	 	codes[4] 	= 'back'
 	 	codes[82] 	= 'menu'
-	 	codes[89] 	= 'rewind'
-	 	codes[90] 	= 'fastForward'
-	 	codes[85] 	= 'playPause'
+	 	codes[89] 	= 'mediaRewind'
+	 	codes[90] 	= 'mediaFastForward'
+	 	codes[85] 	= 'mediaPlayPause'
 
  	-- Windows code mappings
  	elseif( onWin ) then
@@ -96,9 +96,9 @@ local function keyCleaner( event )
 	 	codes[83]   = 'select' -- s
 	 	codes[66] 	= 'back' -- b
 	 	codes[77] 	= 'menu' -- m
-	 	codes[82] 	= 'rewind' -- r
-	 	codes[70] 	= 'fastForward' --f
-	 	codes[80] 	= 'playPause' -- p
+	 	codes[82] 	= 'mediaRewind' -- r
+	 	codes[70] 	= 'mediaFastForward' --f
+	 	codes[80] 	= 'mediaPlayPause' -- p
 
  	elseif( onOSX ) then
 	 	-- OS X code mappings
@@ -109,9 +109,9 @@ local function keyCleaner( event )
 	 	codes[1]  	= 'select' -- s
 	 	codes[11] 	= 'back' -- b
 	 	codes[46] 	= 'menu' -- m
-	 	codes[15] 	= 'rewind' -- r
-	 	codes[3] 	= 'fastForward' --f
-	 	codes[35] 	= 'playPause' --p
+	 	codes[15] 	= 'mediaRewind' -- r
+	 	codes[3] 	= 'mediaFastForward' --f
+	 	codes[35] 	= 'mediaPlayPause' --p
 	 end
 
 

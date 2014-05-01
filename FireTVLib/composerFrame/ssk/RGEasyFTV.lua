@@ -7,7 +7,8 @@
 -- =============================================================
 local getTimer  = system.getTimer
 
-local debugLevel = 0
+local debugLevel = 0 -- Set to 1 or 2 for debug output
+
 local onOSX = system.getInfo("platformName") == "Mac OS X"
 local onWin = system.getInfo("platformName") == "Win"
 local onFTV = (system.getInfo ( "model" ) == "AFTB")

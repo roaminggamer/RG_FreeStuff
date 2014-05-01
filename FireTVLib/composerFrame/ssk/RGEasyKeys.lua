@@ -7,10 +7,9 @@
 -- =============================================================
 local getTimer  = system.getTimer
 
-local debugLevel = 0
+local debugLevel = 2
 local onOSX = system.getInfo("platformName") == "Mac OS X"
 local onWin = system.getInfo("platformName") == "Win"
-local onFTV = (system.getInfo ( "model" ) == "AFTB")
 
 
 if( not table.dump ) then
@@ -70,52 +69,45 @@ if( not _G.post ) then
 end
 
 local function keyCleaner( event )
+	if( onWin ) then 
+		return event 
+ 	end
 
  	local code = event.nativeKeyCode
+
  	local codes = {}
-
- 	-- FTV code mappings
- 	if(onFTV) then
-	 	codes[19] 	= 'up'
-	 	codes[20] 	= 'down'
-	 	codes[21] 	= 'left'
-	 	codes[22] 	= 'right'
-	 	codes[23]   = 'select'
-	 	codes[4] 	= 'back'
-	 	codes[82] 	= 'menu'
-	 	codes[89] 	= 'mediaRewind'
-	 	codes[90] 	= 'mediaFastForward'
-	 	codes[85] 	= 'mediaPlayPause'
-
- 	-- Windows code mappings
- 	elseif( onWin ) then
-	 	codes[38] 	= 'up'
-	 	codes[40] 	= 'down'
-	 	codes[37] 	= 'left'
-	 	codes[39] 	= 'right'
-	 	codes[83]   = 'select' -- s
-	 	codes[66] 	= 'back' -- b
-	 	codes[77] 	= 'menu' -- m
-	 	codes[82] 	= 'mediaRewind' -- r
-	 	codes[70] 	= 'mediaFastForward' --f
-	 	codes[80] 	= 'mediaPlayPause' -- p
-
- 	elseif( onOSX ) then
-	 	-- OS X code mappings
-	 	codes[126] 	= 'up'
-	 	codes[125] 	= 'down'
-	 	codes[123] 	= 'left'
-	 	codes[124] 	= 'right'
-	 	codes[1]  	= 'select' -- s
-	 	codes[11] 	= 'back' -- b
-	 	codes[46] 	= 'menu' -- m
-	 	codes[15] 	= 'mediaRewind' -- r
-	 	codes[3] 	= 'mediaFastForward' --f
-	 	codes[35] 	= 'mediaPlayPause' --p
-	 end
-
-
-	event.keyName = codes[code]
+ 	codes[122] = 'f1'
+ 	codes[120] = 'f2'
+ 	codes[99] = 'f3'
+ 	codes[118] = 'f4'
+ 	codes[96] = 'f5'
+ 	codes[97] = 'f6'
+ 	codes[98] = 'f7'
+ 	codes[100] = 'f8'
+ 	codes[101] = 'f9'   -- NOT SURE; OFF LIMITS (SPECIAL USE ON OSX)
+ 	codes[102] = 'f10'  -- NOT SURE; OFF LIMITS (SPECIAL USE ON OSX)
+ 	codes[103] = 'f11'  -- NOT SURE; OFF LIMITS (SPECIAL USE ON OSX)
+ 	codes[104] = 'f12'  -- NOT SURE; OFF LIMITS (SPECIAL USE ON OSX)
+ 	codes[124] = 'right'
+ 	codes[123] = 'left'
+ 	codes[126] = 'up'
+ 	codes[125] = 'down'
+ 	codes[115] = 'home'
+ 	codes[116] = 'pageUp'
+ 	codes[121] = 'pageDown'
+ 	codes[119] = 'end'
+ 	codes[114] = 'insert'
+ 	codes[117] = 'deleteForward'
+ 	codes[51] = 'deleteBack'
+ 	codes[48] = 'tab'
+ 	codes[53] = 'escape'
+ 	codes[36] = 'enter'
+ 	codes[76] = 'enter' -- DUPLICATED
+ 	codes[49] = 'space' 
+ 	
+ 	if( codes[code] ) then
+ 		event.keyName = codes[code]
+ 	end
 
 	return event 
 end
@@ -131,23 +123,10 @@ onKey = function( event )
 
 	local key = event.keyName
 	local keyCode = event.nativeKeyCode
+	local isCtrlDown = event.isCtrlDown
+	local isAltDown = event.isAltDown
+	local isShiftDown = event.isShiftDown
 	local phase = event.phase
-
-	if( key == nil ) then return false end
-
-	if( phase == "down") then 
-		event.phase = "began"
-	else
-		event.phase = "ended"
-	end
-	phase = event.phase
-
-	-- Remove unused bits from event
-	event.isAltDown = nil
-	event.isCommandDown = nil
-	event.isCtrlDown = nil
-	event.isShiftDown = nil
-	event.descriptor = nil
 
 	if( debugLevel >= 1) then
 		print( tostring(key) .. " :" .. tostring(keyCode) .. " :" .. tostring(phase) )
@@ -156,12 +135,12 @@ onKey = function( event )
 	event.name = nil
 
 	if( debugLevel >= 2) then
-		post( "onFTVKey", event, 2 )
+		post( "ON_KEY", event, 2 )
 	else
-		post( "onFTVKey", event)
+		post( "ON_KEY", event)
 	end
 
-    return true
+    return false
 end
 
 timer.performWithDelay(100, function() Runtime:addEventListener( "key", onKey ) end )
