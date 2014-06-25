@@ -39,10 +39,10 @@ local function numericIterationWithNilTest_noWork()
 	local tmp
 	for i = 1, #myObjects do
 		tmp = myObjects[i]
-		if( tmp ) then
-			-- Do some work here on 'tmp'			
+		if( tmp == "" ) then
+			-- Do nothing, this entry was erased
 		else
-			-- Do nothing, this entry is 'nil'			
+			-- Do some work here on 'tmp'						
 		end
 	end
 end
@@ -62,10 +62,10 @@ local function numericIterationWithNilTest_withWork()
 	local tmp
 	for i = 1, #myObjects do
 		tmp = myObjects[i]
-		if( tmp ) then
-			tmp:setFillColor(rcolor(),rcolor(),rcolor())
+		if( tmp == "" ) then
+			-- Do nothing, this entry was erased
 		else
-			-- Do nothing, this entry is 'nil'			
+			tmp:setFillColor(rcolor(),rcolor(),rcolor())			
 		end
 	end
 end
@@ -82,7 +82,7 @@ local count = 1
 for k,v in pairs( myObjects ) do
 	if(k) then
 		display.remove(v)
-		myObjects[k] = nil
+		myObjects[k] = ""
 	end
 	if( count >= 500 ) then break end
 	count = count + 1

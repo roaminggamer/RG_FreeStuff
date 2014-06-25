@@ -5,5 +5,4 @@
 -- Run one or the other, but not both:
 
 require "integerIndexed"
-
 --require "objectIndexed"
