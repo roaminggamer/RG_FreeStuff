@@ -1,4 +1,3 @@
--- http://forums.coronalabs.com/topic/48914-how-to-deal-with-arrays-of-a-lot-of-spawned-objects/
 local bench = require "simpleBench"
 local round = bench.round
 
