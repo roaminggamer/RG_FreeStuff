@@ -1,0 +1,2 @@
+--require "speedTesting"
+require "memoryTesting"
