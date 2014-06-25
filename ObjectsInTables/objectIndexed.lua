@@ -44,7 +44,22 @@ end
 local t1 = bench.measureTime(pairsIteration_noWork,10)
 local t2 = bench.measureTime(pairsIteration_withWork,10)
 
+-- Now let's remove 500 objects from the table and re-run the last test
+local count = 1
+for k,v in pairs( myObjects ) do
+	if(k) then
+		display.remove(v)
+		myObjects[k] = nil
+	end
+	if( count >= 500 ) then break end
+	count = count + 1
+end
+
+local t3 = bench.measureTime(pairsIteration_withWork,10)
+
 
 print("'pairs() iteration + No Work         x 10 iterations: " .. t1 .. " ms ")
 
 print("'pairs() iteration + Work            x 10 iterations: " .. t2 .. " ms ")
+
+print("'pairs() iteration + Work + Spare    x 10 iterations: " .. t3 .. " ms ")

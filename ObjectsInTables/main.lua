@@ -4,6 +4,6 @@
 
 -- Run one or the other, but not both:
 
---require "integerIndexed"
+require "integerIndexed"
 
-require "objectIndexed"
+--require "objectIndexed"

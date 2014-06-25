@@ -25,7 +25,7 @@ for i = 1, 10000 do
 	myObjects[#myObjects+1] = tmp
 end
 
--- Three tests that iterate over the list 'myObjects' but do no work
+-- Two tests that iterate over the list 'myObjects' but do no work
 --
 local function numericIteration_noWork()
 	local tmp
@@ -48,7 +48,7 @@ local function numericIterationWithNilTest_noWork()
 end
 
 
--- Three tests that iterate over the list 'myObjects' and randomly change the color of each object
+-- Two tests that iterate over the list 'myObjects' and randomly change the color of each object
 --
 local function numericIteration_withWork()
 	local tmp
@@ -77,9 +77,23 @@ local t2 = bench.measureTime(numericIterationWithNilTest_noWork,10)
 local t3 = bench.measureTime(numericIteration_withWork,10)
 local t4 = bench.measureTime(numericIterationWithNilTest_withWork,10)
 
+-- Now let's remove 500 objects from the table and re-run the last test
+local count = 1
+for k,v in pairs( myObjects ) do
+	if(k) then
+		display.remove(v)
+		myObjects[k] = nil
+	end
+	if( count >= 500 ) then break end
+	count = count + 1
+end
+
+local t5 = bench.measureTime(numericIterationWithNilTest_withWork,10)
+
 
 print("'#' iteration + No Work              x 10 iterations: " .. t1 .. " ms ")
 print("'#' iteration + 'nil' Test + No Work x 10 iterations: " .. t2 .. " ms ")
 
 print("'#' iteration + Work                 x 10 iterations: " .. t3 .. " ms ")
 print("'#' iteration + 'nil' Test + Work    x 10 iterations: " .. t4 .. " ms ")
+print("'#' iteration + 'nil' Test + Work + Sparse  x 10 iterations: " .. t5.. " ms ")
