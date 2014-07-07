@@ -113,7 +113,7 @@ end
 -- Comment these lines out to hide usage message and dumps
 -- Print all locals found above in alphabetic order
 table.dump(locals)
-print(usage .. ";ssk.al.run()") 
+print(usage .. ';require("autoLoc").run()') 
 
 -- =============================================================
 -- Package up the Module
