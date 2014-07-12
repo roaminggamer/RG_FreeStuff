@@ -1,0 +1,20 @@
+settings = {
+
+   orientation = {
+
+      default = "portrait",
+      
+      supported = {
+         "portrait",
+
+      },
+
+   },
+
+   iphone = {
+      plist = {
+         UIStatusBarHidden=true,
+      },
+   },
+
+}

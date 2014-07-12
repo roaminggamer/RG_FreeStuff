@@ -1,0 +1,11 @@
+-- For more details on this file and what you can do with it, look here:
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- Find more permissions here: http://developer.android.com/reference/android/Manifest.permission.html
+settings = {
+   orientation = {
+      default = "portrait",
+      supported = { "portrait", "portraitUpsideDown" },
+      --default = "landscapeLeft",
+      --supported = { "landscapeRight", "landscapeLeft" },
+   },
+}
