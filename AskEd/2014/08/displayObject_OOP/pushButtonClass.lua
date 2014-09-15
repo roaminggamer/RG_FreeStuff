@@ -85,21 +85,7 @@ function PushButton:touch( event )
 	return true
 end
 
-function PushButton:__init( group, x, y, labelText, listener, params)	
-	group 		= group or display.currentStage
-	params  	= params or {}
-
-	-- Save rest of parameters to class instance
-	self.labelText 	= labelText or ""
-	self.listener 	= listener or function() return false end
-	self.x 			= x or self.x
-	self.y 			= y or self.y
-
-	-- Simply copy all params values onto this instance
-	for k,v in pairs( params ) do
-		self[k] = v
-	end
-
+function PushButton:draw( group, x, y, labelText, listener, params)	
   	-- Build the button parts from display object(s)
   	--
 	self.unselRect = display.newRect( group, self.x, self.y, self.width, self.height )
@@ -118,6 +104,22 @@ function PushButton:__init( group, x, y, labelText, listener, params)
 	self.unselRect.isHitTestable = true	
 	self.selRect.isVisible = false
 	self.unselRect:addEventListener( "touch", self )
+end
 
+function PushButton:__init( group, x, y, labelText, listener, params)	
+	group 		= group or display.currentStage
+	params  	= params or {}
+
+	-- Save rest of parameters to class instance
+	self.labelText 	= labelText or ""
+	self.listener 	= listener or function() return false end
+	self.x 			= x or self.x
+	self.y 			= y or self.y
+
+	-- Simply copy all params values onto this instance
+	for k,v in pairs( params ) do
+		self[k] = v
+	end
+	self:draw( group, x, y, labelText, listener, params )	
 end
 

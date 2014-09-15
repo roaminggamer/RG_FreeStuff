@@ -1,3 +1,6 @@
+-- Note: I suggest that you no longer use this as a development technique.
+--  
+-- Why?  Well... this technique uses 
 
 require "perf1" -- Auto localized vs. 'remove' Math Square Root
 
