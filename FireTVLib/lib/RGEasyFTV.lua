@@ -10,7 +10,8 @@ local getTimer  = system.getTimer
 local debugLevel = 0
 local onOSX = system.getInfo("platformName") == "Mac OS X"
 local onWin = system.getInfo("platformName") == "Win"
-local onFTV = (system.getInfo ( "model" ) == "AFTB")
+local onFTV = string.len(system.getInfo ( "model")) >= 3 and string.sub(system.getInfo ( "model" ),1,3) == "AFT"
+
 
 
 if( not table.dump ) then
