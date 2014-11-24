@@ -85,10 +85,9 @@ end
 
 function tlib2.repairIndicies( theTable )
 	for k,v in pairs( theTable ) do
-		if(tonumber(k) and type(k) == "string") then
-			timer.performWithDelay( 1, function() theTable[tostring(k)] = nil end )
-			--theTable[tostring(k)] = nil
-			theTable[tonumber(k)] = v 
+		if(tonumber(k) and type(k) == "string") then			
+			theTable[tonumber(k)] = v
+			theTable[tostring(k)] = nil
 		end
 		if( type(v) == "table" ) then
 			tlib2.repairIndicies(v)

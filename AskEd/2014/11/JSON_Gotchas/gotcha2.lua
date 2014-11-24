@@ -15,6 +15,7 @@ local function init()
 	myTable[3] 		= "mixes"
 	myTable[4] 		= "index"
 	myTable[5] 		= "types."
+	
 	myTable.value  	= "This is a key-value pair entry."
 	
 end

@@ -17,7 +17,7 @@ local function init()
 	myTable["name"]		= "Gotcha 3"
 	myTable.description = "This table has fields and functions attached to it."
 
-	myTable.dump 		= dump	
+	myTable.dump 		= dump
 end
 
 local function test()

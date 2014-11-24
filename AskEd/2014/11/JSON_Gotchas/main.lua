@@ -27,12 +27,14 @@ gotcha.test()
 local gotcha = require "gotcha2"
 print("----------------------------")
 gotcha.init()
-gotcha.test()
+--gotcha.test()
+gotcha.test2()
 print("----------------------------")
 gotcha.save( "case2" )
 gotcha.load( "case2" )
 --gotcha.test()
 --gotcha.test2()
+print("----------------------------")
 gotcha.test3()
 --]]
 
@@ -53,10 +55,11 @@ print("----------------------------")
 gotcha.save( "case2" )
 gotcha.load( "case2" )
 gotcha.test()
+gotcha.test2()
 --]]
 
 --[[
-gotcha.save2( "case2" )
-gotcha.load2( "case2" )
+gotcha.save2( "case3" )
+gotcha.load2( "case3" )
 gotcha.test()
 --]]
