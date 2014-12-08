@@ -1,0 +1,7 @@
+settings = {
+    orientation = 
+    {
+		default = "landScape",
+		supported = { "landScape" },
+	},
+}
