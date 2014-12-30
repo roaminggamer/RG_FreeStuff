@@ -21,6 +21,19 @@ local rotateAbout = require "rotateAbout"
 local tmp = display.newCircle( 0, 0 , 5 )
 
 ----[[
+-- Loop 3 times (with 1/2 second initial delay)
+tmp.myLoops = 3
+local function onComplete( self )
+	tmp.myLoops = tmp.myLoops - 1
+	if( tmp.myLoops > 0 ) then
+		rotateAbout( self, centerX, centerY, { onComplete = onComplete } )
+	end
+end
+rotateAbout( tmp, centerX, centerY, { delay = 500, debugEn = true, onComplete = onComplete } )
+--]]
+
+
+--[[
 -- Loop forever (with 1/2 second initial delay)
 local function onComplete( self )
 	rotateAbout( self, centerX, centerY, { onComplete = onComplete } )
