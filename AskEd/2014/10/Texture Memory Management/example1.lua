@@ -30,6 +30,7 @@ end
 
 -- 3. Create Simple HUD to track Memory and Texture Usage
 --
+
 local hudFrame = display.newRect( centerX, h + unusedHeight/2 - 42, fullw-4, 80)
 hudFrame:setFillColor(0.2,0.2,0.2)
 hudFrame:setStrokeColor(1,1,0)
