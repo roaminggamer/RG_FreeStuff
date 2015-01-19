@@ -1,1 +1,0 @@
-This code was provided by Dr. Brian Burton as a demo for Corona Geek hangout #53.  It was derived from code originally seen in the Corona Labs forums.

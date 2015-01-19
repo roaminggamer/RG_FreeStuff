@@ -1,1 +1,0 @@
-The example code in this repo was originally published by iNSERT.CODE - http://insertcode.co.uk

@@ -1,3 +1,12 @@
 Corona Geek (Stuff)
 ============
-This folder is the dumping ground for any free items that come out of my participation on the Corona Geek Hangout (http://coronageek.com/).
+
+
+19 JAN 2015
+-----------
+Hi!  This archive has been moved to its own public repository here: https://github.com/roaminggamer/CoronaGeek/
+
+Sorry for any confusion!
+
+-Ed (aka The Roaming Gamer)
+
