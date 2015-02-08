@@ -1,7 +1,8 @@
--- Last Updated: 08 FEB 2015
+-- Last Updated: 08 FEB 2015 @ 1225 PST
 --
 local ced = {}
 ced.print = _G.print
+ced.print2 = _G.print
 ced.promoteToError = function()
   ced.print = _G.error
 end
@@ -141,8 +142,7 @@ _G.require = function( path )
 	end
 
 	if( not ignore and not luaFiles[path] ) then 
-		ced.print("***** WARNING! require( '" .. tostring(path) .. "' ) - does not exit.  Check case of file.")
-		return nil
+		ced.print2("***** WARNING! require( '" .. tostring(path) .. "' ) - does not exit.  Check case of file.")
 	end
 	return _G_require( path )
 end
