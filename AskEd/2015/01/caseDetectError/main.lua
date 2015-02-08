@@ -15,7 +15,6 @@ print(bob.name)
 require("scripts.Bob") 
 print(bob.name)
 
-
 -- =======================================================================
 -- 2. Test display.newImage -- Correct name is "smiley.png"
 --
@@ -56,8 +55,4 @@ tmp.y = 200
 local tmp = display.newImageRect( display.currentStage, "images/Smiley.png", 32, 32 )
 tmp.x = 150
 tmp.y = 200
-
-
-
-
 
