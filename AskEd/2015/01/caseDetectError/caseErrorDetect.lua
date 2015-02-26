@@ -1,4 +1,4 @@
--- Last Updated: 08 FEB 2015 @ 1225 PST
+-- Last Updated: 26 FEB 2015 @ 1225 PST
 --
 local ced = {}
 ced.print = _G.print
@@ -221,6 +221,56 @@ widget.setTheme = function( themeFile )
 	return widget_setTheme( themeFile )
 end
 
+
+
+-- ************************
+-- ************************ composer.*
+-- ************************
+local composer = require "composer"
+local composer_getScene		= composer.getScene
+composer.getScene = function( ... )
+	if( type(arg[1]) == "string" and not luaFiles[arg[1]] ) then 
+		ced.print("***** WARNING! composer.getScene() Scene file: '" .. tostring(arg[1]) .. "' - does not exit.  Check case of file.")
+		return nil
+	end
+	return composer_getScene( unpack(arg) )
+end
+
+local composer_gotoScene		= composer.gotoScene
+composer.gotoScene = function( ... )
+	if( type(arg[1]) == "string" and not luaFiles[arg[1]] ) then 
+		ced.print("***** WARNING! composer.gotoScene() Scene file: '" .. tostring(arg[1]) .. "' - does not exit.  Check case of file.")
+		return nil
+	end
+	return composer_gotoScene( unpack(arg) )
+end
+
+local composer_loadScene		= composer.loadScene
+composer.loadScene = function( ... )
+	if( type(arg[1]) == "string" and not luaFiles[arg[1]] ) then 
+		ced.print("***** WARNING! composer.loadScene() Scene file: '" .. tostring(arg[1]) .. "' - does not exit.  Check case of file.")
+		return nil
+	end
+	return composer_loadScene( unpack(arg) )
+end
+
+local composer_removeScene		= composer.removeScene
+composer.removeScene = function( ... )
+	if( type(arg[1]) == "string" and not luaFiles[arg[1]] ) then 
+		ced.print("***** WARNING! composer.removeScene() Scene file: '" .. tostring(arg[1]) .. "' - does not exit.  Check case of file.")
+		return nil
+	end
+	return composer_removeScene( unpack(arg) )
+end
+
+local composer_showOverlay		= composer.showOverlay
+composer.showOverlay = function( ... )
+	if( type(arg[1]) == "string" and not luaFiles[arg[1]] ) then 
+		ced.print("***** WARNING! composer.showOverlay() Scene file: '" .. tostring(arg[1]) .. "' - does not exit.  Check case of file.")
+		return nil
+	end
+	return composer_showOverlay( unpack(arg) )
+end
 
 
 
