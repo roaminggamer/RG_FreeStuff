@@ -1,0 +1,4 @@
+settings = {
+   orientation = {
+      default = "portrait", supported = { "portrait", }, },
+}
