@@ -1,4 +1,3 @@
-require "ssk.loadSSK"
 -- 1. Include this file in your project (very early or as first line in main.lua)
 local ced = require "caseErrorDetect"
 

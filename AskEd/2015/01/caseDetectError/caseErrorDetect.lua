@@ -283,6 +283,4 @@ composer.showOverlay = function( ... )
 	return composer_showOverlay( unpack(arg) )
 end
 
-
-
 return ced
