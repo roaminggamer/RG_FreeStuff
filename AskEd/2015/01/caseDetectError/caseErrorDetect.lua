@@ -10,15 +10,26 @@ if( system.getInfo( "environment" ) ~= "simulator" ) then
 	return ced
 end
 local lfs = require "lfs"
+
+local resourceRoot = system.pathForFile('main.lua', system.ResourceDirectory):sub(1, -9)
+
 local function isDirectory( path )
+	local origPath = path
 	path = system.pathForFile( path, system.ResourceDirectory )
+	if( path == nil ) then
+		path = resourceRoot .. origPath
+	end
 	if not path then
 		return false
 	end
 	return lfs.attributes( path, "mode" ) == "directory"
 end
 local function getFilesInDirectory( path )
+	local origPath = path
 	path = system.pathForFile( path, system.ResourceDirectory )
+	if( path == nil ) then
+		path = resourceRoot .. origPath
+	end
 	if path then		
 		local files = {}		
 		for file in lfs.dir( path ) do		

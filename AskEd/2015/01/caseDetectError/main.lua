@@ -1,3 +1,4 @@
+require "ssk.loadSSK"
 -- 1. Include this file in your project (very early or as first line in main.lua)
 local ced = require "caseErrorDetect"
 
@@ -55,4 +56,3 @@ tmp.y = 200
 local tmp = display.newImageRect( display.currentStage, "images/Smiley.png", 32, 32 )
 tmp.x = 150
 tmp.y = 200
-
