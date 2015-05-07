@@ -1,6 +1,0 @@
-
-
-print( math.pi )               --->  3.1415926535898
-
-
-print( round( math.pi, 4 ) )   --->  3.1416

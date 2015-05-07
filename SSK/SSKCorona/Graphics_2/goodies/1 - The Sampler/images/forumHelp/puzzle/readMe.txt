@@ -1,1 +1,0 @@
-Clown image (clown.png) came from here: http://www.arthursclipart.org/circus/circuscol.htm
