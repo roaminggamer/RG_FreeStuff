@@ -1,0 +1,43 @@
+In this article we will discuss a simple technique you can use to implement real-time data searches that produce responsive feedback and updates in your apps.
+
+
+The Challenge
+-------------
+If you have ever tried to implement a real-time search, you will be aware that it can be a challenge to maintain application resposiveness for large data sets and/or dynamically changing search parameters.
+
+For example, your application may have these requirements:
+- The app has a massive data set.
+- The data set needs to be searchable.
+- Searches need to execute as soon as a user starts entering the search criteria.
+- When the search criteria change, the search should automatically adjust in real-time.
+- Matching entries are returned as they are found, updating the app interface.
+- The app should remain responsive.
+
+The last requirement is critical.  If your app hangs or has temporary hiccups while a search executes, you may as well not distribute it.
+
+So, how to do this?
+
+The Sample App
+--------------
+To demonstrate a solution to the general problema above, let me specify an exact application and then provide code solving the problem.
+
+This application will have the following attributes:
+* Data Set - A simple word list containing over 100,000 words.
+* FPS Counter - A simple FPS counter will be shown at all times to give concrete proof of responsiveness.
+* Search Entry - The application will have a single text entry field.  (It will work on real devices and in both the Windows and OS X simulators.)
+* Progress Counters - In addition to the FPS counter, a simple progress meter will be shown so we know how far the search has advanced and how many matches have been found.
+* Results List - The results of our search will be displayed as a non-scrollable list of words as they are found. (I purposes did not add a scroller because I want to stay focused on the problem and its solution.)
+
+The App Modules
+---------------
+The sample code that comes with this post has several modules:
+* common - Caluates and discovers useful variables and flags (left, right, onSimulator, ... ).
+* meter - Creates an frame-rate meter.
+* searchField - Creates a 'text input field' for our search tht will work on devices and both simulators.
+* wordList - Generates a massive word list (our data) from a small set of words.
+* example - The solution to the problem posed at the start of this post.
+
+While each of the above modules may be useful and interesting, we will focus only on 'example'
+
+Example
+--------
