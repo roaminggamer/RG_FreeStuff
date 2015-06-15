@@ -5,7 +5,7 @@ local top             = 0 - unusedHeight/2
 local right           = display.contentWidth + unusedWidth/2
 local bottom          = display.contentHeight + unusedHeight/2
 
-local bannerID = "ca-app-pub-3054113816306190/1367368068"
+local bannerID = "ADMOBIDGOESHERE"
 local testMode = true
 
 local ads=require("ads")
