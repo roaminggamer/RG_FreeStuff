@@ -1,0 +1,31 @@
+settings = {
+
+   orientation = {
+
+--      default = "portrait",
+      default = "landscapeRight",
+      
+      supported = {
+
+--         "landscapeLeft", "landscapeRight", "portrait", "portraitUpsideDown",
+--         "portrait",
+         "landscapeRight",
+
+      },
+
+   },
+
+   iphone = {
+
+      plist = {
+
+         UIAppFonts = { "Harrowprint.ttf", "SF Alien Encounters.ttf" },
+
+         UIStatusBarHidden=true,
+      },
+   },
+
+   androidPermissions = {
+      "android.permission.INTERNET",
+   },
+}

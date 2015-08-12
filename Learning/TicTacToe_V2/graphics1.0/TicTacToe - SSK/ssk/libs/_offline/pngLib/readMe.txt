@@ -1,0 +1,4 @@
+-- Derived from code supplied by Danny @ anscamobile.com, which was in turn 
+-- based on code by David Manura. Licensed under the same terms as Lua (MIT license).
+-- Downloaded from this link: http://www.infuseddreams.com/apps/pngLib.zip
+-- Found in this thread: http://developer.coronalabs.com/forum/2012/05/16/pnglib-extract-data-png-files-width-height-color-depth-etc

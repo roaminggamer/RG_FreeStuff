@@ -1,0 +1,18 @@
+settings = {
+   orientation = {
+      default = "landscapeRight",
+      supported = {
+         "landscapeRight",
+      },
+   },
+
+   iphone = {
+      plist = {
+         UIStatusBarHidden=true,
+      },
+   },
+
+   androidPermissions = {
+      "android.permission.INTERNET",
+   },
+}
