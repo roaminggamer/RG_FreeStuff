@@ -54,8 +54,8 @@ createPiece = function( x , y, size )
 	piece.y = y
 
 	-- Change the color of this 'piece' to be dark grey with a 2-pixel wide light grey border
-	piece:setFillColor( 32,32,32,255 )
-	piece:setStrokeColor( 128,128,128,255 )
+	piece:setFillColor( 0.125,0.125,0.125,1.0 )
+	piece:setStrokeColor( 0.5,0.5,0.5,1.0 )
 	piece.strokeWidth = 2
 
 	-- 
@@ -77,7 +77,7 @@ createPiece = function( x , y, size )
 	-- However, after the text object is created, it changes to a center reference point.  So, by waiting to set the position, we get the result we really wanted.
 
 	-- Change the text color to light grey
-	piece.label:setFillColor( 0.5,0.5,0.5,255 )
+	piece.label:setFillColor( 0.5,0.5,0.5,1.0 )
 
 	return piece
 end

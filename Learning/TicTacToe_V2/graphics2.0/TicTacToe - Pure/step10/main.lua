@@ -75,8 +75,8 @@ createPiece = function( x , y, size )
 	piece.y = y
 
 	-- Change the color of this 'piece' to be dark grey with a 2-pixel wide light grey border
-	piece:setFillColor( 32,32,32,255 )
-	piece:setStrokeColor( 128,128,128,255 )
+	piece:setFillColor( 0.125,0.125,0.125,1.0 )
+	piece:setStrokeColor( 0.5,0.5,0.5,1.0 )
 	piece.strokeWidth = 2
 	-- 
 	-- B. Create the text object 'label' second so it is displayed on top of the rectangle
@@ -96,7 +96,7 @@ createPiece = function( x , y, size )
 	-- However, after the text object is created, it changes to a center reference point.  So, by waiting to set the position, we get the result we really wanted.
 
 	-- Change the text color to light grey
-	piece.label:setFillColor( 0.5,0.5,0.5,255 )
+	piece.label:setFillColor( 0.5,0.5,0.5,1.0 )
 
 	-- Add a "touch" listener to the grid piece (rectangle object). 
 	piece:addEventListener( "touch", onTouchPiece )
@@ -159,8 +159,8 @@ createBoard = function()
 	resetGameButton.y = centerY - 2 * pieceSize -- Spaced two piece heights above center.
 
 	-- Use same color scheme as the board pieces
-	resetGameButton:setFillColor( 32,32,32,255 )
-	resetGameButton:setStrokeColor( 128,128,128,255 )
+	resetGameButton:setFillColor( 0.125,0.125,0.125,1.0 )
+	resetGameButton:setStrokeColor( 0.5,0.5,0.5,1.0 )
 	resetGameButton.strokeWidth = 1
 
 	-- Add a different listener unique to just this button (rectangle)
@@ -177,7 +177,7 @@ createBoard = function()
 	resetGameButtonText.x = centerX
 	resetGameButtonText.y = centerY - 2 * pieceSize -- Spaced two piece heights above center.
 
-	resetGameButtonText:setFillColor( 0.5,0.5,0.5,255 )
+	resetGameButtonText:setFillColor( 0.5,0.5,0.5,1.0 )
 
 	-- Hide the label (text object)
 	resetGameButtonText.isVisible = false	
