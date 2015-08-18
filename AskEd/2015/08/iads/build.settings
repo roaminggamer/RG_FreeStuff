@@ -1,0 +1,14 @@
+settings = {
+   plugins =
+   {
+      ["CoronaProvider.ads.iads"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true }, }, -- iAds
+   },
+   android = 
+   {
+      usesPermissions = 
+      {
+         "android.permission.INTERNET",
+         "android.permission.ACCESS_NETWORK_STATE",
+      },
+   },
+}
