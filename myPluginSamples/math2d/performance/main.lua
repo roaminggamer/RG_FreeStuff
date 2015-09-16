@@ -6,9 +6,11 @@
 --
 ------------------------------------------------------------
 
+local easyBench = require "RGEasyBench"
+local measureTime = easyBench.measureTime
+
 -- Load plugin library
 local math2d = require "plugin.math2d"
-
 
 -- Set up some scalars to play with during out exploration of the math2d plugin.
 --
@@ -21,163 +23,125 @@ local circ = display.newCircle( 100, 100, 30 )
 local rect = display.newRect( 150, 250, 60, 60 )
 rect.rotation = 15
 
---
--- Vector Addition (Scalars)
---
-local vx,vy = math2d.add( x1, y1, x2, y2 )        -- Return two numbers
-local vec   = math2d.add( x1, y1, x2, y2, true )  -- Return a table
-print("\nVector Addition (Scalars)")
-print("Results: ", vx, vy ) 
-print("Results: ", vec.x, vec.y ) 
 
+-- Test Addition
 --
--- Vector Addition (Objects)
---
-local vx,vy = math2d.add( circ, rect, true )  -- Return two numbers
-local vec   = math2d.add( circ, rect )  -- Return a table
-print("\nVector Addition (Objects)")
-print("Results: ", vx, vy ) 
-print("Results: ", vec.x, vec.y ) 
+local innerIter 	= 10000
+local outerIter 	= 100
+local addVec 		= math2d.add
+local addVecFast 	= math2d.fast.add
 
---
--- Vector Subtraction (Scalars)
---
-local vx,vy = math2d.sub( x1, y1, x2, y2 )        -- Return two numbers
-local vec   = math2d.sub( x1, y1, x2, y2, true )  -- Return a table
-print("\nVector Subtraction (Scalars)")
-print("Results: ", vx, vy ) 
-print("Results: ", vec.x, vec.y ) 
+local function addObj()
+	for i = 1, innerIter do
+		addVec( circ, rect )
+	end
+end
 
---
--- Vector Subtraction (Objects)
---
-local vx,vy = math2d.sub( circ, rect, true )  -- Return two numbers
-local vec   = math2d.sub( circ, rect )  -- Return a table
-print("\nVector Subtraction (Objects)")
-print("Results: ", vx, vy ) 
-print("Results: ", vec.x, vec.y )
+local function addScalar()
+	for i = 1, innerIter do
+		addVec( x1,y1, x2, y2 )
+	end
+end
 
---
--- Dot Product (Scalars)
---
-print("\nDot (inner) Product (Scalars)")
-print("Result: ", math2d.dot( x1, y1, x2, y2 ) )
+local function addFast()
+	for i = 1, innerIter do
+		addVecFast( x1,y1, x2, y2 )
+	end
+end
 
---
--- Dot Product (Objects)
---
-print("\nDot (inner) Product (Objects)")
-print("Result: ", math2d.dot( circ, rect ) )
-
---
--- Cross Product (Scalars)
---
-print("\nCross (vector) Product (Scalars)")
-print("Result: ", math2d.cross( x1, y1, x2, y2 ) )
-
---
--- Cross Product (Objects)
---
-print("\nCross (vector) Product (Objects)")
-print("Result: ", math2d.cross( circ, rect ) )
-
---
--- Vector Normalize (Scalars)
---
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
-vx, vy = math2d.normalize(vx, vy)
-print("\nVector Normalize (Scalars)")
-print("Results: ", vx, vy ) 
-
---
--- Vector Normalize (Objects)
---
-local vec   = math2d.sub( circ, rect ) -- Return a table
-vec = math2d.normalize(vec) 
-print("\nVector Normalize (Objects)")
-print("Results: ", vec.x, vec.y )
-
---
--- Vector Length (Scalars)
---
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
-print("\nVector Length (Scalars)")
-print("Result: ", math2d.length(vx, vy) ) 
-
---
--- Vector Length (Objects)
---
-local vec   = math2d.sub( circ, rect ) -- Return a table
-print("\nVector Length (Objects)")
-print("Result: ", math2d.length(vec) )
-
---
--- Vector Square Length (Scalars)
---
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
-print("\nVector Square Length (Scalars)")
-print("Result: ", math2d.length2(vx, vy) ) 
-
---
--- Vector Square Length (Objects)
---
-local vec   = math2d.sub( circ, rect ) -- Return a table
-print("\nVector Square Length (Objects)")
-print("Result: ", math2d.length2(vec) )
-
---
--- Vector To Angle (Scalars)
---
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
-print("\nVector To Angle (Scalars)")
-print("Result: ", math2d.vector2Angle(vx, vy) ) 
-
---
--- Vector To Angle of Object
---
-local vec   = math2d.sub( circ, rect ) -- Return a table
-print("\nVector To Angle (Objects)")
-print("Result: ", math2d.vector2Angle(vec) )
-
---
--- Angle To Vector - Produce Scalars
---
-local angle = 135
-local vx,vy = math2d.angle2Vector( angle )        -- Return two numbers
-print("\nAngle To Vector (Scalars)")
-print("The vector: < " .. vx .. ", " .. vy .. " > " )  -- Print the numbers
-
---
--- Angle To Vector - Produce Object
---
-local vec   = math2d.angle2Vector( angle, true )  -- Return a table
-print("\nAngle To Vector (Object)")
-print("The vector: < " .. vec.x .. ", " .. vec.y .. " > " ) -- Print the table fields
+print("\n -------------------- Iterations = ",  innerIter * outerIter )
+print("        Object Addition: ", measureTime( addObj, outerIter ) .. " ms" )
+print("Scalar Encoded Addition: ", measureTime( addScalar, outerIter ) .. " ms" )
+print("          Fast Addition: ", measureTime( addFast, outerIter ) .. " ms" )
 
 
+-- Test Subtraction
 --
--- Screen To Cartesian (Scalars)
--- Cartesian To Screen (Scalars)
---
-print("\nScreen -> Cartesian -> Screen DEMO (Scalars)")
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
-print("   Screen: ", vx, vy ) 
-vx,vy = math2d.screen2Cartesian(vx,vy)
-print("Cartesian: ", vx, vy ) 
-vx,vy = math2d.cartesian2Screen(vx,vy)
-print("   Screen: ", vx, vy ) 
+local innerIter 	= 10000
+local outerIter 	= 100
+local subVec 		= math2d.sub
+local subVecFast 	= math2d.fast.sub
 
+local function subObj()
+	for i = 1, innerIter do
+		subVec( circ, rect )
+	end
+end
+
+local function subScalar()
+	for i = 1, innerIter do
+		subVec( x1,y1, x2, y2 )
+	end
+end
+
+local function subFast()
+	for i = 1, innerIter do
+		subVecFast( x1,y1, x2, y2 )
+	end
+end
+
+print("\n -------------------- Iterations = ",  innerIter * outerIter )
+print("        Object Subtraction: ", measureTime( subObj, outerIter ) .. " ms" )
+print("Scalar Encoded Subtraction: ", measureTime( subScalar, outerIter ) .. " ms" )
+print("          Fast Subtraction: ", measureTime( subFast, outerIter ) .. " ms" )
+
+
+-- Test Length
 --
--- Screen To Cartesian (Object)
--- Cartesian To Screen (Object)
+local innerIter 	= 10000
+local outerIter 	= 100
+local lengthVec 		= math2d.length
+local lengthVecFast 	= math2d.fast.length
+
+local function lengthObj()
+	for i = 1, innerIter do
+		lengthVec( circ, rect )
+	end
+end
+
+local function lengthScalar()
+	for i = 1, innerIter do
+		lengthVec( x1,y1, x2, y2 )
+	end
+end
+
+local function lengthFast()
+	for i = 1, innerIter do
+		lengthVecFast( x1,y1, x2, y2 )
+	end
+end
+
+print("\n -------------------- Iterations = ",  innerIter * outerIter )
+print("        Object Length: ", measureTime( lengthObj, outerIter ) .. " ms" )
+print("Scalar Encoded Length: ", measureTime( lengthScalar, outerIter ) .. " ms" )
+print("          Fast Length: ", measureTime( lengthFast, outerIter ) .. " ms" )
+
+-- Test Squared Length
 --
-print("\nScreen -> Cartesian -> Screen DEMO (Object)")
-local vec   = math2d.sub( circ, rect ) -- Return a table
-print("   Screen: ", vec.x, vec.y )
-vec = math2d.screen2Cartesian(vec)
-print("Cartesian: ", vec.x, vec.y )
-vec = math2d.cartesian2Screen(vec)
-print("   Screen: ", vec.x, vec.y )
--------------------------------------------------------------------------------
--- END
--------------------------------------------------------------------------------
+local innerIter 	= 10000
+local outerIter 	= 100
+local length2Vec 		= math2d.length2
+local length2VecFast 	= math2d.fast.length2
+
+local function length2Obj()
+	for i = 1, innerIter do
+		length2Vec( circ, rect )
+	end
+end
+
+local function length2Scalar()
+	for i = 1, innerIter do
+		length2Vec( x1,y1, x2, y2 )
+	end
+end
+
+local function length2Fast()
+	for i = 1, innerIter do
+		length2VecFast( x1,y1, x2, y2 )
+	end
+end
+
+print("\n -------------------- Iterations = ",  innerIter * outerIter )
+print("        Object Squared : ", measureTime( length2Obj, outerIter ) .. " ms" )
+print("Scalar Encoded Squared : ", measureTime( length2Scalar, outerIter ) .. " ms" )
+print("          Fast Squared : ", measureTime( length2Fast, outerIter ) .. " ms" )
