@@ -63,3 +63,26 @@ tmp.xScale = -1
 tmp:setSequence( "leftwalk" )
 tmp:play()
 display.newText(  "leftwalk", tmp.x, tmp.y + 70, native.systemFontBold, 30 )
+
+
+
+
+
+local sonicInfo 	= require "sonic"
+local sonicSheet 	= graphics.newImageSheet("sonic.png", sonicInfo:getSheet() )
+local sonicSeqData = 
+	{
+		{name = "explode", frames = {1,2,3,4,5}, time = 500, loopCount = 0, loopDirection = "forward"}, 
+	}
+
+-- Create sprite, play 'leftwalk'
+local tmp = display.newSprite( sonicSheet, sonicSeqData )
+tmp.x = display.contentCenterX 
+tmp.y = display.contentCenterY + 200
+tmp.xScale = 3
+tmp.yScale = 3
+tmp:setSequence( "explode" )
+tmp:play()
+display.newText(  "sonic (explode)", tmp.x, tmp.y + 70, native.systemFontBold, 30 )
+
+
