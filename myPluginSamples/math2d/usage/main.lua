@@ -173,6 +173,25 @@ local vec   = math2d.angle2Vector( angle, true )  -- Return a table
 print("\nAngle To Vector (Object)")
 print("The vector: < " .. vec.x .. ", " .. vec.y .. " > " ) -- Print the table fields
 
+--
+-- More Angle2Vector and Vector2Angle Tests
+--
+print("\nTest known vectors versus expected vector2Angle() results: ")
+print( 0, -1, "0 degrees ? ", math2d.vector2Angle( 0, -1 ) )
+print( 1, 0, "90 degrees ? ", math2d.vector2Angle( 1, 0 ) )
+print( 0, 1, "180 degrees ? ", math2d.vector2Angle( 0, 1 ) )
+print( -1, 0, "270 degrees ? ", math2d.vector2Angle( -1, 0 ) )
+
+print("\nTest known angles versus expected angle2Vector() results: ")
+local angles   =  { 0, 90, 180, 270 }
+local expected =  { "0,\t-1", "1,\t0", "0,\t1", "-1,\t0",}
+for i = 1, #angles do
+	local vx, vy =  math2d.angle2Vector( angles[i] )
+	print( "---------------\n" )
+	print( "angle: ", angles[i],  math.round(vx),  math.round(vy) )
+	print( "angle: ", angles[i],  expected[i] )
+end
+
 -------------------------------------------------------------------------------
 -- END
 -------------------------------------------------------------------------------
