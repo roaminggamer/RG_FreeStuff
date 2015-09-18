@@ -58,6 +58,25 @@ print("Results: ", vx, vy )
 print("Results: ", vec.x, vec.y )
 
 --
+-- Vector Difference (Scalars)
+--
+local vx,vy = math2d.diff( x1, y1, x2, y2 )        -- Return two numbers
+local vec   = math2d.diff( x1, y1, x2, y2, true )  -- Return a table
+print("\nVector Difference (Scalars)")
+print("Results: ", vx, vy ) 
+print("Results: ", vec.x, vec.y ) 
+
+--
+-- Vector Difference (Objects)
+--
+local vx,vy = math2d.diff( circ, rect, true )  -- Return two numbers
+local vec   = math2d.diff( circ, rect )  -- Return a table
+print("\nVector Difference (Objects)")
+print("Results: ", vx, vy ) 
+print("Results: ", vec.x, vec.y )
+
+
+--
 -- Dot Product (Scalars)
 --
 print("\nDot (inner) Product (Scalars)")
@@ -128,14 +147,14 @@ print("Result: ", math2d.length2(vec) )
 --
 -- Vector To Angle (Scalars)
 --
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
+local vx,vy = math2d.diff( x1, y1, x2, y2 ) -- Return two numbers
 print("\nVector To Angle (Scalars)")
 print("Result: ", math2d.vector2Angle(vx, vy) ) 
 
 --
 -- Vector To Angle of Object
 --
-local vec   = math2d.sub( circ, rect ) -- Return a table
+local vec   = math2d.diff( circ, rect ) -- Return a table
 print("\nVector To Angle (Objects)")
 print("Result: ", math2d.vector2Angle(vec) )
 
