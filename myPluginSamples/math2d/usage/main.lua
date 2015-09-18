@@ -173,30 +173,6 @@ local vec   = math2d.angle2Vector( angle, true )  -- Return a table
 print("\nAngle To Vector (Object)")
 print("The vector: < " .. vec.x .. ", " .. vec.y .. " > " ) -- Print the table fields
 
-
---
--- Screen To Cartesian (Scalars)
--- Cartesian To Screen (Scalars)
---
-print("\nScreen -> Cartesian -> Screen DEMO (Scalars)")
-local vx,vy = math2d.sub( x1, y1, x2, y2 ) -- Return two numbers
-print("   Screen: ", vx, vy ) 
-vx,vy = math2d.screen2Cartesian(vx,vy)
-print("Cartesian: ", vx, vy ) 
-vx,vy = math2d.cartesian2Screen(vx,vy)
-print("   Screen: ", vx, vy ) 
-
---
--- Screen To Cartesian (Object)
--- Cartesian To Screen (Object)
---
-print("\nScreen -> Cartesian -> Screen DEMO (Object)")
-local vec   = math2d.sub( circ, rect ) -- Return a table
-print("   Screen: ", vec.x, vec.y )
-vec = math2d.screen2Cartesian(vec)
-print("Cartesian: ", vec.x, vec.y )
-vec = math2d.cartesian2Screen(vec)
-print("   Screen: ", vec.x, vec.y )
 -------------------------------------------------------------------------------
 -- END
 -------------------------------------------------------------------------------
