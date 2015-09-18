@@ -1,0 +1,1 @@
+score = display.newText("Test", display.contentWidth/2, display.contentHeight/2, "Fixed", 50*(display.contentWidth/320))

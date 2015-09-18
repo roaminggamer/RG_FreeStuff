@@ -28,7 +28,9 @@ local createBall
 local myCC = ccmgr.newCalculator()
 
 myCC:addNames( "block", "redBall", "greenBall" )
-myCC:collidesWith( "redBall", "block", "greenBall"  )
+
+-- 'redBall' collides with 'block' and 'greenBall'
+myCC:collidesWith( "redBall", { "block", "greenBall" } )
 
 createBall = function( x, y, r, color, type)
 	local tmp = display.newCircle( group, x, y, r )
