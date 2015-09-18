@@ -11,6 +11,6 @@ settings =
 		supported = { "portrait" }
 	},
 	plugins = {  
-      ['plugin.math2d'] = {publisherId = 'com.math2d'}
+      ['plugin.math2d'] = {publisherId = 'com.roaminggamer'}
    }
 }
