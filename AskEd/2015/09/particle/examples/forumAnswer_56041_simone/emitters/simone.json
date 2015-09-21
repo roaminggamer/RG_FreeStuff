@@ -1,0 +1,68 @@
+{
+	"emitterType": 0,
+	"textureFileName": "particle.png",
+
+	"startColorAlpha": 1,
+	"startColorRed":   1,
+	"startColorGreen": 0,
+	"startColorBlue":  0,
+
+	"finishColorAlpha": 1,
+	"finishColorRed":   0,
+	"finishColorGreen": 1,
+	"finishColorBlue":  0,
+
+	"startColorVarianceAlpha": 0,
+	"startColorVarianceRed":   0,
+	"startColorVarianceGreen": 0,
+	"startColorVarianceBlue":  0,
+
+	"finishColorVarianceAlpha": 0,
+	"finishColorVarianceRed":   0,
+	"finishColorVarianceBlue":  0,
+	"finishColorVarianceGreen": 1,
+
+	"startParticleSize":  25,
+	"finishParticleSize": 45,
+	"startParticleSizeVariance":  10,
+	"finishParticleSizeVariance": 10,
+
+	"speed":                    200,
+	"speedVariance":            100,
+	"duration":                 2.5,
+	"particleLifespan":         10,
+	"particleLifespanVariance": 10,
+
+	"sourcePositionVariancex": 40,
+	"sourcePositionVariancey": 40,
+
+	"maxParticles": 100,
+
+	"gravityx": 0,
+	"gravityy": 400,
+
+	"radialAcceleration": 0,
+	"tangentialAcceleration": 10,
+
+	"rotatePerSecond": 0,
+	"rotationStart":   0,
+	"rotationEnd":     0,
+	"rotatePerSecondVariance": 0,
+	"rotationEndVariance":     0,
+	"rotationStartVariance": 360,
+
+	"minRadius": 0,
+	"maxRadius": 0,
+	"minRadiusVariance": 0,
+	"maxRadiusVariance": 0,
+
+	"yCoordFlipped": -1,
+	
+	"radialAccelVariance": 0,
+	"tangentialAccelVariance": 0,
+	"angleVariance": 0,
+	"angle": -90,
+	
+	"blendFuncSource": 770 ,
+	"blendFuncDestination": 1,
+}
