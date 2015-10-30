@@ -1,0 +1,162 @@
+-- For more details on this file and what you can do with it, look here:
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- Find more permissions here: http://developer.android.com/reference/android/Manifest.permission.html
+
+settings = {
+	build = 
+	{
+		--neverStripDebugInfo = true
+	},
+    orientation = 
+    {
+		--default = "portrait",
+		--supported = { "portrait", "portraitUpsideDown" },
+		default = "landscapeLeft",
+		supported = { "landscapeRight", "landscapeLeft" },
+	},
+--[[
+	plugins =
+   	{
+
+		-- =================================
+		-- Game Services/Networks
+		-- =================================
+		
+		-- Game Center (Apple)
+		-- http://docs.coronalabs.com/daily/plugin/gameNetwork-apple/index.html
+		--["CoronaProvider.gameNetwork.apple"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone=true, ["iphone-sim"]=true }, },
+		
+		-- Game Circle (Amazon)
+		-- http://coronalabs.com/blog/2014/10/22/announcing-amazon-gamecircle-support/
+		-- http://docs.coronalabs.com/daily/plugin/gamecircle/index.html
+		-- http://forums.coronalabs.com/forum/644-amazon-gamecircle/
+		--["plugin.gamecircle"] = { publisherId = "COM_INNOVATIVELEISURE", supportedPlatforms = { ["android-kindle"] = true }, },
+		
+		-- Google Play Game Services
+		-- http://docs.coronalabs.com/daily/plugin/gameNetwork-google/index.html
+		--["CoronaProvider.gameNetwork.google"] = { publisherId = "com.coronalabs", },
+
+
+		-- =================================
+		-- Ads
+		-- =================================
+
+		--["plugin.adbuddiz"] = { publisherId = "com.adbuddiz", }, -- adBuddiz
+		["plugin.google.play.services"] = { publisherId = "com.coronalabs" }, -- adMob-v2
+		["CoronaProvider.ads.iads"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true }, }, -- iAds		 		
+ 		["CoronaProvider.ads.vungle"] = { publisherId = "com.vungle", }, -- Vungle
+ 		
+ 		--["CoronaProvider.ads.crossinstall"] = { publisherId = "com.crossinstall" }, -- Cross Install
+
+		-- =================================
+		-- Analytics
+		-- =================================
+		--["plugin.amplitude"] = { publisherId = "com.amplitude", },
+		--["CoronaProvider.analytics.flurry"] = { publisherId = "com.coronalabs", },
+		--["plugin.gameanalytics"] = { publisherId = "com.gameanalytics", },      
+		--["plugin.playhaven"] = { publisherId = "com.playhaven", },
+
+		-- =================================
+		-- BIT
+		-- =================================
+		--["plugin.bit"] = { publisherId = "com.coronalabs", },
+
+		-- =================================
+		-- IAP
+		-- =================================
+		--["plugin.amazon.iap"] = { publisherId = "com.amazon", },
+		--["plugin.google.iap.v3"] = { publisherId = "com.coronalabs", },
+
+		-- =================================
+		-- KIIP
+		-- =================================
+		--["plugin.kiip"] = { publisherId = "com.gremlininteractive" },   
+
+		-- =================================
+		-- Social
+		-- =================================
+		["CoronaProvider.native.popup.social"] = { publisherId = "com.coronalabs", },
+		--["facebook"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true }, },
+		--["plugin.together"] = { publisherId = "com.playstogether", },
+
+		-- =================================
+		-- UDID
+		-- =================================
+		--["plugin.openudid"] = { publisherId = "com.coronalabs", },   
+
+		-- =================================
+		-- ZIP
+		-- =================================
+		--["plugin.zip"] = { publisherId = "com.coronalabs", },
+	},
+--]]
+	android = 
+	{
+		googlePlayGamesAppId = googlePlayGamesAppId,
+		FacebookAppID = FacebookAppID,
+		--versionCode = "48", 
+		largeHeap = true, 
+	
+		usesPermissions = 
+		{
+			
+			"android.permission.INTERNET",
+			"android.permission.ACCESS_NETWORK_STATE",
+
+			--"android.permission.WRITE_EXTERNAL_STORAGE",
+			--"android.permission.ACCESS_WIFI_STATE",
+			--"android.permission.READ_PHONE_STATE",			
+			--"android.permission.ACCESS_FINE_LOCATION",
+			--"android.permission.ACCESS_COURSE_LOCATION",
+			-- Find more permissions here: http://developer.android.com/reference/android/Manifest.permission.html
+		},
+		usesFeatures = 
+		{
+			--{ name = "android.hardware.camera", required = true },
+			--{ name = "android.hardware.location", required = false },
+			--{ name = "android.hardware.location.gps", required = false },
+			-- Find more features here: http://developer.android.com/guide/topics/manifest/uses-feature-element.html#features-reference
+		}
+	},
+
+	iphone = 
+	{
+		plist = 
+		{
+			UIAppFonts = 
+			{ 
+				"Prime.ttf",
+				"Aileron Thin.ttf",
+			},
+			UIStatusBarHidden = true,
+			UIPrerenderedIcon = true,
+			UIApplicationExitsOnSuspend = false,
+			--FacebookAppID = FacebookAppID,
+			MinimumOSVersion = "5.1.0",
+			-- CFBundleURLTypes = { { CFBundleURLSchemes = { "fb" .. FacebookAppID, }, }, },
+
+         	CFBundleIconFiles = 
+			{
+				"Icon-72.png",
+				"Icon-72@2x.png",
+				"Icon-Small-20.png",
+				"Icon-Small-20@2x.png",
+				"Icon-Small-30.png",
+				"Icon-Small-30@2x.png",
+				"Icon-Small-50.png",
+				"Icon-Small-50@2x.png",
+				"Icon-Small.png",
+				"Icon-Small@2x.png",
+				"Icon.png",
+				"Icon@2x.png",
+
+				"Icon-60.png",
+				"Icon-60@2x.png",
+				"Icon-76.png",
+				"Icon-76@2x.png",
+				"Icon-Small-40.png",
+				"Icon-Small-40@2x.png",
+			},
+		}, 
+	},
+}
