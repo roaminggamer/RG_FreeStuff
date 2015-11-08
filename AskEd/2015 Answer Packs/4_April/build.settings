@@ -1,0 +1,24 @@
+settings = {
+    orientation = 
+    {
+    	--[[
+		default = "portrait",
+		supported = { "portrait", "portraitUpsideDown" },
+		--]]
+
+		----[[
+		default = "landscapeLeft",
+		supported = { "landscapeRight", "landscapeLeft" },
+		--]]
+	},
+
+   android = {
+      largeHeap = true, 
+      usesPermissions = 
+      {
+         "android.permission.RECORD_AUDIO",
+         "android.permission.INTERNET",
+      },
+   },
+
+}
