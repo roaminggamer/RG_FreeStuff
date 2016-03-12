@@ -1,0 +1,9 @@
+syntax: glob
+.DS_Store
+testbed
+testbed/main\.lua
+testproject/WidgetDemo
+nextversion-todo\.txt
+\.hgignore
+widget_theme_ios_sheet@2x.lua
+widget_theme_android_sheet@2x.lua
