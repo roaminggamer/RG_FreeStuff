@@ -1,0 +1,11 @@
+In widget_button i changed
+
+view._onEvent(event)
+
+to 
+
+view._onEvent(event, M._options.defaultFile)
+
+on line 143.
+
+Now if you click any button out of the three you'll see that it still prints 3.png.
