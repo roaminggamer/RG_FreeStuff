@@ -1,0 +1,67 @@
+-- =============================================================
+-- Your Copyright Statement Goes Here
+-- =============================================================
+--  build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- =============================================================
+
+settings = {
+-------------------------------------------------------------------------------
+--  Debug Settings 
+-------------------------------------------------------------------------------
+   build = {
+      neverStripDebugInfo             = true,
+   },
+
+
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default                         = "portrait",
+      supported                       = { "portrait", },
+   },
+
+
+-------------------------------------------------------------------------------
+--  Plugins
+-------------------------------------------------------------------------------
+   plugins = {
+   },
+
+
+-------------------------------------------------------------------------------
+--  iOS Settings
+-------------------------------------------------------------------------------
+   iphone = {
+      -- https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1
+      plist = {
+         CFBundleDisplayName             = "My Corona App",
+         CFBundleName                    = "My Corona App",
+         UIApplicationExitsOnSuspend     = false,
+         UIPrerenderedIcon               = true,
+         UIStatusBarHidden               = true,
+         MinimumOSVersion                = "7.0",
+         skipPNGCrush                    = false,
+         -- https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW3
+         UIRequiredDeviceCapabilities = {
+         },
+
+         CFBundleIconFiles = {
+         },
+
+         UILaunchImages = {
+         },
+      },
+   },
+
+-------------------------------------------------------------------------------
+--  File Exclusions 
+-------------------------------------------------------------------------------
+   excludeFiles = {
+      all      = { "*secret.txt", },
+      iphone   = { "Icon-*dpi.png", "music/*.ogg", },
+   },
+}
+return settings
