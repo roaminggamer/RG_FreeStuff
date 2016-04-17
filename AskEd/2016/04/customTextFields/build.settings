@@ -1,0 +1,18 @@
+settings = {
+	
+	-- NOTE: App cannot support multiple orientations and keyboard panning on iOS
+    orientation = { default = "portrait", supported = { "portrait" }, }, 
+
+	android =
+	{
+		coronaWindowMovesWhenKeyboardAppears = true,
+	},
+
+	iphone =
+	{
+		plist =
+        {
+        	CoronaWindowMovesWhenKeyboardAppears = true, 
+        },
+	},
+}
