@@ -7,7 +7,7 @@ require "ssk.loadSSK"
 
 local revmob = require( "plugin.revmob" )
 
-local function testAdMob( appId, adTypeToShow, bannerPos )
+local function testRevMob( appId, adTypeToShow, bannerPos )
 	adTypeToShow 	= adTypeToShow or "banner"
 	bannerPos 		= bannerPos or "top"
 
@@ -94,7 +94,7 @@ local function testAdMob( appId, adTypeToShow, bannerPos )
 	revmob.init( revmobListener, { appId = appId } )
 end
 
-testAdMob( 
+testRevMob( 
 			--"YOUR_ID_HEREYOUR_ID_HERE", 	-- RevMob ID
 			"banner", 				-- banner, interstitial, video, rewardedVideo
 			"top" 							-- bottom, top
