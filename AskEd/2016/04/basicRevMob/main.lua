@@ -11,8 +11,6 @@ local function testRevMob( appId, adTypeToShow, bannerPos )
 	adTypeToShow 	= adTypeToShow or "banner"
 	bannerPos 		= bannerPos or "top"
 
-	local placementID 	= "TESTING"
-
 	local showOnLoad = true	
 
 	local bannerParams
@@ -24,8 +22,8 @@ local function testRevMob( appId, adTypeToShow, bannerPos )
 		if ( event.phase == "init" ) then  -- Successful initialization
 			print("RevMob Initialized... ")
 
-			--print("RevMob Initialized... request an ad.", adTypeToShow, placementID )
-			--revmob.load( adTypeToShow, placementID )
+			--print("RevMob Initialized... request an ad.", adTypeToShow, appId )
+			--revmob.load( adTypeToShow, appId )
 
 			-- ***************** NOTE *************************
 			-- ***************** NOTE *************************
@@ -35,17 +33,17 @@ local function testRevMob( appId, adTypeToShow, bannerPos )
 			--
 
 		elseif ( event.phase == "sessionStarted" ) then  -- Successful initialization
-			print("RevMob Session Started... now request an ad.", adTypeToShow, placementID )
-			revmob.load( adTypeToShow, placementID )
+			print("RevMob Session Started... now request an ad.", adTypeToShow, appId )
+			revmob.load( adTypeToShow, appId )
 
 		elseif ( event.phase == "loaded" ) then  -- The ad was successfully loaded
 			if( showOnLoad ) then
-				print("RevMob loaded... show the ad.")
+				print("RevMob loaded... show the ad: ", appId)
 
 				if( adTypeToShow == "banner" ) then
-					revmob.show( placementID, { yAlign = bannerPos } )
+					revmob.show( appId, { yAlign = bannerPos } )
 				else
-					revmob.show( placementID )
+					revmob.show( appId )
 				end
 
 				showOnLoad = false -- ONLY Show first loaded ad for this example
@@ -63,7 +61,7 @@ local function testRevMob( appId, adTypeToShow, bannerPos )
 
 		elseif ( event.phase == "videoPlaybackEnded" or event.phase == "rewardedVideoPlaybackEnded" ) then  
 			print("RevMob finished showing a video... load a new one.")
-			revmob.load( adTypeToShow, placementID )
+			revmob.load( adTypeToShow, appId )
 			--table.print_r(event)
 
 		elseif ( event.phase == "rewardedVideoCompleted" ) then 
@@ -96,7 +94,7 @@ end
 
 testRevMob( 
 			--"YOUR_ID_HEREYOUR_ID_HERE", 	-- RevMob ID
-			"banner", 				-- banner, interstitial, video, rewardedVideo
+			"interstitial", 				-- banner, interstitial, video, rewardedVideo
 			"top" 							-- bottom, top
 		 )
 
