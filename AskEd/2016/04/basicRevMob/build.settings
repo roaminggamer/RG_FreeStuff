@@ -1,0 +1,67 @@
+-- =============================================================
+--  build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- =============================================================
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default                         = "portrait",
+      supported                       = { "portrait", },
+   },
+
+
+-------------------------------------------------------------------------------
+--  Plugins
+-------------------------------------------------------------------------------
+   plugins = 
+   {
+      
+      -- RevMob
+      ["plugin.revmob"] = { publisherId = "com.coronalabs", supportedPlatforms =  { iphone = true, android = true, }, },
+      
+      -- Google Play Services
+      ["plugin.google.play.services"] = { publisherId = "com.coronalabs", supportedPlatforms =  { android = true, }, },
+   },
+
+
+-------------------------------------------------------------------------------
+--  iOS Settings
+-------------------------------------------------------------------------------
+   iphone = 
+   {
+      plist = 
+      {
+         UIApplicationExitsOnSuspend     = false,
+         UIPrerenderedIcon               = true,
+         UIStatusBarHidden               = true,
+         skipPNGCrush                    = false,
+      
+         NSAppTransportSecurity = { NSAllowsArbitraryLoads = true },
+      },
+   },
+
+-------------------------------------------------------------------------------
+--  Android Settings 
+-------------------------------------------------------------------------------
+   android = {
+      largeHeap                       = true,
+      usesExpansionFile               = false,
+      supportsTV                      = false,
+      isGame                          = true,
+      minSdkVersion                   = "14",
+      
+      usesPermissions = {
+         "android.permission.INTERNET",
+      },
+
+      usesFeatures = {
+      },
+
+   },
+
+}
+return settings
