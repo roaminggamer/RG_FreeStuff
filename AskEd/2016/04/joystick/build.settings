@@ -1,0 +1,60 @@
+-- =============================================================
+--  build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- =============================================================
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default                         = "landscapeRight",
+      supported                       = { "landscapeRight", },
+   },
+
+
+-------------------------------------------------------------------------------
+--  Plugins
+-------------------------------------------------------------------------------
+   plugins = 
+   {
+   },
+
+
+-------------------------------------------------------------------------------
+--  iOS Settings
+-------------------------------------------------------------------------------
+   iphone = 
+   {
+      plist = 
+      {
+         UIApplicationExitsOnSuspend     = false,
+         UIPrerenderedIcon               = true,
+         UIStatusBarHidden               = true,
+         skipPNGCrush                    = false,
+      
+         NSAppTransportSecurity = { NSAllowsArbitraryLoads = true },
+      },
+   },
+
+-------------------------------------------------------------------------------
+--  Android Settings 
+-------------------------------------------------------------------------------
+   android = {
+      largeHeap                       = true,
+      usesExpansionFile               = false,
+      supportsTV                      = false,
+      isGame                          = true,
+      minSdkVersion                   = "14",
+      
+      usesPermissions = {
+      },
+
+      usesFeatures = {
+      },
+
+   },
+
+}
+return settings
