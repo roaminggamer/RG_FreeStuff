@@ -41,8 +41,9 @@ timer.performWithDelay( period,
 		local obj = display.newCircle( world, player.x + 600, player.y + mRand( -200, 200), mRand( 10, 15 ) )
 		obj:setFillColor(mRand(),mRand(),mRand())
 		obj:toBack()
+		objs[#objs+1] = obj
+		
 		if( #objs > maxCount ) then
-			objs[#objs+1] = obj
 			display.remove(objs[1])
 			table.remove( objs, 1 )			
 		end
