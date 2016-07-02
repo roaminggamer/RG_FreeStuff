@@ -1,5 +1,5 @@
 ----------------------------------------------
--- Configure experiements (common variables to allow quick change of all experiments)
+-- Configure experiments  (common variables to allow quick change of all experiments)
 ----------------------------------------------
 _G.maxObjs   = 60  -- Max objects (not including player)
 _G.maxSpeed  = 250 -- Player speed in 'pixels per second'
@@ -10,11 +10,11 @@ _G.maxSpeed  = 250 -- Player speed in 'pixels per second'
 --require "experiment_01" -- Baseline
 --require "experiment_02" -- Baseline + Garbage Collection OFF
 --require "experiment_03" -- Re-use objects when 'limit' reached instead of making new ones.
---require "experiment_04" -- Translation movement (instead of setLinearVelocity)
+--require "experiment_04" -- Manual movement (instead of setLinearVelocity)
 --require "experiment_05" -- Experiment #4 + + Garbage Collection OFF
 --require "experiment_06" -- Experiment #4 + Re-use 
 
-require "experiment_06"
+require "experiment_01"
 
 
 
