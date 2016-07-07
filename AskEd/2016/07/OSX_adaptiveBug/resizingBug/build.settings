@@ -1,0 +1,24 @@
+settings = 
+{
+   orientation = 
+   {
+      default = "landscapeRight", -- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+      supported = { "landscapeRight" }, 
+   },
+
+	window = 
+	{
+		defaultMode 			= "normal",
+		resizable  				= true,
+		enableCloseButton 		= true,
+		enableMaximizeButton 	= true,
+
+		suspendWhenMinimized  	= true,
+
+		defaultViewWidth      	= 1200,  
+		defaultViewHeight  		= 675,
+		minViewWidth 			= 600,  
+		minViewHeight			= 400,  
+   },
+}
+return settings
