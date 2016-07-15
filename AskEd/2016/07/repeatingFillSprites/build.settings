@@ -1,0 +1,47 @@
+--
+-- For more information on build.settings see the Corona SDK Build Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
+settings =
+{
+	orientation =
+	{
+		default = "landscapeRight",
+		supported = { "landscapeLeft", "landscapeRight" }
+	},
+	iphone =
+	{
+		plist =
+		{
+			UIStatusBarHidden = true,
+			CFBundleIconFiles =
+			{
+				"Icon.png", 
+				"Icon@2x.png", 
+				"Icon-60.png",
+				"Icon-60@2x.png",
+				"Icon-60@3x.png",
+				"Icon-72.png", 
+				"Icon-72@2x.png",
+				"Icon-76.png",
+				"Icon-76@2x.png",
+				"Icon-167.png",
+				"Icon-Small.png", 
+				"Icon-Small@2x.png",
+				"Icon-Small@3x.png",
+				"Icon-Small-40.png",
+				"Icon-Small-40@2x.png",
+				"Icon-Small-50.png", 
+				"Icon-Small-50@2x.png",
+			},
+		},
+	},
+	window =
+	{
+		titleText =
+		{
+			default = "Jungle Scene",
+		},
+	},
+}

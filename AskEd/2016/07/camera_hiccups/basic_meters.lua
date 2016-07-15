@@ -1,23 +1,8 @@
 -- =============================================================
 -- Copyright Roaming Gamer, LLC. 2009-2016
 -- =============================================================
--- EAT Basic Meters Module (Proprietary Paid Content)
+-- Basic Meters Module 
 -- =============================================================
---
--- This module is proprietary paid content, that is  ONLY available 
--- through the EAT Framwork Tool.  
---
--- This content may only delivered to third parties as part of a 
--- completed game developed using EAT.
---
--- This content may not be distributed as an example, in any how-to
--- guides, or bundled with educational products not also bundled with
--- a paid copy of EAT.
---
--- If any of the above limitations is true, you and the third party may
--- be in violation of the EAT EULA.  Please delete this content immediately,
--- and contact EAT support for clarification.
---
 -- =============================================================
 
 local w      = display.actualContentWidth
