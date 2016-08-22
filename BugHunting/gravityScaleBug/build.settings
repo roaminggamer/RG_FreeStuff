@@ -1,0 +1,167 @@
+-- =============================================================
+-- Your Copyright Statement Goes Here
+-- =============================================================
+--  build.projectSettings
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/daily/guide/tvos/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/win32Build/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/osxBuild/index.html
+-- =============================================================
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      --default                         = "portrait",
+      --supported                       = { "portrait", },
+      default                         = "landscapeRight",
+      supported                       = { "landscapeRight", },
+   },
+
+
+-------------------------------------------------------------------------------
+--  Plugins
+-------------------------------------------------------------------------------
+   plugins = {
+   },
+
+
+-------------------------------------------------------------------------------
+--  iOS Settings
+-------------------------------------------------------------------------------
+   iphone = {
+      -- https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1
+      plist = {
+         UIApplicationExitsOnSuspend     = false,
+         UIPrerenderedIcon               = true,
+         UIStatusBarHidden               = true,
+         skipPNGCrush                    = false,
+         -- https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW3
+         UIRequiredDeviceCapabilities = {
+         },
+
+         CFBundleIconFiles = {
+            "Icon.png",
+            "Icon@2x.png",
+            "Icon-60.png",
+            "Icon-60@2x.png",
+            "Icon-60@3x.png",
+            "Icon-72.png",
+            "Icon-72@2x.png",
+            "Icon-76.png",
+            "Icon-76@2x.png",
+            "Icon-167.png",
+            "Icon-Small-40.png",
+            "Icon-Small-40@2x.png",
+            "Icon-Small-40@3x.png",
+            "Icon-Small-50.png",
+            "Icon-Small-50@2x.png",
+            "Icon-Small.png",
+            "Icon-Small@2x.png",
+            "Icon-Small@3x.png",
+         },
+
+         UILaunchImages = {
+            {  -- iPhone 4 Portrait
+               ["UILaunchImageMinimumOSVersion"] = "7.0",
+               ["UILaunchImageName"] = "Default",
+               ["UILaunchImageOrientation"] = "Portrait",
+               ["UILaunchImageSize"] = "{320, 480}"
+            },
+            {  -- iPhone 5 Portrait
+               ["UILaunchImageMinimumOSVersion"] = "7.0",
+               ["UILaunchImageName"] = "Default-568h",
+               ["UILaunchImageOrientation"] = "Portrait",
+               ["UILaunchImageSize"] = "{320, 568}"
+            },
+            {  -- iPad Portrait
+               ["UILaunchImageMinimumOSVersion"] = "7.0",
+               ["UILaunchImageName"] = "Default-Portrait",
+               ["UILaunchImageOrientation"] = "Portrait",
+               ["UILaunchImageSize"] = "{768, 1024}"
+            },
+            {  -- iPhone 6 Portrait
+               ["UILaunchImageMinimumOSVersion"] = "8.0",
+               ["UILaunchImageName"] = "Default-667h",
+               ["UILaunchImageOrientation"] = "Portrait",
+               ["UILaunchImageSize"] = "{375, 667}"
+            },
+            {  -- iPhone 6 Plus Portrait
+               ["UILaunchImageMinimumOSVersion"] = "8.0",
+               ["UILaunchImageName"] = "Default-736h",
+               ["UILaunchImageOrientation"] = "Portrait",
+               ["UILaunchImageSize"] = "{414, 736}"
+            },
+            {  -- iPad Pro Portrait
+               ["UILaunchImageMinimumOSVersion"] = "9.0",
+               ["UILaunchImageName"] = "Default-Portrait-1366",
+               ["UILaunchImageOrientation"] = "Portrait",
+               ["UILaunchImageSize"] = "{1024, 1366}"
+            },
+         },
+
+         NSAppTransportSecurity = {
+            NSAllowsArbitraryLoads          = true,
+         },
+      },
+   },
+
+-------------------------------------------------------------------------------
+--  Android Settings 
+-------------------------------------------------------------------------------
+   android = {
+      largeHeap                       = true,
+      usesExpansionFile               = false,
+      supportsTV                      = true,
+      isGame                          = true,
+      minSdkVersion                   = "14",
+      usesPermissions = {
+      },
+
+      applicationChildElements  = {
+      },
+
+      usesFeatures = {
+      },
+
+   },
+
+-------------------------------------------------------------------------------
+--  Desktop Settings 
+-------------------------------------------------------------------------------
+   window = {
+      defaultMode                     = "normal",
+      resizable                       = true,
+      enableCloseButton               = true,
+      suspendWhenMinimized            = true,
+      enableMaximizeButton            = true,
+      defaultViewWidth                = 1024,
+      defaultViewHeight               = 768,
+      minViewWidth                    = 480,
+      minViewHeight                   = 320,
+      titleText = {
+         default  = "inputs",
+         ["en‐us"] = "inputs (English‐USA)",
+         ["en‐gb"] = "inputs (English‐UK)",
+         ["en"]   = "inputs (English)",
+         ["fr"]   = "inputs (French)",
+         ["es"]   = "inputs (Spanish)",
+      },
+   },
+
+
+-------------------------------------------------------------------------------
+--  File Exclusions 
+-------------------------------------------------------------------------------
+   excludeFiles = {
+      all      = { "*secret.txt", "*.pdf", },
+      iphone   = { "Icon-*dpi.png", "music/*.ogg", },
+      android  = { "Icon.png", "*@2x.png", "music/*.m4a", },
+      tvos     = { "Icon-*dpi.png", "music/*.ogg", },
+      osx      = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns", },
+      win32    = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns", },
+   },
+}
+return settings
