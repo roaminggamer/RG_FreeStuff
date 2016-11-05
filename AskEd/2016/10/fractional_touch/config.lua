@@ -6,7 +6,7 @@
 -- https://docs.coronalabs.com/daily/guide/basics/configSettings/index.html
 -- =============================================================
 
-local scale = 8
+local scale = 16
 
 application = {
    content = {
