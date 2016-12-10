@@ -4,12 +4,13 @@
 local textureList = table.load("textureList.txt") or {}
 
 local function genTextures()
-	local fileManager = ssk.GGFile:new()
+	local GGFile = require "GGFile"
+	local fileManager = GGFile:new()
 	
 	local files = { "images/coronageek.jpg", "images/flavaed1.jpg", "images/flavaed2.jpg" }
 
 	for i = 1, _G.numTextures do
-		local newName  = getUID(12) .. ".jpg"
+		local newName  = math.getUID(12) .. ".jpg"
 		local textureNum = math.random(#files)
 		local oldName = files[textureNum]
 

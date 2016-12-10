@@ -3,9 +3,15 @@
 -- =============================================================
 -- by Roaming Gamer, LLC. 2009-2015 (http://roaminggamer.com/)
 -- =============================================================
-
--- Load SSK
-require "ssk.loadSSK"
+require "ssk2.loadSSK"
+_G.ssk.init()
+_G.ssk.init( { launchArgs           = ..., 
+               enableAutoListeners  = true,
+               exportCore           = true,
+               exportColors         = true,
+               exportSystem         = true,
+               exportSystem         = true,
+               debugLevel           = 0 } )
 
 --
 -- Set up physics

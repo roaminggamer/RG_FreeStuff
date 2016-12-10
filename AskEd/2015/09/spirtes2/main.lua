@@ -1,30 +1,26 @@
 -- =============================================================
--- Copyright Roaming Gamer, LLC. 2009-2015
--- =============================================================
--- SSK Sampler
--- =============================================================
--- 								License
--- =============================================================
---[[
-	> SSK is free to use.
-	> SSK is free to edit.
-	> SSK is free to use in a free or commercial game.
-	> SSK is free to use in a free or commercial non-game app.
-	> SSK is free to use without crediting the author (credits are still appreciated).
-	> SSK is free to use without crediting the project (credits are still appreciated).
-	> SSK is NOT free to sell for anything.
-	> SSK is NOT free to credit yourself with.
-]]
--- =============================================================
 display.setStatusBar(display.HiddenStatusBar)  -- Hide that pesky bar
 io.output():setvbuf("no") -- Don't use buffer for console messages
 -- =============================================================
+
+-- WARNING: As of 09 DEC 2016 These features are not official.
+-- I am including them in SSK2 for legacy purposes and they may become 
+-- official later.  But for now I am not supporting them.
 
 -- =============================================================
 -- Step 1. - Load SSK (optionally select default font)
 -- =============================================================
 --_G.gameFont = native.systemFont  -- optional
-require "ssk.loadSSK"
+
+require "ssk2.loadSSK"
+_G.ssk.init()
+_G.ssk.init( { launchArgs           = ..., 
+               enableAutoListeners  = true,
+               exportCore           = true,
+               exportColors         = true,
+               exportSystem         = true,
+               exportSystem         = true,
+               debugLevel           = 0 } )
 
 
 -- =============================================================

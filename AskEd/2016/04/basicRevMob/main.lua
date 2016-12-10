@@ -1,6 +1,17 @@
 io.output():setvbuf("no")
 display.setStatusBar(display.HiddenStatusBar)
-require "ssk.loadSSK"
+
+
+require "ssk2.loadSSK"
+_G.ssk.init()
+_G.ssk.init( { launchArgs           = ..., 
+               enableAutoListeners  = true,
+               exportCore           = true,
+               exportColors         = true,
+               exportSystem         = true,
+               exportSystem         = true,
+               debugLevel           = 0 } )
+
 -- =============================================================
 -- Ignore Above - SSK included for access to table helpers, etc.
 -- =============================================================

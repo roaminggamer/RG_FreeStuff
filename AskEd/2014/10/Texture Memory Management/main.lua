@@ -8,7 +8,15 @@ _G.onWin = ( system.getInfo("platformName") == "Win")
 ----------------------------------------------------------------------
 --	1. Requires
 ----------------------------------------------------------------------
-require "ssk.loadSSK"
+require "ssk2.loadSSK"
+_G.ssk.init()
+_G.ssk.init( { launchArgs 				= ..., 
+	            enableAutoListeners 	= true,
+	            exportCore 				= true,
+	            exportColors 			= true,
+	            exportSystem 			= true,
+	            exportSystem 			= true,
+	            debugLevel 				= 0 } )
 
 ----------------------------------------------------------------------
 --	2. Initialization
@@ -17,15 +25,6 @@ io.output():setvbuf("no") -- Don't use buffer for console messages
 display.setStatusBar(display.HiddenStatusBar)  -- Hide that pesky bar
 system.activate("multitouch")
 
--- If you have RG METER, add it to the project and uncomment the following section
---[[
-local rgmeter = require "rgmeter.rgmeter"
-rgmeter.setMaxMainMem( 2 * 1024 ) -- 16K KB == 16 MB 
-rgmeter.setMaxVidMem( 32 * 1024 ) -- 16K KB == 16 MB 
-rgmeter.create( centerX, centerY, 320, nil, true ) -- Last arg tell it to start 'minimized'
-rgmeter.enableCollection( true )
---]]
-
 ----------------------------------------------------------------------
 -- 3. Declarations
 ----------------------------------------------------------------------
@@ -33,7 +32,7 @@ rgmeter.enableCollection( true )
 ----------------------------------------------------------------------
 -- 4. Definitions
 ----------------------------------------------------------------------
-_G.numTextures = 1000 -- Warning!!: Setting to 1000 generates ~= 100 MB of textures
+_G.numTextures = 100 -- Warning!!: Setting to 1000 generates ~= 100 MB of textures
 
 ----------------------------------------------------------------------
 -- 5. Execution
@@ -51,7 +50,7 @@ require "init"
 --
 -- ONLY REQUIRE example1 -OR- example2 -OR- example3
 
---require "example1"
+require "example1"
 --require "example2"
 --require "example3"
 

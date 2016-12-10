@@ -14,7 +14,6 @@ application = {
       fps                = 30,
       xAlign             = "center",
       yAlign             = "center",
-      showRuntimeErrors  = true,
       shaderPrecision    = "highp",
       imageSuffix = {
          ["@2x"]  = 2.0,

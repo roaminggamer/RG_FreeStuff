@@ -1,11 +1,16 @@
 
--- Including (trimmed down version of my lib) SSK to get useful globals
--- and to do HEAVY math and collision calculation lifting
---
-require "ssk.globals.variables"
-require "ssk.globals.functions"
-local math2d = require "ssk.RGMath2D"
-local ccmgr = require "ssk.RGCC"
+require "ssk2.loadSSK"
+_G.ssk.init()
+_G.ssk.init( { launchArgs           = ..., 
+               enableAutoListeners  = true,
+               exportCore           = true,
+               exportColors         = true,
+               exportSystem         = true,
+               exportSystem         = true,
+               debugLevel           = 0 } )
+
+local math2d = ssk.math2d
+local ccmgr = ssk.cc
 
 -- Localizing a bunch of functions for speedup ( and )
 --
@@ -89,7 +94,7 @@ if( version == 1 ) then
 
     fireBullet = function( )
         -- 1. Calculate vector from turret to player
-        local destVec = subVec( theTurret, thePlayer )
+        local destVec = math2d.diff( theTurret, thePlayer )
 
         -- 2. Normalize the vector
         destVec = normVec( destVec ) 
@@ -118,7 +123,7 @@ elseif( version == 2 ) then
 
     local myCC = ssk.ccmgr:newCalculator()
     myCC:addNames( "bullet", "player" )
-    myCC:collidesWith( "bullet", "player" )
+    myCC:collidesWith( "bullet", { "player" } )
 
 
     createPlayer = function()
@@ -136,7 +141,7 @@ elseif( version == 2 ) then
 
     fireBullet = function( )
         -- 1. Calculate vector from turret to player
-        local destVec = subVec( theTurret, thePlayer )
+        local destVec = math2d.diff( theTurret, thePlayer )
 
         -- 2. Normalize the vector
         destVec = normVec( destVec ) 
@@ -196,7 +201,7 @@ elseif( version == 3 ) then
 
     fireBullet = function( )
         -- 1. Calculate vector from turret to player
-        local velocityVec = subVec( theTurret, thePlayer )
+        local velocityVec = math2d.diff( theTurret, thePlayer )
 
         -- 2. Normalize the vector
         velocityVec = normVec( velocityVec ) 
