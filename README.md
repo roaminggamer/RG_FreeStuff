@@ -2,7 +2,8 @@ RG Free Stuff
 ============
 This is a collection of free stuff.
 
-Much of what you will find here is dependent upon [SSK2](https://roaminggamer.github.io/RGDocs/pages/SSK2/).
+Much of what you will find here is dependent upon  ![SSK2](./SSK2/ssk2tiny.png)  [Get It Now!](https://roaminggamer.github.io/RGDocs/pages/SSK2/#where-can-i-get-it)
+
 
 _Free Stuff_ Contains:
 
