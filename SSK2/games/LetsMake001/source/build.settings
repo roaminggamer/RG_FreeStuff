@@ -1,0 +1,36 @@
+-- =============================================================
+-- Copyright Roaming Gamer, LLC. 2008-2016 (All Rights Reserved)
+-- =============================================================
+-- Minimalistic 'starter' build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/daily/guide/tvos/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/win32Build/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/osxBuild/index.html
+-- =============================================================
+
+-- Tip: You can set locals in build.settings to make it easier to control
+-- the settings based on your desires and/or system/platform settings.
+--
+local usePortrait = false
+local ownMath2D   = false
+
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default     = usePortrait and "portrait" or "landscapeRight",
+      supported   = { usePortrait and "portrait" or "landscapeRight" },
+   },
+
+
+-------------------------------------------------------------------------------
+--  Plugins
+-------------------------------------------------------------------------------
+   plugins = {
+      ["plugin.math2d"] = ownMath2D and { publisherId = "com.roaminggamer" } or nil,   
+   },
+}
+return settings

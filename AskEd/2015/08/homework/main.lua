@@ -30,6 +30,7 @@ _G.ssk.init( { launchArgs 				= ...,
 	            exportSystem 			= true,
 	            exportSystem 			= true,
 	            debugLevel 				= 0 } )
+
 -- Forward Declarations
 -- SSK 
 local angle2Vector      = ssk.math2d.angle2Vector

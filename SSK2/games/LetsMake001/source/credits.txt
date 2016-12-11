@@ -1,0 +1,18 @@
+Ludum Dare 37
+https://ldjam.com/events/ludum-dare/37/theme
+
+Theme: One Room
+
+Credits
+
+Music
+-----
+Rocket Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
+
+Images
+-------
+Gems: From Reiner's Tilsets: http://www.reinerstilesets.de/
+coin.png, dirt.png, tree*.png by Kenney (CC0):  http://kenney.nl/
+dragon1..4.png: http://www.gdunlimited.net/forums/topic/9493-dragon-sprites/

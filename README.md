@@ -9,9 +9,8 @@ _Free Stuff_ Contains:
 
 + **More Interesting Stuff**
 	+ _**AskEd/**_ - 300+ complete code examples that I wrote as to answer [Corona SDK Forums](https://forums.coronalabs.com/index.php?app=core&module=search&do=viewNewContent&search_app=forums) questions made my various community members.
-	+ _**SSK2/**_ - No, it isn't a free copy of SSK2.  It contains additional 'external' content not packaged with SSK2.
-		+ _This content was kept separate to satisfy the site-guidelines of certain places where I sell SSK2._
-
+	+ _**SSK2/**_ - No, it isn't a free copy of SSK2.  It contains additional content not packaged with SSK2.
+	
 + **Less Interesting Stuff**
 	+ _**AboutMe/**_ - My Resume and Stuff 
 	+ _**BugHunting/**_ - This is where I put (test) code for bugs that I find and submit.
