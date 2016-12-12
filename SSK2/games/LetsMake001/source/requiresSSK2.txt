@@ -1,4 +1,4 @@
-This answer requires SSK2 to run.
+This answer requires SSK2  (lite or Pro) to run.
 
 1. Read about it here: https://roaminggamer.github.io/RGDocs/pages/SSK2/
 
