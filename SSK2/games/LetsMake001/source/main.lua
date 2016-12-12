@@ -34,15 +34,17 @@ local soundMgr		= ssk.soundMgr
 --
 -- Initialize Sound
 --
-soundMgr.setDebugLevel(1)
-soundMgr.enableSFX(true)
-soundMgr.enableMusic(true)
-soundMgr.setVolume( 0.25, "music" )
-soundMgr.addEffect( "coin", "sounds/sfx/coin.wav")
-soundMgr.addEffect( "gate", "sounds/sfx/gate.wav")
-soundMgr.addEffect( "died", "sounds/sfx/died.wav")
-soundMgr.addMusic( "soundTrack", "sounds/music/Rocket.mp3")
-post( "onSound", { sound = "soundTrack", fadein = 750, loops = -1 } )
+if( soundMgr ) then
+	soundMgr.setDebugLevel(1)
+	soundMgr.enableSFX(true)
+	soundMgr.enableMusic(true)
+	soundMgr.setVolume( 0.25, "music" )
+	soundMgr.addEffect( "coin", "sounds/sfx/coin.wav")
+	soundMgr.addEffect( "gate", "sounds/sfx/gate.wav")
+	soundMgr.addEffect( "died", "sounds/sfx/died.wav")
+	soundMgr.addMusic( "soundTrack", "sounds/music/Rocket.mp3")
+	post( "onSound", { sound = "soundTrack", fadein = 750, loops = -1 } )
+end
 
 --
 -- Register Factories
