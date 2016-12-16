@@ -569,6 +569,9 @@ function leftPane.addObject( layerNum, obj, record, isType )
 	rect.generateB.button = rect
 	rect.isType = isType
 	rect.record = record
+	if( isType == "image" ) then
+		rect.generateB.isVisible = false
+	end
 
 	function rect.enterFrame( self, event )
 		if( autoIgnore( "enterFrame", self ) ) then return end
