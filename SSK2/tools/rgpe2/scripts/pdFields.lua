@@ -71,7 +71,7 @@ particle[10] 	= { attrName = "rotationEndVariance", displayName = "Rotation End 
 
 local color = {}
 pdFields.color = color
-color.title 	= "Color Pickers"
+color.title 	= "Alpha & Blending"
 color[1] 		= { attrName = "startColorAlpha", displayName = "Start Alpha", min = 0.00, max = 1.00, decimalPoints = 2}
 color[2] 		= { attrName = "startColorVarianceAlpha", displayName = "Start Alpha Variance", min = 0.00, max = 1.00, decimalPoints = 2}
 color[3] 		= { attrName = "finishColorAlpha", displayName = "Finish Alpha", min = 0.00, max = 1.00, decimalPoints = 2}

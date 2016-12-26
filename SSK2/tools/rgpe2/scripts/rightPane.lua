@@ -47,7 +47,6 @@ local emitter_fields =
 	emitterFields.color,
 	emitterFields.colorslide,
 	emitterFields.colorslide2,
-	emitterFields.basic,
 }
 local image_fields = 
 {
@@ -55,7 +54,7 @@ local image_fields =
 }
 
 
-local totalPanes_emitter = 8
+local totalPanes_emitter = #emitter_fields
 local totalPanes_image = 1
 
 local buttons_emitter = {}
@@ -100,6 +99,7 @@ end
 local lastPage = 1
 
 local function onPane( event )
+	--print("BOGART", event.x)
 	local num = event.target.num
 	--pane[num].create()
 	paneCreate(num)
@@ -115,7 +115,9 @@ function pane.onSelectedObject( self, event )
 		pane.mode = "emitter"
 		post("onClearSelection")
 		local button = buttons_emitter[lastPage]
-		button:toggle()	
+		if( button ) then
+			button:toggle()
+		end
 		layers.rpane_emitter.isVisible = true
 		layers.rpb_emitter.isVisible = true
 		layers.rpane_image.isVisible = false
@@ -127,7 +129,9 @@ function pane.onSelectedObject( self, event )
 		pane.mode = "image"
 		post("onClearSelection")
 		local button = buttons_image[lastPage]
-		button:toggle()	
+		if( button ) then
+			button:toggle()
+		end
 		layers.rpane_emitter.isVisible = false
 		layers.rpb_emitter.isVisible = false
 		layers.rpane_image.isVisible = true

@@ -52,8 +52,12 @@ local function onProject( event )
 	print("Project")
 end
 
-local function onHelp( event )
+local function onHelp( event )	
 	system.openURL( common.helpURL )
+end
+
+local function onVersion()
+	easyAlert( "Version " .. _G.RGPEVer, "Last Updated on: " .. _G.lastUpdate, {{ "OK" } })
 end
 
 -- ==
@@ -88,7 +92,7 @@ local function onMenuButton( event )
 				display.remove(subMenuGroup)
 				return true
 			end
-			local tmp = easyIFC:presetPush( subMenuGroup, "menu", bx, by, buttonW, buttonH, children[i][1], cb )
+			local tmp = easyIFC:presetPush( subMenuGroup, "menu", bx, by, buttonW, buttonH, children[i][1], cb, { labelHorizAlign = "left", labelOffset = { 4, 0 } } )	
 			by = by + buttonH
 		end
 	end
@@ -102,9 +106,9 @@ local function newMenuButton( x, y, label, cbChildren )
 	local layers = layersMgr.get()
 	local tmp
 	if( cbChildren and type(cbChildren) == "function" ) then
-		tmp = easyIFC:presetPush( layers.tbar, "edgeless2", x, y, buttonW, buttonH, label, cbChildren )	
+		tmp = easyIFC:presetPush( layers.tbar, "edgeless2", x, y, buttonW, buttonH, label, cbChildren, { labelHorizAlign = "left", labelOffset = { 4, 0 } } )	
 	else
-		tmp = easyIFC:presetPush( layers.tbar, "edgeless2", x, y, buttonW, buttonH, label, onMenuButton )	
+		tmp = easyIFC:presetPush( layers.tbar, "edgeless2", x, y, buttonW, buttonH, label, onMenuButton, { labelHorizAlign = "left", labelOffset = { 4, 0 } } )	
 		tmp.children = cbChildren
 	end
 	return tmp
@@ -176,7 +180,11 @@ function menuBar.create()
 	--newMenuButton( curX, bar.y, "Project", onProject )
 	curX = curX + buttonW + 4
 
-	newMenuButton( curX, bar.y, "Help", onHelp )
+	newMenuButton( curX, bar.y, "Help",
+	{ 
+		{ "Documentation", 		onHelp },
+		{ "Version", 	onVersion },
+	} )
 
 
 	-- RG Link
