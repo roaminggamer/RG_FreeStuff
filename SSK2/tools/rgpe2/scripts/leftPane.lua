@@ -609,6 +609,7 @@ function leftPane.addObject( layerNum, obj, record, isType )
 
 	if( addButton.isVisible ) then
 		addButton.y = skel.lpo[index+1].y
+		addButton:resetStartPosition()
 	end
 
 end

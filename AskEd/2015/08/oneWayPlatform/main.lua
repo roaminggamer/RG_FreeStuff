@@ -76,10 +76,10 @@ physics.setGravity(0,10)
 
 --
 -- Be lazy and use RG Collision calculator
-local myCC = ssk.ccmgr:newCalculator()
+local myCC = ssk.cc:newCalculator()
 myCC:addNames( "player", "foot", "platform", "ladder" )
-myCC:collidesWith( "player", "platform", "ladder" )
-myCC:collidesWith( "foot", "platform" )
+myCC:collidesWith( "player", { "platform", "ladder" } )
+myCC:collidesWith( "foot", { "platform" } )
 
 --
 -- Use RG Layers creator to organize our 'world'

@@ -6,7 +6,7 @@
 -- See README.md for full license details.
 -- =============================================================
 -- =============================================================
--- Slider Widget used to adjust 'numberic' emitter values
+-- Slider Widget used to adjust 'numeric' emitter values
 -- =============================================================
 local slider = {}
 
@@ -71,4 +71,7 @@ function slider.create()
 
 end
 
+local function onClearSelection()
+	common.sliderB.isVisible = false
+end; listen( "onClearSelection", onClearSelection )
 return slider

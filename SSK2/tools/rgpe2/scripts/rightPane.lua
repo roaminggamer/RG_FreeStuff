@@ -104,6 +104,7 @@ local function onPane( event )
 	--pane[num].create()
 	paneCreate(num)
 	lastPage = num
+	post("onClearSelection")
 end
 
 --
