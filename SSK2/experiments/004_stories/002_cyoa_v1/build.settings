@@ -1,0 +1,98 @@
+-- For more details on this file and what you can do with it, look here:
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- Find more permissions here: http://developer.android.com/reference/android/Manifest.permission.html
+
+-- ==
+--    ternary() - Acts like C-style var = (text) ? true-val : false-val; statement
+-- ==
+local function ternary( test, a, b  )
+  if(test) then
+    return a
+  else
+    return b 
+  end  
+end
+
+
+-- CONFIGURE SOCIAL SETTINGS HERE
+-- CONFIGURE SOCIAL SETTINGS HERE
+local onAndroid = false 
+local googlePlayGamesAppId = "111111111111"
+local FacebookAppID        = "161036970665755"
+-- CONFIGURE SOCIAL SETTINGS HERE
+-- CONFIGURE SOCIAL SETTINGS HERE
+
+settings = {
+
+
+   orientation = {
+      default = "portrait",
+      supported = { "portrait", "portraitUpsideDown" },
+      --default = "landscapeLeft",
+      --supported = { "landscapeRight", "landscapeLeft" },
+   },
+
+
+   android = {
+      googlePlayGamesAppId = googlePlayGamesAppId,
+      FacebookAppID = FacebookAppID,
+      --versionCode = "48", 
+      largeHeap = true, 
+      usesPermissions = 
+      {
+         "android.permission.WRITE_EXTERNAL_STORAGE",
+         "android.permission.INTERNET",
+         "android.permission.ACCESS_WIFI_STATE",
+         "android.permission.READ_PHONE_STATE",
+         "android.permission.ACCESS_NETWORK_STATE",       
+         "android.permission.ACCESS_FINE_LOCATION",
+         "android.permission.ACCESS_COURSE_LOCATION",
+         -- Find more permissions here: http://developer.android.com/reference/android/Manifest.permission.html
+      },
+      usesFeatures = {
+         --{ name = "android.hardware.camera", required = true },
+         --{ name = "android.hardware.location", required = false },
+         --{ name = "android.hardware.location.gps", required = false },
+         -- Find more features here: http://developer.android.com/guide/topics/manifest/uses-feature-element.html#features-reference
+      }
+   },
+
+   iphone = {
+      plist = {
+         UIAppFonts = { "AdelonSerial.ttf",  },
+         UIStatusBarHidden = true,
+         UIPrerenderedIcon = true,
+         UIApplicationExitsOnSuspend = false,
+         FacebookAppID = FacebookAppID,
+         MinimumOSVersion = "5.1.0",
+
+         CFBundleURLTypes = {
+            {
+               CFBundleURLSchemes = { "fb" .. FacebookAppID, },
+            }
+         },
+         CFBundleIconFiles = 
+         {
+            "Icon-72.png",
+            "Icon-72@2x.png",
+            "Icon-Small-20.png",
+            "Icon-Small-20@2x.png",
+            "Icon-Small-30.png",
+            "Icon-Small-30@2x.png",
+            "Icon-Small-50.png",
+            "Icon-Small-50@2x.png",
+            "Icon-Small.png",
+            "Icon-Small@2x.png",
+            "Icon.png",
+            "Icon@2x.png",
+
+            "Icon-60.png",
+            "Icon-60@2x.png",
+            "Icon-76.png",
+            "Icon-76@2x.png",
+            "Icon-Small-40.png",
+            "Icon-Small-40@2x.png",
+         },
+      }, 
+   },
+}

@@ -1,0 +1,10 @@
+﻿:: shack
+There is a shack here.
+
+
+:: Start [seashell1, rock1]
+You are standing on a beach.
+
+[[west|shack]]
+
+

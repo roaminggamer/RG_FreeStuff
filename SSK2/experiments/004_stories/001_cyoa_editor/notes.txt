@@ -1,0 +1,33 @@
+	--[[
+
+	local start = public.newStoryBlock( centerX, centerY, { title = "Start", body = "This is the first page and the beginning of the story.\n[[exit 1|Page 2]]\n[[exit 2|Page 3]]", isStart = true } )
+	start:select()
+
+	local p2 = public.newStoryBlock( centerX + 250, centerY, { title = "Page 2", body = "This is a second test page with lots and lots of content.\nIt includes newlines and Tabs.\n\tList1\n\tList2\n[[Page 4]]" } )
+	local p3 = public.newStoryBlock( centerX + 250, centerY + 200, { title = "Page 3", body = "This is a second test page with lots and lots of content.\nIt includes newlines and Tabs.\n\tList1\n\tList2\n[[Page 2]]" } )
+
+	--start:addLeadsTo( p2 )
+	--start:addLeadsTo( p3 )
+	--p2:addLeadsTo( p3 )
+
+	public.autoLink()
+
+	--public.editBlock( start )
+
+	--]]
+
+	--[[
+	timer.performWithDelay( 100, function() p2:addLeadsTo( p3 ) end )
+	timer.performWithDelay( 200, function() p2:removeLeadsTo( p3 ) end )
+	timer.performWithDelay( 300, function() p2:removeLeadsTo( p3 ) end )
+	timer.performWithDelay( 400, function() p2:removeLeadsTo( p3 ) end )
+	timer.performWithDelay( 500, function() p2:addLeadsTo( p3 ) end )
+	timer.performWithDelay( 1500, function() p2:destroy( ) end )
+
+	timer.performWithDelay( 3000,
+		function()
+			p2 = public.newStoryBlock( centerX + 250, centerY, { title = "Page 2", body = "This is a second test page with lots and lots of content.\nIt includes newlines and Tabs.\n\tList1\n\tList2" } )
+			start:addLeadsTo( p2 )
+			p2:addLeadsTo( p3 )
+		end )
+	--]]

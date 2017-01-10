@@ -1,0 +1,43 @@
+:: StoryTitle
+Test
+
+:: UserScript[script]
+
+
+
+:: UserStylesheet[stylesheet]
+
+
+
+
+
+
+:: Start
+This is the first page
+[[go left|Left]]
+[[go right|Right]]
+
+:: Left
+Went left
+
+[[Common Room]]
+
+/%
+This is a comment..
+Maybe I can use it for something else
+%/
+
+:: Right
+I went right.
+
+[[Common Room]]
+
+:: Common Room
+Common room 1.
+
+[[Common Room 2]]
+
+:: Common Room 2
+Common room 2.
+
+[[Common Room]]

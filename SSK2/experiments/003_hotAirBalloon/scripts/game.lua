@@ -14,9 +14,11 @@
 -- Localizations
 -- =============================================================
 -- Lua
-local getTimer = system.getTimer; local mRand = math.random
-local mAbs = math.abs
-local strMatch = string.match; local strGSub = string.gsub; local strSub = string.sub
+local mAbs = math.abs;local mPow = math.pow;local mRand = math.random
+local getInfo = system.getInfo; local getTimer = system.getTimer
+local strMatch = string.match; local strFormat = string.format
+local strGSub = string.gsub; local strSub = string.sub
+
 --
 -- Common SSK Display Object Builders
 local newCircle = ssk.display.newCircle;local newRect = ssk.display.newRect
