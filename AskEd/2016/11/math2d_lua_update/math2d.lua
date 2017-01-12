@@ -1,4 +1,9 @@
--- TEMPORARY FIX FOR (LINE INTERSETIONS ISSUE: https://forums.coronalabs.com/topic/66714-math2d-crash-on-device/ )
+-- =============================================================
+-- Copyright Roaming Gamer, LLC. 2008-2016 (All Rights Reserved)
+-- =============================================================
+--   Last Updated: 29 NOV 2016
+-- Last Validated: 29 NOV 2016
+-- =============================================================
 
 -- Localizing math functions for speedup!
 local mDeg  = math.deg
@@ -12,6 +17,7 @@ local mCeil = math.ceil
 local mFloor = math.floor
 local mAtan2 = math.atan2
 local mPi = math.pi
+local mAbs = math.abs
 
 local math2do = {}
 
@@ -343,92 +349,183 @@ function math2do.screen2Cartesian( ... ) -- ( objA [, altRet] ) or ( x1, y1 [, a
 	end
 end
 
---EFM BELOW FUNCTIONS NEED SOME WORK TO BRING THEM IN LINE WITH alternate return protocols
---EFM BELOW FUNCTIONS NEED SOME WORK TO BRING THEM IN LINE WITH alternate return protocols
---EFM BELOW FUNCTIONS NEED SOME WORK TO BRING THEM IN LINE WITH alternate return protocols
---EFM BELOW FUNCTIONS NEED SOME WORK TO BRING THEM IN LINE WITH alternate return protocols
 
--- **** 
--- **** tweenAngle - Delta between an objA and vector2Angle(objA, objB)
--- ****            - Returns vector2Angle as second return value (for cases where you need it too) :)
--- **** 
-function math2do.tweenAngle( objA, objB )
-	local vx,vy      = math2do.sub( objA.x, objA.y, objB.x, objB.y )
-	vx,vy            = math2do.normalize(vx,vy)
-	local vecAngle   = math2do.vector2Angle(vx,vy)
-	local tweenAngle = vecAngle - objA.rotation
-	return tweenAngle,vecAngle
+-- ==
+--    ssk.math2d.distanceBetween( ... ) - Calculates the distance between two points
+-- ==
+function math2do.distanceBetween( ... ) -- ( objA ) or ( x1, y1 )
+	if( type(arg[1]) == "number" ) then
+		local vx,vy = math2do.subFast( arg[1], arg[2], arg[3], arg[4] )
+		return math2do.lengthFast( vx, vy )
+	else
+		local vx,vy = math2do.subFast( arg[1].x, arg[1].y, arg[2].x, arg[2].y )
+		return math2do.lengthFast( vx, vy )
+	end
 end
 
--- **** 
--- **** tweenDist - Distance between objA and objB (EFM fix this and others that return 'extras' to use objects not numbers)
--- ****           - Returns sub( objA, objB ) as second, third value (for cases where you need them too) :)
--- **** 
-
-function math2do.tweenDist( objA, objB )
-	local vx,vy = math2do.sub( objA.x, objA.y, objB.x, objB.y )
-	local vecLen  = math2do.length(vx,vy)
-	return vecLen,vx,vy
+-- ==
+--    ssk.math2d.isWithinDistance( ... ) - Calculates whether point1 and 2 are within distance of each other
+-- ==
+function math2do.isWithinDistance( ... ) -- ( objA ) or ( x1, y1 )
+	if( type(arg[1]) == "number" ) then
+		local vx,vy = math2do.subFast( arg[1], arg[2], arg[3], arg[4] )
+		return math2do.length2Fast( vx, vy ) <= (arg[5] * arg[5])
+	else
+		local vx,vy = math2do.subFast( arg[1].x, arg[1].y, arg[2].x, arg[2].y )
+		return math2do.length2Fast( vx, vy ) <= (arg[3] * arg[3])
+	end
 end
 
--- **** 
--- **** tweenData - Returns all data between two objects (in this order)
--- ****
--- ****      vx,vy - equivalent to objMath2d.sub(objA,objB)
--- ****      nx,ny - equivalent to ssk.math2do.normalize(vx,vy)
--- ****     vecLen - equivalent to ssk.math2do.length( vx, vy )
--- ****   vecAngle - equivalent to objMath2d.vector2Angle( objA, objB)
--- **** tweenAngle - equivalent to objMath2d.tweenAngle( objA, objB)
--- **** 
-
-function math2do.tweenData( objA, objB )
-	local vx,vy      = math2do.sub( objA.x, objA.y, objB.x, objB.y )
-	local nx,ny      = math2do.normalize(vx,vy)
-	local vecLen     = math2do.length(vx,vy)
-	local vecAngle   = math2do.vector2Angle(nx,ny)
-	local tweenAngle = vecAngle - objA.rotation
-	return vx,vy,nx,ny,vecLen,vecAngle,tweenAngle
+-- ==
+--    ssk.math2d.rotateAbout( ... ) - 
+-- ==
+-- Rotate About ( Point )
+math2do.rotateAbout = function( obj, point, angle, distance  )
+	local radians = -(mPi/180) * (angle + 90)
+	local vx = -mCos(radians)
+	local vy = mSin(radians)
+	vx = vx * distance
+	vy = vy * distance
+	obj.x = point.x + vx
+	obj.y = point.y + vy
 end
 
--- CREDIT NOTICE
--- Following Copied/Derived from code by: 
--- Davis Claiborne (https://github.com/davisdude/mlib/blob/master/mlib.lua)
+-- ==
+--    ssk.math2d.clockwiseAngleSweep( ... ) - Clockwise angle between two vectors with the same tail.
+-- ==
+math2do.clockwiseAngleSweep = function( vec1, vec2 )
+	-- Normalize the vectors
+	local len1 = mSqrt(vec1.x * vec1.x + vec1.y * vec1.y)
+	local nx1 = vec1.x / len1
+	local ny1 = vec1.y / len1
+
+	local len2 = mSqrt(vec2.x * vec2.x + vec2.y * vec2.y)
+	local nx2 = vec2.x / len2
+	local ny2 = vec2.y / len2
+
+	local angle = mAtan2(ny2, nx2) - mAtan2(ny1, nx1)
+	while (angle < 0) do
+		angle = angle + 2 * mPi
+	end
+	angle = (180.0 * angle / mPi)
+	return angle
+end
+
+-- ==
+--    ssk.math2d.angleBetween( ... ) - 
+-- ==
+math2do.angleBetween = function( vec1, vec2 )
+	-- Normalize the vectors
+	local len1 = mSqrt(vec1.x * vec1.x + vec1.y * vec1.y)
+	local nx1 = vec1.x / len1
+	local ny1 = vec1.y / len1
+
+	local len2 = mSqrt(vec2.x * vec2.x + vec2.y * vec2.y)
+	local nx2 = vec2.x / len2
+	local ny2 = vec2.y / len2
+
+	local angle = mAcos(nx1 * nx2 + ny1 * ny2)
+	while (angle < 0) do
+		angle = angle + 2 * mPi
+	end
+	angle = (180 * angle / mPi)
+	return angle
+end
+
+-- Rotate About ( Point )
+math2do.inFOV = function( target, observer, fov, offsetAngle )
+	offsetAngle = offsetAngle or 0
+	local half_fov = fov/2
+
+	-- Calculate facing vector
+	local facingX = target.x - observer.x
+	local facingY = target.y - observer.y
+	local len = mSqrt(facingX * facingX + facingY * facingY)
+	facingX = facingX / len
+	facingY = facingY / len
+
+	-- Calculate my two facing vectors (left and right for sides of FOV triangle)
+	local angle = observer.rotation - half_fov + offsetAngle
+	local radians = -(mPi / 180) * (angle + 90)
+	local leftX = -mCos(radians)
+	local leftY = mSin(radians)
+
+	local angle = observer.rotation + half_fov + offsetAngle
+	radians = -(mPi / 180) * (angle + 90)
+	local rightX = -mCos(radians)
+	local rightY = mSin(radians)
+
+	local tweenLeft = math2do.clockwiseAngleSweep( { x = leftX, y = leftY }, { x = facingX, y = facingY } )
+	local tweenRight = math2do.clockwiseAngleSweep( { x= facingX, y = facingY }, { x =rightX, y = rightY } )
+
+	local isInFOV = (tweenLeft >= 0 and tweenLeft <= half_fov) or (tweenRight >= 0 and tweenRight <= half_fov)
+
+	return isInFOV
+end
+
+-- ==
+--    isInFront, isBehind, isToleft, isToRight - 
+-- ==
+-- isInFront, isBehind, isToleft, isToRight
+local function inFront(target, observer, offsetAngle )
+	offsetAngle = offsetAngle or 0
+	local minV		= 0.0001
+
+	-- Calculate diff vector
+	local diffX = target.x - observer.x
+	local diffY = target.y - observer.y
+	local len = mSqrt(diffX * diffX + diffY * diffY)
+	diffX = diffX / len
+	diffY = diffY / len
+
+	-- Calculate facing vector
+	local angle = observer.rotation
+	local radians = -(mPi / 180) * (angle + offsetAngle + 90)
+	local facingX = -mCos(radians)
+	local facingY = mSin(radians)
+	len = mSqrt(facingX * facingX + facingY * facingY)
+	facingX = facingX / len
+	facingY = facingY / len
+
+	-- Calculate dot product of diff and facing vectors
+	local dotV = diffX * facingX + diffY * facingY
+	if (mAbs(dotV) < minV) then
+		dotV = 0.0
+	end
+
+	return dotV > 0.0
+end
+function math2do.isInFront( target, observer, offsetAngle ) 
+	return inFront( target, observer, 0 ) 
+end
+function math2do.isBehind( target, observer, offsetAngle ) 
+	return inFront( target, observer, 180 ) 
+end
+function math2do.isToLeft( target, observer, offsetAngle ) 
+	return inFront( target, observer, -90 ) 
+end
+function math2do.isToRight( target, observer, offsetAngle ) 
+	return inFront( target, observer, 90 ) 
+end
+
+
+-- =============================================================
+-- Wholly copied from Davis Claiborne's mlib: https://github.com/davisdude/mlib/blob/master/mlib.lua
 --
-local getQuadraticRoots
-local checkFuzzy
-local getSlope
-local checkInput
-local getYIntercept
-
-checkInput =  function( ... )
-	local input = {}
-	if type( ... ) ~= 'table' then input = { ... } else input = ... end
-	return input
-end
-
+-- checkFuzzy, getSlope, getQuadraticRoots, getYIntercept, removeDuplicatePointsFlat, addPoints
+--
+-- Derived from Davis Claiborne's mlib: https://github.com/davisdude/mlib/blob/master/mlib.lua
+--
+-- segmentCircleIntersect (signature and returns changed)
+-- checkLinePoint (signature and returns changed)
+-- checkSegmentPoint (signature and returns changed)
+-- segmentSegmentIntersect (signature and returns changed)
+-- 
+-- =============================================================
+local checkFuzzy, getSlope, getQuadraticRoots, getYIntercept, removeDuplicatePointsFlat, addPoints
 checkFuzzy = function( number1, number2 )
 	return ( number1 - .00001 <= number2 and number2 <= number1 + .00001 )
 end
-
-getSlope = function( x1, y1, x2, y2 )
-	if checkFuzzy( x1, x2 ) then return false end 
-	return ( y1 - y2 ) / ( x1 - x2 )
-end
-
-getYIntercept = function( x, y, ... )
-	local input = checkInput( ... )
-	local slope
-
-	if #input == 1 then
-		slope = input[1]
-	else
-		slope = getSlope( x, y, unpack( input ) )
-	end
-
-	if not slope then return x, true end -- This way we have some information on the line.
-	return y - slope * x, false
-end
-
 getQuadraticRoots = function ( a, b, c )
 	local discriminant = b ^ 2 - ( 4 * a * c )
 	if discriminant < 0 then return false end
@@ -436,7 +533,51 @@ getQuadraticRoots = function ( a, b, c )
 	local denominator = ( 2 * a )
 	return ( -b - discriminant ) / denominator, ( -b + discriminant ) / denominator
 end
+getSlope = function( x1, y1, x2, y2 )
+	if checkFuzzy( x1, x2 ) then return false end 
+	return ( y1 - y2 ) / ( x1 - x2 )
+end
+getYIntercept = function( x, y, ... )
+	local slope
+	if #arg == 1 then
+		slope = arg[1]
+	else
+		slope = getSlope( x, y, arg[1], arg[2] )
+	end
+	if not slope then return x, true end 
+	return y - slope * x, false
+end
 
+-- Removes duplicate points from table of points { x0, y0, x1, y1, ... }
+removeDuplicatePointsFlat = function( tab )
+	for i = #tab, 1 -2 do
+		for ii = #tab - 2, 3, -2 do
+			if i ~= ii then
+				local x1, y1 = tab[i], tab[i + 1]
+				local x2, y2 = tab[ii], tab[ii + 1]
+				if checkFuzzy( x1, x2 ) and checkFuzzy( y1, y2 ) then
+					table.remove( tab, ii ); table.remove( tab, ii + 1 )
+				end
+			end
+		end
+	end
+	return tab
+end
+
+-- Helper to add points to flat table.
+addPoints = function ( tab, x, y )
+    tab[#tab + 1] = x
+    tab[#tab + 1] = y
+end
+
+
+-- ==
+--    ssk.math2d.segmentCircleIntersect( ... ) - Checks for intercept(s) between line-segment
+--    and circle.  Returns intercepts or nil.
+--     Secant Intercept (2): i1, i2 
+--    Tangent Intercept (1): i1, nil
+--          No intercept(0): nil, nil
+-- ==
 math2do.segmentCircleIntersect = function( p1, p2, circ, radius )
 	local x1 = p1.x
 	local y1 = p1.y
@@ -463,103 +604,95 @@ math2do.segmentCircleIntersect = function( p1, p2, circ, radius )
 		y2 = slope * x2 + intercept
 
 		if checkFuzzy( x1, x2 ) and checkFuzzy( y1, y2 ) then
-			return { x = x1, y = y1 }, nil, 'tangent'
+			return { x = x1, y = y1 }, nil
 		else
-			return { x = x1, y = y1 }, { x = x2, y = y2 }, 'secant'
+			return { x = x1, y = y1 }, { x = x2, y = y2 }
 		end
 	else -- Vertical Lines
 		local lengthToPoint1 = circleX - x1
 		local remainingDistance = lengthToPoint1 - radius
 		local intercept = math.sqrt( -( lengthToPoint1 ^ 2 - radius ^ 2 ) )
 
-		if -( lengthToPoint1 ^ 2 - radius ^ 2 ) < 0 then return false end
+		if -( lengthToPoint1 ^ 2 - radius ^ 2 ) < 0 then 
+			return nil,nil 
+		end
 
 		local bottomX, bottomY = x1, circleY - intercept
 		local topX, topY = x1, circleY + intercept
 
 		if topY ~= bottomY then
-			return { x = topX, y = topY }, { x = bottomX, y = bottomY }, 'secant'
+			return { x = topX, y = topY }, { x = bottomX, y = bottomY }
 		else
-			return { x = topX, y = topY }, nil, 'tangent'
+			return { x = topX, y = topY }, nil
 		end
 	end
 end
 
 
--- // Derived from code by: Davis Claiborne (https://github.com/davisdude/mlib/blob/master/mlib.lua)
-local function getLineLineIntersection( ... )
-	local input = checkInput( ... )
+-- ==
+--    ssk.math2d.lineLineIntersect( ... ) - 
+-- ==
+
+-- ==
+--    ssk.math2d.lineLineIntersect( ... ) - Check for intercept between two lines and retuns 
+--    intercept point or nil.
+-- ==
+function math2do.lineLineIntersect( ... )
 	local x1, y1, x2, y2, x3, y3, x4, y4
 	local slope1, intercept1
 	local slope2, intercept2
 	local x, y
 
-	if #input == 4 then -- Given slope1, intercept1, slope2, intercept2.
-		slope1, intercept1, slope2, intercept2 = unpack( input )
-
-		-- Since these are lines, not segments, we can use arbitrary points, such as ( 1, y ), ( 2, y )
-		y1 = slope1 and slope1 * 1 + intercept1 or 1
-		y2 = slope1 and slope1 * 2 + intercept1 or 2
-		y3 = slope2 and slope2 * 1 + intercept2 or 1
-		y4 = slope2 and slope2 * 2 + intercept2 or 2
-		x1 = slope1 and ( y1 - intercept1 ) / slope1 or intercept1
-		x2 = slope1 and ( y2 - intercept1 ) / slope1 or intercept1
-		x3 = slope2 and ( y3 - intercept2 ) / slope2 or intercept2
-		x4 = slope2 and ( y4 - intercept2 ) / slope2 or intercept2
-	elseif #input == 6 then -- Given slope1, intercept1, and 2 points on the other line.
-		slope1, intercept1 = input[1], input[2]
-		slope2 = getSlope( input[3], input[4], input[5], input[6] )
-		intercept2 = getYIntercept( input[3], input[4], input[5], input[6] )
-
-		y1 = slope1 and slope1 * 1 + intercept1 or 1
-		y2 = slope1 and slope1 * 2 + intercept1 or 2
-		y3 = input[4]
-		y4 = input[6]
-		x1 = slope1 and ( y1 - intercept1 ) / slope1 or intercept1
-		x2 = slope1 and ( y2 - intercept1 ) / slope1 or intercept1
-		x3 = input[3]
-		x4 = input[5]
-	elseif #input == 8 then -- Given 2 points on line 1 and 2 points on line 2.
-		slope1 = getSlope( input[1], input[2], input[3], input[4] )
-		intercept1 = getYIntercept( input[1], input[2], input[3], input[4] )
-		slope2 = getSlope( input[5], input[6], input[7], input[8] )
-		intercept2 = getYIntercept( input[5], input[6], input[7], input[8] )
-
-		x1, y1, x2, y2, x3, y3, x4, y4 = unpack( input )
+	if( type( arg[1] )  == "table" ) then
+		x1, y1, x2, y2, x3, y3, x4, y4  = 
+			arg[1].x, arg[1].y, arg[2].x, arg[2].y,
+			arg[3].x, arg[3].y, arg[4].x, arg[4].y
+	else 
+		x1, y1, x2, y2, x3, y3, x4, y4  = unpack( arg )
 	end
+
+	slope1 = getSlope( x1, y1, x2, y2 )
+	intercept1 = getYIntercept( x1, y1, x2, y2 )
+	slope2 = getSlope( x3, y3, x4, y4 )
+	intercept2 = getYIntercept( x3, y3, x4, y4 )
 
 	if not slope1 and not slope2 then -- Both are vertical lines
 		if x1 == x3 then -- Have to have the same x positions to intersect
-			return true
+			return nil, true, true -- No single intercept, parallel, co-tangent
+			
 		else
-			return false
+			return nil, true, false -- No single intercept, parallel, NOT co-tangent
+
 		end
 	elseif not slope1 then -- First is vertical
 		x = x1 -- They have to meet at this x, since it is this line's only x
 		y = slope2 and slope2 * x + intercept2 or 1
+	
 	elseif not slope2 then -- Second is vertical
 		x = x3 -- Vice-Versa
 		y = slope1 * x + intercept1
+	
 	elseif checkFuzzy( slope1, slope2 ) then -- Parallel (not vertical)
 		if checkFuzzy( intercept1, intercept2 ) then -- Same intercept
-			return true
+			return nil, true, true -- No single intercept, parallel, co-tangent
+
 		else
-			return false
+			return nil, true, false -- No single intercept, parallel, NOT co-tangent
+
 		end
+	
 	else -- Regular lines
 		x = ( -intercept1 + intercept2 ) / ( slope1 - slope2 )
 		y = slope1 * x + intercept1
 	end
 
-	return x, y
-end
-
-function math2do.lineLineIntersect( x1, y1, x2, y2, x3, y3, x4, y4 ) 
-	local x, y = getLineLineIntersection( x1, y1, x2, y2, x3, y3, x4, y4 ) 
-	if( not x) then return nil end
 	return { x = x, y = y }
 end
 
+
+-- ==
+--    ssk.math2d.checkLinePoint( ... ) - 
+-- ==
 -- Checks if a point is on a line.
 -- Does not support the format using slope because vertical lines would be impossible to check.
 local function checkLinePoint( x, y, x1, y1, x2, y2 )
@@ -571,7 +704,11 @@ local function checkLinePoint( x, y, x1, y1, x2, y2 )
 	end
 	return checkFuzzy( y, m * x + b )
 end
+math2do.checkLinePoint = checkLinePoint
 
+-- ==
+--    ssk.math2d.checkSegmentPoint( ... ) - 
+-- ==
 -- Gives whether or not a point lies on a line segment.
 local function checkSegmentPoint( px, py, x1, y1, x2, y2 )
 	-- Explanation around 5:20: https://www.youtube.com/watch?v=A86COO8KC58
@@ -584,8 +721,8 @@ local function checkSegmentPoint( px, py, x1, y1, x2, y2 )
 	if checkFuzzy( lengthX, 0 ) then -- Vertical line
 		if checkFuzzy( px, x1 ) then
 			local low, high
-			if y1 > y2 then low = y2; high = y1
-			else low = y1; high = y2 end
+			if y1 > y2 then low = y2 high = y1
+			else low = y1 high = y2 end
 
 			if py >= low and py <= high then return true
 			else return false end
@@ -595,8 +732,8 @@ local function checkSegmentPoint( px, py, x1, y1, x2, y2 )
 	elseif checkFuzzy( lengthY, 0 ) then -- Horizontal line
 		if checkFuzzy( py, y1 ) then
 			local low, high
-			if x1 > x2 then low = x2; high = x1
-			else low = x1; high = x2 end
+			if x1 > x2 then low = x2 high = x1
+			else low = x1 high = x2 end
 
 			if px >= low and px <= high then return true
 			else return false end
@@ -615,8 +752,13 @@ local function checkSegmentPoint( px, py, x1, y1, x2, y2 )
 	end
 	return false
 end
+math2do.checkSegmentPoint = checkSegmentPoint
 
 
+
+-- ==
+--    ssk.math2d.segmentSegmentIntersect( ... ) - 
+-- ==
 function math2do.segmentSegmentIntersect( x1, y1, x2, y2, x3, y3, x4, y4 )
 	local slope1, intercept1 = getSlope( x1, y1, x2, y2 ), getYIntercept( x1, y1, x2, y2 )
 	local slope2, intercept2 = getSlope( x3, y3, x4, y4 ), getYIntercept( x3, y3, x4, y4 )
@@ -637,66 +779,15 @@ function math2do.segmentSegmentIntersect( x1, y1, x2, y2, x3, y3, x4, y4 )
 		end
 	end
 
-	local x, y = getLineLineIntersection( x1, y1, x2, y2, x3, y3, x4, y4 )
-	if x and checkSegmentPoint( x, y, x1, y1, x2, y2 ) and checkSegmentPoint( x, y, x3, y3, x4, y4 ) then
-		return { x = x,  y = y }
+	local vec = math2do.lineLineIntersect( x1, y1, x2, y2, x3, y3, x4, y4 )
+	if vec.x and 
+		checkSegmentPoint( vec.x, vec.y, x1, y1, x2, y2 ) and 
+		checkSegmentPoint( vec.x, vec.y, x3, y3, x4, y4 ) then
+		
+		return vec
 	end
 	return nil
 end 
-
-
--- CREDIT NOTICE:
--- Following derived from: https://gist.github.com/Xeoncross/9511295
-
--- Rotate About Point
--- rotates point around the center by degrees
--- rounds the returned coordinates using math.round() if round == true
--- returns new coordinates object
-math2do.rotateAboutPoint = function( point, degrees, center )
-	local pt = { x=point.x - center.x, y=point.y - center.y }
-	pt = math2do.rotateTo( pt, degrees )
-	pt.x, pt.y = pt.x + center.x, pt.y + center.y
-	return pt
-end
-
- 
--- rotates a point around the (0,0) point by degrees
--- returns new point object
--- center: optional
-math2do.rotateTo = function( point, degrees, center )
-	if (center ~= nil) then
-		return math2do.rotateAboutPoint( point, degrees, center )
-	else
-		local x, y = point.x, point.y 
-		local theta = math.rad( degrees ) 
-		local pt = {
-			x = x * math.cos(theta) - y * math.sin(theta),
-			y = x * math.sin(theta) + y * math.cos(theta)
-		}		
-		return pt
-	end
-end
-
-math2do.smallestAngleDiff = function( target, source )
-	local a = target - source 
-	if (a > 180) then
-		a = a - 360
-	elseif (a < -180) then
-		a = a + 360
-	end 
-	return a
-end
-
-
-math2do.midPoint = function( pts )
-	local x, y, c = 0, 0, pts.numChildren or #pts	
-	for i=1, c do
-		x = x + pts[i].x
-		y = y + pts[i].y
-	end
-	if(c==0) then return { x =0, y = 0 } end
-	return { x=x/c, y=y/c }
-end
 
 
 
