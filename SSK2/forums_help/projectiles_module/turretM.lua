@@ -7,10 +7,6 @@ local turretM = {}
 
 
 
-local function onCollision( self, event ) 
-   display.remove(self) 
-   return false
-end
 local function onCollision2( self, event ) 
    if( event.other.myType == "bullet" ) then return false end
    display.remove(self) 
