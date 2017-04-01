@@ -1,0 +1,39 @@
+--
+-- For more information on build.settings see the Corona SDK Build Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
+settings =
+{
+	orientation =
+	{
+		default = "portrait",
+		supported = { "portrait" }
+	},
+	iphone =
+	{
+		plist =
+		{
+			UILaunchStoryboardName = "LaunchScreen",
+			CFBundleIconFiles =
+			{
+				"Icon-40.png",
+				"Icon-58.png",
+				"Icon-76.png",
+				"Icon-80.png",
+				"Icon-87.png",
+				"Icon-120.png",
+				"Icon-152.png",
+				"Icon-167.png",
+				"Icon-180.png",
+			},
+		},
+	},
+	window =
+	{
+		titleText =
+		{
+			default = "Compose Email/SMS",
+		},
+	},
+}
