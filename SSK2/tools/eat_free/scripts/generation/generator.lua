@@ -177,7 +177,7 @@ pu.addGC( generatedData, generate_config_lua( "config.lua", currentProject ), "c
 	genUtil.saveContent( generatedData, {}, tasks )
 
 	----[[
-	local stepDelay = 200
+	local stepDelay = 1200
 	for i = 1, #tasks do
 		local curTask = tasks[i]
 		timer.performWithDelay( i * stepDelay, curTask )
@@ -379,7 +379,7 @@ function generator.run( )
 	local stepDelay = (#tasks > 0 ) and round(6000/#tasks) or 500
 	stepDelay = (stepDelay > 100) and stepDelay or 100 
 	--print(stepDelay)
-	stepDelay = 50
+	stepDelay = 1500
 	for i = 1, #tasks do
 		local curTask = tasks[i]
 		timer.performWithDelay( i * stepDelay, curTask )
