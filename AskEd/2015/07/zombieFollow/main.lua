@@ -21,8 +21,8 @@ end
 
 --
 -- 1. Load SSK or just RGMath2D.lua (all we are using in the example)
+--[[
 require "ssk2.loadSSK"
-_G.ssk.init()
 _G.ssk.init( { launchArgs 				= ..., 
 	            enableAutoListeners 	= true,
 	            exportCore 				= true,
@@ -30,6 +30,10 @@ _G.ssk.init( { launchArgs 				= ...,
 	            exportSystem 			= true,
 	            exportSystem 			= true,
 	            debugLevel 				= 0 } )
+--]]
+
+require "RGMath2D"
+
 
 --
 -- 2. Localize some useful math2d functions
