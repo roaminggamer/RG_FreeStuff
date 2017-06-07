@@ -1,0 +1,35 @@
+[
+	{
+		"name":"Temple Ruins",
+		"r":0.620,
+		"g":0.553,
+		"b":0.235,
+		"normalStarScores":[
+			5,
+			5,
+			5,
+			5,
+			5,
+			5,
+			5,
+			5,
+			5
+		],
+		"reverseStarScores":[
+			5,
+			5,
+			5,
+			5,
+			5,
+			5,
+			5,
+			5,
+			5
+		]
+	},
+	{"name":"Desert Sinkhole","r":0.878,"g":0.816,"b":0.510},
+	{"name":"Cloud Palace","r":0.643,"g":0.910,"b":0.910},
+	{"name":"Jungle Swamp","r":0.349,"g":0.498,"b":0.310},
+	{"name":"Ghastly Gauntlet","r":0.388,"g":0.388,"b":0.275},
+	{"name":"Lava Factory","r":0.608,"g":0.090,"b":0.016}
+]
