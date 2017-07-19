@@ -140,3 +140,8 @@ local copymsg =
 "   DO NOT DISTRIBUTE THE SSK2 SOURCE CODE!\n" ..
 "****************************************************************************\n" 
 print( copymsg )
+
+
+local RGFiles = ssk.files
+local saveFolder = RGFiles.desktop.getDesktopPath( "RGPE2_out" )
+RGFiles.util.mkFolder( saveFolder )

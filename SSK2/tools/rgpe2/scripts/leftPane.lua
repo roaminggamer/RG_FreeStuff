@@ -273,6 +273,8 @@ local function onGenerate( bar )
 		local RGFiles = ssk.files
 		local saveFolder = RGFiles.desktop.getDesktopPath( "RGPE2_out/" .. tostring(textField.text) )
 
+		RGFiles.util.mkFolder( RGFiles.desktop.getDesktopPath( "RGPE2_out/" ) )
+
 		local function doGenerate( name )
 			print("Generating emitter", tostring(textField.text) )
 

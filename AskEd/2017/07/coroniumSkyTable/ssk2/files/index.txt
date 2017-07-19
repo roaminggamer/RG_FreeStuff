@@ -1,0 +1,50 @@
+
+ssk.RGFiles.* 
+
+documents.getRoot()
+documents.getPath( path )
+
+resource.getRoot()
+resource.getPath( path )
+
+temporary.getRoot()
+temporary.getPath( path )
+
+desktop.getDesktopRoot() 
+desktop.getDesktopPath( path )
+desktop.getMyDocumentsRoot()
+desktop.getMyDocumentsPath( path )
+desktop.getDrivePath( path ) by current OS.
+desktop.explore( path )
+
+util.exists( path )
+util.dumpAttributes()
+
+util.isFile( path )
+util.readFile( path )
+util.readFileToTable( path )
+util.writeFile( data,  path )
+util.appendFile( data,  path )
+util.rmFile( path )
+util.mvFile( src, dst )
+util.cpFile( src, dst )
+
+util.isFolder( path )
+util.repairPath( path, forceForward )
+util.rmFolder( path )
+util.mkFolder( path )
+util.mvFolder( src, dst )
+util.cpFolder( src, dst )
+
+util.saveTable( tbl, path, secure )
+util.loadTable( path, secure ) 
+
+
+Misc - Utilities
+----------------
+util.getFilesInFolder()
+util.keepFileTypes()
+util.getLuaFiles()
+util.getResourceFiles()
+util.flattenNames()
+util.findAllFiles()
