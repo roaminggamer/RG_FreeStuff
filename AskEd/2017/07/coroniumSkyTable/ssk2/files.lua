@@ -85,7 +85,7 @@ if( ssk.system.onWin ) then
          RGFiles.myDocumentsRoot = RGFiles.myDocumentsRoot .. "My Documents" -- QUESTION: Is this right for  Win 7 and before?
       end
 	end
-elseif( onOSX ) then
+elseif( ssk.system.onOSX ) then
 	RGFiles.myDocumentsRoot = getUserName()
 	if( not RGFiles.myDocumentsRoot ) then
 		RGFiles.myDocumentsRoot = "TBD"
@@ -105,7 +105,7 @@ if( ssk.system.onWin ) then
 		RGFiles.desktopRoot = string.sub( RGFiles.desktopRoot, 1, appDataStart-1 )
 		RGFiles.desktopRoot = RGFiles.desktopRoot .. "Desktop"
 	end
-elseif( onOSX ) then
+elseif( ssk.system.onOSX ) then
 	RGFiles.desktopRoot = getUserName()
 	if( not RGFiles.desktopRoot ) then
 		RGFiles.desktopRoot = "TBD"
