@@ -7,15 +7,8 @@
 io.output():setvbuf("no")
 display.setStatusBar(display.HiddenStatusBar)
 
-require "ssk2.loadSSK"
-_G.ssk.init()
-_G.ssk.init( { launchArgs 				= ..., 
-	            enableAutoListeners 	= true,
-	            exportCore 				= true,
-	            exportColors 			= true,
-	            exportSystem 			= true,
-	            exportSystem 			= true,
-	            debugLevel 				= 0 } )
+--require "ssk2.loadSSK"
+--_G.ssk.init()
 
 -- =============================================
 -- EXAMPLE BEGIN
@@ -76,12 +69,3 @@ end; replaceMe:addEventListener( "touch" )
 -- EXAMPLE END
 -- =============================================
 local instr = display.newText( "Touch Rectangle To Load Next Image", replaceMe.x, replaceMe.y - replaceMe.contentHeight/2 - 30, native.systemFont, 30  )
-local support = display.newText( "<tap here> Get EAT Lean Today! <tap here>", replaceMe.x, replaceMe.y + replaceMe.contentHeight/2 + 50, native.systemFont, 32  )
-support:setFillColor( 0, 1, 0 )
-support.touch = function( self, event )
-	if( event.phase == "began" ) then
-		system.openURL("https://gumroad.com/l/eatlean#")
-	end
-	return true
-end; support:addEventListener( "touch" )
-transition.blink(support, { time = 2000 })
