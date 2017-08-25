@@ -8,8 +8,8 @@ io.output():setvbuf("no")
 display.setStatusBar(display.HiddenStatusBar)
 
 -- Include SSK Core (Features I just can't live without.)
---require "ssk2.loadSSK"
---_G.ssk.init()
+require "ssk2.loadSSK"
+_G.ssk.init()
 
 
 -- =============================================
@@ -17,9 +17,15 @@ display.setStatusBar(display.HiddenStatusBar)
 -- =============================================
 local imgNum = 0
 local imagePaths = {
-	"http://roaminggamer.com/wp-content/uploads/2014/05/eat_lean_plugins.png",
-	"http://roaminggamer.com/wp-content/uploads/2016/08/new.png",
-	"http://roaminggamer.com/wp-content/uploads/2016/08/manage.png",		
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs2.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs3.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs4.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs5.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs6.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs7.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs8.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs9.png",
+	"https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles/images/cardClubs10.png",
 }
 
 
@@ -37,7 +43,7 @@ local function networkListener( event )
     end
 end
 
-replaceMe = display.newRect( display.contentCenterX, display.contentCenterY, display.contentWidth, display.contentWidth/1.67  )
+replaceMe = display.newRect( display.contentCenterX, display.contentCenterY, 140, 190  )
 
 -- Touch hanlder that starts new download on each touch
 replaceMe.touch = function( self, event )
