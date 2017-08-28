@@ -51,4 +51,3 @@ timer.performWithDelay( 10,
 
         hud3.rotation = hud3.rotation + 1
     end, -1)
-
