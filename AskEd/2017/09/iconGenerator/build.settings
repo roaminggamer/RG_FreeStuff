@@ -1,0 +1,41 @@
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+settings = 
+{
+   --build = { neverStripDebugInfo = true },
+
+   orientation = 
+   {
+      default = "landscapeRight", -- portrait, portraitUpsideDown, landscapeLeft, landscapeRight
+      supported = { "landscapeRight" }, 
+   },
+
+   plugins = { },
+
+------------------------------------------------------------------------------------
+-- DESKTOP SETTINGS:
+-- https://docs.coronalabs.com/daily/guide/distribution/osxBuild/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/win32Build/index.html
+------------------------------------------------------------------------------------
+   window = 
+   {
+      defaultMode 			   = "normal", -- fullscreen, maximized, normal
+      resizable 				   = false,
+
+      enableCloseButton 		= true,
+      suspendWhenMinimized 	= true,
+      enableMaximizeButton 	= true,
+
+      -- WARNING!! -- As of build 2015.2741, the width/height values are now ignorant of landscape or portrait.
+      --
+      defaultViewWidth 		= 960,  
+      defaultViewHeight 	= 540,  
+      minViewWidth 			= 480,  
+      minViewHeight			= 260,  
+
+      titleText = 
+      {
+         default 		= "Corona Game Framework Builder",
+      },
+   },
+}
+return settings
