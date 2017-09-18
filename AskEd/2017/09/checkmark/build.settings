@@ -1,0 +1,28 @@
+-- For more details on this file and what you can do with it, look here:
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+
+settings = {
+    orientation = 
+    {
+		--default = "portrait",
+		--supported = { "portrait", "portraitUpsideDown" },
+		
+		default = "landscapeLeft",
+		supported = { "landscapeRight", "landscapeLeft" },
+	},
+
+	iphone = 
+	{
+		plist = 
+		{
+			UIAppFonts = 
+			{ 
+				"Harrrowprint.ttf",
+			},
+			UIStatusBarHidden = true,
+			UIPrerenderedIcon = true,
+			UIApplicationExitsOnSuspend = false,
+			MinimumOSVersion = "6.0.0",
+		}, 
+	},
+}
