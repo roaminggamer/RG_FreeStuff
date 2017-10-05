@@ -191,7 +191,7 @@ function vScroller.new( group, x, y, params )
       self:insert( obj )
 
 
-      if( params.autoScroll ) then
+      if( autoScroll or params.autoScroll ) then
          local toY = obj.y + obj.contentHeight - ch
          --scroller:setScrollHeight( obj.contentHeight + 400 )
          if( scrollBuffer ) then
