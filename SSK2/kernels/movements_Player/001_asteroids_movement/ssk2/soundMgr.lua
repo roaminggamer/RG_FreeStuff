@@ -77,6 +77,38 @@ end
 
 -- setVolume( volume, volType ) 
 --
+local muted = false
+local lastVolume 
+function soundMgr.mute( isMuted, fadeTime ) 
+	print("soundMgr.mute() ", isMuted)
+	isMuted = fnn( isMuted, false )
+	if( isMuted == muted ) then return end
+	if( isMuted == false and not lastVolume ) then return end
+
+	if( isMuted ) then
+		lastVolume = globalVolume
+
+		if(tonumber(fadeTime)) then
+			audio.fade( { time = fadeTime, volume = 0 } )
+		else
+			audio.setVolume( volume )
+		end
+		
+	else
+		if(tonumber(fadeTime)) then
+			audio.fade( { time = fadeTime, volume = lastVolume } )
+		else
+			audio.setVolume( lastVolume )
+		end
+		
+		lastVolume = nil
+	end
+	muted = isMuted
+end
+
+
+-- setVolume( volume, volType ) 
+--
 function soundMgr.setVolume( volume, volType ) 
 	volume = volume or 1
 	volume = ( volume > 1 ) and 1 or volume
