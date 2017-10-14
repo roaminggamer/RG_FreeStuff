@@ -1,0 +1,46 @@
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/daily/guide/tvos/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/win32Build/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/osxBuild/index.html
+-- =============================================================
+local orientation = 'portrait' -- portrait, landscapeRight, ...
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+	plugins =
+    {
+        ["plugin.patcher"] = { publisherId = "com.roaminggamer" },
+    },      
+	android =
+   {
+      usesPermissions =
+      {
+         "android.permission.INTERNET",
+      },
+   },
+   iphone =
+	{
+		plist =
+		{
+			UIStatusBarHidden = false,
+			CFBundleIconFiles =
+			{
+				"Icon-40.png",
+				"Icon-58.png",
+				"Icon-76.png",
+				"Icon-80.png",
+				"Icon-87.png",
+				"Icon-120.png",
+				"Icon-152.png",
+				"Icon-167.png",
+				"Icon-180.png",
+			},
+		},
+	},
+}
