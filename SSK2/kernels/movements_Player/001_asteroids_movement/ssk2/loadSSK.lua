@@ -169,6 +169,12 @@ ssk.init = function( params )
 	end
 
 	-- =============================================================
+	-- Various
+	-- =============================================================
+	local_require( "ssk2.easyBench" ) -- Easy Benchmarking Lib
+
+
+	-- =============================================================
 	-- Finialize measurements and show report (if measuring enabled)
 	-- =============================================================
 	-- Meaure Final Cost of SSK (if enabled)
