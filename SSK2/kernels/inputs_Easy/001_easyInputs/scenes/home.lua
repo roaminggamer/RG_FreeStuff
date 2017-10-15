@@ -67,8 +67,9 @@ function scene:create( event )
 
    newButton( "One Stick + One Touch", "scripts.oneStickOneTouch" )
 
-   --nextFrame( function() buttons[3]:toggle() end )
+   newButton( "One Stick + Two Buttons", "scripts.oneStickPlusButtons" )
 
+   --nextFrame( function() buttons[#buttons]:toggle() end )
 end
 
 ----------------------------------------------------------------------

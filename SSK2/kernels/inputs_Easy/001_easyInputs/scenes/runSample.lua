@@ -72,8 +72,7 @@ function scene:willShow( event )
       return true
    end
    local homeB = easyIFC:presetPush( sceneGroup, "default", left + 25, top + 25, 50, 50, "X", onHome, { labelColor = _R_, labelFont = _G.fontB, labelSize = 36, strokeWidth = 0 } )
-   nextFrame( function() homeB:toFront() end )
-   
+   nextFrame( function() homeB:toFront() end )   
 end
 
 ----------------------------------------------------------------------
