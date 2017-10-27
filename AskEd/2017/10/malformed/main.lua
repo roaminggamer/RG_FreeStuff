@@ -20,8 +20,10 @@ local chatScroll = widget.newScrollView
 chatScroll.x = display.contentCenterX
 chatScroll.y = display.contentCenterY
 
-for i = 1, 100 do
-	local  myText = display.newText( "yuuu", 100, i * 50 ,"Lato-Black.ttf", 35 )
+local y = 100
+for i = 1, 200,5 do
+	local myText = display.newText( "ABCDEFGHIJKLMNOP", 320, y ,"Lato-Black.ttf", 35 + i )
+	y = y + myText.contentHeight
 	myText:setFillColor(1,1,1)
 	myText:toFront();
 	chatScroll:insert(myText)
