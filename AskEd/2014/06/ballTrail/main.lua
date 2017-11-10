@@ -9,12 +9,12 @@ local cx = display.contentCenterX
 local cy = display.contentCenterY
 
 local speed 			= 150 -- in pixels-per-second
-local turnEvery			= 3 -- Turn every time the (counter % this value)  == 0
-local trailEvery		= 3 -- Add trail point every time the (counter % this value)  == 0
-local turnByDegrees		= 35
+local turnEvery		= 3 -- Turn every time the (counter % this value)  == 0
+local trailEvery		= 5 -- Add trail point every time the (counter % this value)  == 0
+local turnByDegrees	= 35
 
 local ballRadius 		= 15
-local trailRadius 		= 5
+local trailRadius 	= 5
 
 -- Localized Functions
 local mRand 	= math.random 
@@ -47,9 +47,12 @@ drawBall = function( )
 	tmp.lastTime 	= getTimer()
 	tmp.myCount  	= 0
 
+	-- Randomly choose trail drawing function	
+	local trailFunctions = { drawTrail, drawTrail2, drawTrail3 }
+	tmp.drawTrail = trailFunctions[math.random(1,3)]
+
 	tmp.enterFrame 	= onEnterFrame
 	Runtime:addEventListener( "enterFrame", tmp )
-
 
 	timer.performWithDelay( 10000, 
 		function()			
@@ -84,9 +87,10 @@ onEnterFrame = function( self, event )
 		self.rotation = self.rotation + mRand( -turnByDegrees, turnByDegrees ) -- small turns only
 	end
 
+
 	-- Add trail point?
 	if( self.myCount % trailEvery == 0 ) then
-		drawTrail2( self )
+		self:drawTrail( self )
 	end
 
 end

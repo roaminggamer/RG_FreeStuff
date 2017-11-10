@@ -1,7 +1,7 @@
 io.output():setvbuf("no") -- Don't use buffer for console messages
 display.setStatusBar(display.HiddenStatusBar)  -- Hide that pesky bar
 
-local maxIter = 100000
+local maxIter = 1000
 local primes = {}
 local fails = {}
 

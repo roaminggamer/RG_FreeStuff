@@ -2,7 +2,7 @@
 --  
 -- Why?  Well... this technique uses 
 
-require "perf1" -- Auto localized vs. 'remove' Math Square Root
+require "perf1" -- Auto localized vs. 'remote' Math Square Root
 
 require "perf2" -- Auto localized vs. Normal localized Math Square Root
 
