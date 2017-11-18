@@ -1,3 +1,0 @@
-rmdir ssk2
-
-
