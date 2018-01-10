@@ -4,7 +4,7 @@ local p1, p2
 local function calculatePoints( )
 
 	local p1x, p1y = p1.x, p1.y
-	local p2x, p2y = p1.x, p1.y
+	local p2x, p2y = p2.x, p2.y
 	local theta = math.pi/8
 	local c, s = math.cos(theta), math.sin(theta)
 	local dx, dy = p2x-p1x, p2y-p1y
