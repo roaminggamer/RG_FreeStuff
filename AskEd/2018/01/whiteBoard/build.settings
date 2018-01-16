@@ -1,0 +1,7 @@
+settings = {
+    orientation = 
+    {
+		default = "landscapeLeft",
+		supported = { "landscapeRight", "landscapeLeft" },
+	},
+}
