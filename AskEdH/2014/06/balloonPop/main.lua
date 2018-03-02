@@ -18,7 +18,7 @@ local function createBalloon( )
 
 	-- Randomly create one of five balloon images
 	local imgNum = math.random( 1, 5 )	
-	local tmp = display.newImageRect( "balloon" .. imgNum .. ".png", 295/3, 482/3 )	
+	local tmp = display.newImageRect( "images/balloons/balloon" .. imgNum .. ".png", 295/3, 482/3 )	
 
 	-- Randomly place the balloon
 	tmp.y = -50
