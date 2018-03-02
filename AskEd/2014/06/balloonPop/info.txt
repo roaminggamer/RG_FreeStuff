@@ -1,0 +1,8 @@
+#question
+#summary
+A basic balloon popping game mechanic example.
+#tags
+mechanic
+game
+touch
+pop
