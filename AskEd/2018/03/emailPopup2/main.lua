@@ -23,12 +23,11 @@ onSentResume = function( event )
 	if( event.type == "applicationResume" ) then
 		thanksLabel.alpha = 1
 		transition.to( thanksLabel, { alpha = 0, delay = 2000, time = 1000 } )
-		Runtime:removeEventListener( "system", onSentResume )
 		native.setKeyboardFocus( nil )
 	end
 end
 --
-Runtime:addEventListener( "system", onSentResume )
+timer.performWithDelay( 500, function() Runtime:addEventListener( "system", onSentResume ) end )
 
 
 local function onSend( event )
