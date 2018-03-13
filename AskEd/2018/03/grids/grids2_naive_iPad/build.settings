@@ -1,0 +1,30 @@
+-- =============================================================
+-- Minimalistic 'starter' build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/guide/tvos/index.html
+-- https://docs.coronalabs.com/guide/distribution/win32Build/index.html
+-- https://docs.coronalabs.com/guide/distribution/osxBuild/index.html
+-- =============================================================
+
+local orientation = 'portrait' -- portrait, landscapeRight, ...
+
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+
+
+   --[[
+   build =
+   {
+      neverStripDebugInfo = true,
+   },
+   --]]
+
+}
