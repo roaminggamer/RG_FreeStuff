@@ -7,7 +7,7 @@
 -- https://docs.coronalabs.com/guide/distribution/osxBuild/index.html
 -- =============================================================
 
-local orientation = 'portrait' -- portrait, landscapeRight, ...
+local orientation = 'landscapeRight' -- portrait, landscapeRight, ...
 
 
 settings = {
@@ -27,4 +27,11 @@ settings = {
    },
    --]]
 
+ android =
+   {
+      usesPermissions =
+      {
+         "android.permission.INTERNET",
+      },
+   },
 }
