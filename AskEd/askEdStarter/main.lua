@@ -15,6 +15,23 @@ display.setStatusBar(display.HiddenStatusBar)
 -- YOUR CODE BELOW
 -- =====================================================
 
+--
+-- Tip: Try changing simulated device and/or portrait/landscape selection 
+--      in build.settings to see who how this image is displayed.
+--
+--      It represents the safe/unsafe spaces for the settings in
+--      config.lua.
+--      Checkbox area - visible on all screens.
+--      Black outer fringe - visible on some screens.
+--
+local back = display.newImageRect( "protoBackX.png", 720, 1386 )
+back.x = display.contentCenterX
+back.y = display.contentCenterY
+if( display.contentWidth > display.contentHeight ) then
+	back.rotation = 90
+end
+
+
 -- 
 -- REMEMBER: IN YOUR POST, TELL US:
 -- > Corona Version You Are Using. Ex: 2018.2338
