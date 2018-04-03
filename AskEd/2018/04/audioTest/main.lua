@@ -13,5 +13,5 @@ audio.play( track, { loops = -1, channel = channel } )
 
 timer.performWithDelay( 2000, 
 	function()
-		audio.setVolume(0)
+		audio.setVolume(0, { channel = channel })
 	end )
