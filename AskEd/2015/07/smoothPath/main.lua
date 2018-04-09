@@ -125,4 +125,5 @@ drawObj.touch = onTouch
 drawObj:addEventListener( "touch" )
 
 
-
+print( 1, (true) and false or true )
+print( 2, (false) and false or true )
