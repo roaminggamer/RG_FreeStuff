@@ -18,8 +18,9 @@ local fullh         	= display.actualContentHeight
 local speed = 200
 local pushToX = centerX + fullw/2 - 400
 
-
+-- =====================================================
 -- TRANSITION
+-- =====================================================
 local ground = display.newRect( centerX, centerY, fullw, 40)
 ground.anchorY = 1
 ground:setFillColor(0,0.3,0)
@@ -42,9 +43,9 @@ transition.to( pusher, { x = pushToX, time = 1000 * (pushToX - pusher.x)/speed  
 
 
 
-
-
+-- =====================================================
 -- PHYSICS
+-- =====================================================
 local ground = display.newRect( centerX, centerY + fullh/2, fullw, 40)
 ground.anchorY = 1
 ground:setFillColor(0,0.3,0)
