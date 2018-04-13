@@ -2,33 +2,28 @@ io.output():setvbuf("no")
 display.setStatusBar(display.HiddenStatusBar)
 -- =====================================================
 -- =====================================================
-local ssk = require "ssk2.loadSSK"
-ssk.init()
+--local ssk = require "ssk2.loadSSK"
+--ssk.init()
 -- =====================================================
-
---[[
 local function readFile( fileName )
-	local f = io.open( fileName,"rb")
-	
+	local path = system.pathForFile( fileName, system.ResourceDirectory )
+	local f = io.open( path,"rb")
+
 	if (f == nil) then 
-		print( "failed to open", fileName )
+		print( "Failed to open", fileName )
 	   return nil
 	end
-
 	fileContents = f:read( "*a" )
-
 	io.close(f)
+	return fileContents
 end
 
-local data = io.readFile( "test1.rad", system.ReourceDirectory )
-print( "test1.rad\n", data )
+local files = { "test1.txt", "test1.rad", 
+                "data/test1.txt", "data/test1.rad" }
 
+for i = 1, #files do
+	print("Trying to read: ", files[i] )
+	local data = readFile( files[i]  )
+	print( "Got:\n", data, "\n-----------------\n" )
+end
 
-local data = readFile( "data/test1.txt" )
-print( "data/test1.txt\n", data )
---]]
-
-local path = ssk.files.resource.getPath( "test1.txt" )
-print(path)
-local data = ssk.files.util.readFile( path )
-print(data)
