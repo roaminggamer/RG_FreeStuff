@@ -8,7 +8,7 @@ display.setStatusBar(display.HiddenStatusBar)
 -- =============================================
 -- EXAMPLE BEGINS
 -- =============================================
-local baseURL = "https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/2016/09/remoteFiles2/images/"
+local baseURL = "https://raw.githubusercontent.com/roaminggamer/RG_FreeStuff/master/AskEd/common/cards/"
 
 local function createCard( x, y, w, h, num )
 	local tmp = display.newRect( x, y, w, h )
