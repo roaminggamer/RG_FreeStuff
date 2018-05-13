@@ -3,38 +3,47 @@ display.setStatusBar(display.HiddenStatusBar)
 -- =====================================================
 -- =====================================================
 -- =====================================================
--- YOUR CODE BELOW
+-- TESTING CODE
 -- =====================================================
-local _R_ = { 1,0,0 }
-local _G_ = { 0,1,0 }
-local _B_ = { 0,0,1 }
-local _Y_ = { 1,1,0 }
-local _P_ = { 1,0,1 }
-
 local common			= require "common"
-
-local size = 80
-local doRecalc_Test = false
-
-common.captureBackButton()
-common.easyAndroidUIVisibility("immersive")
-
+--
 local testGroup
+local size  = 80
+local _R_   = { 1,0,0 }
+local _G_   = { 0,1,0 }
+local _B_   = { 0,0,1 }
+local _Y_   = { 1,1,0 }
+local _P_   = { 1,0,1 }
+--
+local redrawDelay		= 1000
+local doRecalc_Test  = false
+local immersiveMode  = "immersiveSticky" -- immersive immersiveSticky
 
+
+-- ==
+--    Applies selected immersive settings
+-- ==
+local function doImmersiveMode()
+	common.easyAndroidUIVisibility(immersiveMode)
+end
+
+
+-- ==
+--    A test so we can see something; Draws back, horiz/vert lines, and blocks in corners.
+-- ==
 local function renderTest()
-   display.remove(testGroup)
-   testGroup = display.newGroup()
+   timer.performWithDelay( redrawDelay, 
+  		function()
 
-	local back = display.newImageRect( testGroup,"protoBackX2.png", 720, 1386 )
-	back.x = display.contentCenterX
-	back.y = display.contentCenterY
-	if( display.contentWidth > display.contentHeight ) then
-		back.rotation = 90
-	end
+		   display.remove(testGroup)
+		   testGroup = display.newGroup()
 
-
-   timer.performWithDelay( 500, 
-   	function()
+			local back = display.newImageRect( testGroup,"protoBackX2.png", 720, 1386 )
+			back.x = display.contentCenterX
+			back.y = display.contentCenterY
+			if( display.contentWidth > display.contentHeight ) then
+				back.rotation = 90
+			end
 			local tmp = display.newLine( testGroup, common.centerX, common.top, common.centerX, common.bottom )
 			tmp.strokeWidth = 2
 			tmp:setStrokeColor(math.random(),math.random(),math.random())
@@ -63,9 +72,10 @@ local function renderTest()
 		end )
 end
 
+-- ==
+--    Catch resize event and optional re-draw test content
+-- ==
 local function onResize( event )
-	common.easyAndroidUIVisibility("immersive")
-
 	if( doRecalc_Test ) then
 		common.calcHelpers()
 		renderTest()
@@ -74,4 +84,37 @@ end
 Runtime:addEventListener( "resize", onResize )
 
 
+-- Catch application resume and:
+-- 
+-- 1. Re-apply immersive mode.
+-- 2. Optionally re-draw content
+--
+local function onSystem( event )
+	print(event.type)
+	if( event.type == "applicationResume" ) then
+		doImmersiveMode()
+
+		onResize()
+
+	end
+end  
+Runtime:addEventListener( "system", onSystem )
+
+
+-- =====================================================
+-- DO TEST
+-- =====================================================
+
+-- Apply immersive mode for first time
+doImmersiveMode()
+
+-- Catch back button and if user decides to 'stay', 
+-- 
+-- 1. Re-apply immersive mode.
+-- 2. Optionally re-draw content
+--
+
+common.captureBackButton( function() doImmersiveMode();onResize(); end  )
+
+-- Draw test content
 renderTest()
