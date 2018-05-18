@@ -38,7 +38,7 @@ local function start()
 	function group.enterFrame()
 		if( not running ) then return end
 		--
-		local tmp = display.newText( group, words[math.random(1,#words)], centerX, centerY )
+		local tmp = display.newText( group, words[math.random(1,#words)], centerX, centerY, font )
 		tmp:setFillColor( unpack(randomColor()) )
 		--
 		local vec = ssk.math2d.angle2Vector( math.random(0,359), true )
