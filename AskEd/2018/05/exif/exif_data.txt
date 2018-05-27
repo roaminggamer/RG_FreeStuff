@@ -1,0 +1,50 @@
+EXIF
+ImageDescription	
+Make	Canon
+Model	Canon PowerShot SX500 IS
+Orientation	Horizontal (normal)
+XResolution	180
+YResolution	180
+ResolutionUnit	inches
+ModifyDate	2018:02:05 12:43:45
+YCbCrPositioning	Co-sited
+ExposureTime	1/100
+FNumber	3.4
+ISO	160
+SensitivityType	Standard Output Sensitivity and Recommended Exposure Index
+ExifVersion	0230
+DateTimeOriginal	2018:02:05 12:43:45
+CreateDate	2018:02:05 12:43:45
+ComponentsConfiguration	Y, Cb, Cr, -
+CompressedBitsPerPixel	3
+ShutterSpeedValue	1/101
+ApertureValue	3.4
+ExposureCompensation	0
+MaxApertureValue	3.4
+MeteringMode	Multi-segment
+Flash	Off, Did not fire
+FocalLength	4.3 mm
+UserComment	
+FlashpixVersion	0100
+ColorSpace	sRGB
+ExifImageWidth	4608
+ExifImageHeight	3456
+InteropIndex	R98 - DCF basic file (sRGB)
+InteropVersion	0100
+RelatedImageWidth	4608
+RelatedImageHeight	3456
+FocalPlaneXResolution	19041.32231
+FocalPlaneYResolution	18989.01099
+FocalPlaneResolutionUnit	inches
+SensingMethod	One-chip color area
+FileSource	Digital Camera
+CustomRendered	Normal
+ExposureMode	Auto
+WhiteBalance	Auto
+DigitalZoomRatio	1
+SceneCaptureType	Standard
+OwnerName	
+GPSVersionID	2.3.0.0
+Compression	JPEG (old-style)
+ThumbnailOffset	5632
+ThumbnailLength	3614
