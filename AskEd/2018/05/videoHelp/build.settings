@@ -1,0 +1,89 @@
+-- =============================================================
+-- Minimalistic 'starter' build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/guide/tvos/index.html
+-- https://docs.coronalabs.com/guide/distribution/win32Build/index.html
+-- https://docs.coronalabs.com/guide/distribution/osxBuild/index.html
+-- =============================================================
+
+local orientation = 'landscapeRight' -- portrait, landscapeRight, ...
+
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+
+
+   --[[
+   build =
+   {
+      neverStripDebugInfo = true,
+   },
+   --]]
+
+
+-------------------------------------------------------------------------------
+--  iOS Settings
+-------------------------------------------------------------------------------
+   iphone = {
+      --xcassets = "Images.xcassets",
+      plist =
+      {
+         NSAppTransportSecurity              = { NSAllowsArbitraryLoads = true },
+         --UILaunchStoryboardName              = "LaunchScreen",
+         UIApplicationExitsOnSuspend         = false,
+         UIPrerenderedIcon                   = true,
+         UIStatusBarHidden                   = true,
+         MinimumOSVersion                    = "8.0",
+      },
+   },
+
+-------------------------------------------------------------------------------
+--  Android Settings 
+-------------------------------------------------------------------------------
+   android = {
+      --versionCode                     = "1",
+      largeHeap                       = true,
+      minSdkVersion                   = "14",
+
+      usesPermissions = {
+         -- required
+         "android.permission.INTERNET",
+         "android.permission.ACCESS_NETWORK_STATE",
+         "android.permission.WRITE_EXTERNAL_STORAGE",
+      },
+
+      usesFeatures = {
+      },
+   },
+
+-------------------------------------------------------------------------------
+--  Desktop Settings 
+-------------------------------------------------------------------------------
+   window = {
+      defaultMode                     = "normal",
+      resizable                       = true,
+      enableCloseButton               = true,
+      suspendWhenMinimized            = true,
+      enableMaximizeButton            = true,
+      defaultViewWidth                = 540,
+      defaultViewHeight               = 960,
+      minViewWidth                    = 540,
+      minViewHeight                   = 960,
+      titleText = {
+         default  = "TBD",
+         ["en‐us"] = " (English‐USA)",
+         ["en‐gb"] = " (English‐UK)",
+         ["en"]   = " (English)",
+         ["fr"]   = " (French)",
+         ["es"]   = " (Spanish)",
+      },
+   },
+
+}
