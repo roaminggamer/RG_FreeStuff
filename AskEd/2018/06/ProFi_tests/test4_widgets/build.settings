@@ -1,0 +1,30 @@
+--
+-- For more information on build.settings see the Project Build Settings Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
+settings =
+{
+	orientation =
+	{
+		default = "portrait",
+		supported = { "portrait" }
+	},
+	iphone =
+	{
+		xcassets = "Images.xcassets",
+		plist =
+		{
+			UILaunchStoryboardName = "LaunchScreen",
+		},
+	},
+	window =
+	{
+		defaultViewWidth = 320,
+		defaultViewHeight = 480,
+		titleText =
+		{
+			default = "Widget Demo",
+		},
+	},
+}
