@@ -11,7 +11,6 @@ display.setStatusBar(display.HiddenStatusBar)
 -- LOAD & INITIALIZE - SSK 2
 -- =============================================================
 require "ssk2.loadSSK"
-_G.ssk.init()
 _G.ssk.init( { launchArgs 				= ..., 
 	            enableAutoListeners 	= true,
 	            exportCore 				= true,
