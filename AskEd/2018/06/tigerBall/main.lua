@@ -81,18 +81,19 @@ function ball:touch( event )
          --
          local dx = event.x - event.xStart
          local dy = event.y - event.yStart
-         print(dx,dy)
          local distance = math.sqrt( dx * dx + dy * dy )  
-         -- This is how you normalize (not by using math.abs()):
-         local vx = dx/distance
-         local vy = dy/distance
-         --
-         local magnitude = self.factor * distance/dt                 
-         --print( distance, dt, magnitude, self.t0, system.getTimer(), dx, dy )
-         magnitude = (magnitude > self.limit) and self.limit or magnitude
-         magnitude = magnitude * self.mass         
-         --
-         self:applyLinearImpulse( vx * magnitude, vy * magnitude, self.x, self.y )
+         if( distance > 0.01 ) then
+            -- This is how you normalize (not by using math.abs()):
+            local vx = dx/distance
+            local vy = dy/distance
+            --
+            local magnitude = self.factor * distance/dt                 
+            --print( distance, dt, magnitude, self.t0, system.getTimer(), dx, dy )
+            magnitude = (magnitude > self.limit) and self.limit or magnitude
+            magnitude = magnitude * self.mass         
+            --
+            self:applyLinearImpulse( vx * magnitude, vy * magnitude, self.x, self.y )
+         end
          --
    	   self.lx = nil
 	      self.ly = nil
