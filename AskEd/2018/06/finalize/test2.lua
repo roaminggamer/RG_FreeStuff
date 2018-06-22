@@ -15,7 +15,6 @@ local getTimer = system.getTimer
 --physics.setDrawMode("hybrid")
 -- =====================================================
 local function isValid(obj)
-	print(obj ~= nil and type(obj.removeSelf) == "function") 
 	return(obj ~= nil and type(obj.removeSelf) == "function") 
 end
 local curFrame = 1
