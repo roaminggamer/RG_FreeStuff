@@ -15,7 +15,8 @@ local getTimer = system.getTimer
 --physics.setDrawMode("hybrid")
 -- =====================================================
 local function isValid(obj)
-	return( obj ~= nil and type(obj.removeSelf) == "function" ) 
+	print(obj ~= nil and type(obj.removeSelf) == "function") 
+	return(obj ~= nil and type(obj.removeSelf) == "function") 
 end
 local curFrame = 1
 local function enterFrame()
@@ -35,17 +36,17 @@ function test.run()
 	
 	local r = display.newRect( 0, 0, 100, 100)
 
-	function r:first()
+	function r:first(event)
 		print( "first() - Frame: ", curFrame)
 		print( "first() @ ", getTimer())
-		print( "Object is valid? ", isValid(obj), getTimer() )
+		print( "Object is valid? ", isValid(self), getTimer() )
 		print("-----------\n")
 	end; r:addEventListener( "first" )
 
-	function r:second()
+	function r:second(event)
 		print( "second() - Frame: ", curFrame)
 		print( "second() @ ", getTimer())
-		print("Object is valid? ", isValid(obj), getTimer() )
+		print("Object is valid? ", isValid(self), getTimer() )
 		print("-----------\n")
 	end; r:addEventListener( "second" )
 
