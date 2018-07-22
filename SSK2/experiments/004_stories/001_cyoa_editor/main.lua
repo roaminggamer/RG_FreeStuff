@@ -1,3 +1,5 @@
+io.output():setvbuf("no")
+display.setStatusBar(display.HiddenStatusBar)
 -- =============================================================
 -- main.lua -- REQUIRES SSK2 PRO TO RUN
 -- =============================================================
