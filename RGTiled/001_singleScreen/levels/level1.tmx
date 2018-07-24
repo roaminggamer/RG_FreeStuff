@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.06.01" orientation="orthogonal" renderorder="right-down" width="12" height="8" tilewidth="80" tileheight="80" infinite="0" nextlayerid="9" nextobjectid="1060">
+ <tileset firstgid="1" source="basic.tsx"/>
+ <tileset firstgid="8" source="proto.tsx"/>
+ <objectgroup id="7" name="logic">
+  <object id="1042" gid="15" x="346" y="135" width="40" height="40">
+   <properties>
+    <property name="debugEn" type="bool" value="true"/>
+    <property name="easyInput" value="twoTouch"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="background"/>
+ <objectgroup id="4" name="content">
+  <object id="980" gid="1" x="0" y="640" width="80" height="80"/>
+  <object id="981" gid="1" x="80" y="640" width="80" height="80"/>
+  <object id="982" gid="1" x="160" y="640" width="80" height="80"/>
+  <object id="983" gid="1" x="240" y="640" width="80" height="80"/>
+  <object id="984" gid="1" x="320" y="640" width="80" height="80"/>
+  <object id="985" gid="1" x="400" y="640" width="80" height="80"/>
+  <object id="986" gid="1" x="480" y="640" width="80" height="80"/>
+  <object id="987" gid="1" x="560" y="640" width="80" height="80"/>
+  <object id="988" gid="1" x="640" y="640" width="80" height="80"/>
+  <object id="989" gid="1" x="720" y="640" width="80" height="80"/>
+  <object id="990" gid="1" x="800" y="640" width="80" height="80"/>
+  <object id="991" gid="1" x="880" y="640" width="80" height="80"/>
+  <object id="992" gid="1" x="0" y="80" width="80" height="80"/>
+  <object id="993" gid="1" x="80" y="80" width="80" height="80"/>
+  <object id="994" gid="1" x="160" y="80" width="80" height="80"/>
+  <object id="995" gid="1" x="240" y="80" width="80" height="80"/>
+  <object id="996" gid="1" x="320" y="80" width="80" height="80"/>
+  <object id="997" gid="1" x="400" y="80" width="80" height="80"/>
+  <object id="998" gid="1" x="480" y="80" width="80" height="80"/>
+  <object id="999" gid="1" x="560" y="80" width="80" height="80"/>
+  <object id="1000" gid="1" x="640" y="80" width="80" height="80"/>
+  <object id="1001" gid="1" x="720" y="80" width="80" height="80"/>
+  <object id="1002" gid="1" x="800" y="80" width="80" height="80"/>
+  <object id="1003" gid="1" x="880" y="80" width="80" height="80"/>
+  <object id="1004" gid="1" x="880" y="240" width="80" height="80"/>
+  <object id="1005" gid="1" x="880" y="160" width="80" height="80"/>
+  <object id="1006" gid="1" x="880" y="320" width="80" height="80"/>
+  <object id="1007" gid="1" x="880" y="400" width="80" height="80"/>
+  <object id="1008" gid="1" x="880" y="480" width="80" height="80"/>
+  <object id="1009" gid="1" x="880" y="560" width="80" height="80"/>
+  <object id="1010" gid="1" x="0" y="240" width="80" height="80"/>
+  <object id="1011" gid="1" x="0" y="160" width="80" height="80"/>
+  <object id="1012" gid="1" x="0" y="320" width="80" height="80"/>
+  <object id="1013" gid="1" x="0" y="400" width="80" height="80"/>
+  <object id="1014" gid="1" x="0" y="480" width="80" height="80"/>
+  <object id="1015" gid="1" x="0" y="560" width="80" height="80"/>
+  <object id="1016" gid="1" x="160" y="240" width="80" height="80"/>
+  <object id="1017" gid="6" x="105" y="136" width="40" height="40">
+   <properties>
+    <property name="b_onEventApplyTorque_left" value="event=onTwoTouchLeft,torque=-100"/>
+    <property name="b_onEventApplyTorque_right" value="torque=100"/>
+    <property name="bounce" type="float" value="0.5"/>
+    <property name="friction" type="float" value="1"/>
+    <property name="linearDamping" type="float" value="0.5"/>
+   </properties>
+  </object>
+  <object id="1018" gid="5" x="800" y="560" width="80" height="80">
+   <properties>
+    <property name="b_fillColor" value="color = #53d5fd"/>
+    <property name="b_jiggler">x1 = -1
+x2 = 1
+y1 = -1
+y2 = 1
+</property>
+    <property name="b_onLocalEventPost">event=collision
+phase=began
+post=onLevelComplete</property>
+    <property name="bodyType" value="static"/>
+   </properties>
+  </object>
+  <object id="1031" gid="1" x="80" y="240" width="80" height="80"/>
+  <object id="1032" gid="1" x="320" y="320" width="80" height="80"/>
+  <object id="1033" gid="1" x="240" y="320" width="80" height="80"/>
+  <object id="1034" gid="1" x="480" y="480" width="80" height="80"/>
+  <object id="1035" gid="1" x="400" y="480" width="80" height="80"/>
+  <object id="1036" gid="1" x="800" y="480" width="80" height="80"/>
+  <object id="1037" gid="1" x="720" y="480" width="80" height="80"/>
+  <object id="1038" gid="1" x="640" y="480" width="80" height="80"/>
+  <object id="1039" gid="1" x="560" y="480" width="80" height="80"/>
+  <object id="1045" gid="2" x="264" y="225" width="40" height="40">
+   <properties>
+    <property name="b_coinSpinner" value=""/>
+    <property name="b_pickup" value="type='coin',value=1"/>
+   </properties>
+  </object>
+  <object id="1053" gid="2" x="420" y="300" width="40" height="40">
+   <properties>
+    <property name="b_coinSpinner" value=""/>
+    <property name="b_pickup" value="type='coin',value=1"/>
+   </properties>
+  </object>
+  <object id="1054" gid="2" x="736" y="379" width="40" height="40">
+   <properties>
+    <property name="b_coinSpinner" value=""/>
+    <property name="b_pickup" value="type='coin',value=1"/>
+   </properties>
+  </object>
+  <object id="1055" gid="2" x="338" y="463" width="40" height="40">
+   <properties>
+    <property name="b_coinSpinner" value=""/>
+    <property name="b_pickup" value="type='coin',value=1"/>
+   </properties>
+  </object>
+  <object id="1056" gid="2" x="666" y="541" width="40" height="40">
+   <properties>
+    <property name="b_coinSpinner" value=""/>
+    <property name="b_pickup" value="type='coin',value=1"/>
+   </properties>
+  </object>
+  <object id="1057" gid="2" x="101" y="542" width="40" height="40">
+   <properties>
+    <property name="b_coinSpinner" value=""/>
+    <property name="b_pickup" value="type='coin',value=1"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

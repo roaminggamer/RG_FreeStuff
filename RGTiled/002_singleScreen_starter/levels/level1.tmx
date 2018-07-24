@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2018.06.01" orientation="orthogonal" renderorder="right-down" width="12" height="8" tilewidth="80" tileheight="80" infinite="0" nextlayerid="9" nextobjectid="1060">
+ <objectgroup id="7" name="logic"/>
+ <objectgroup id="8" name="background"/>
+ <objectgroup id="4" name="content"/>
+</map>
