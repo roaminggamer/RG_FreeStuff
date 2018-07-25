@@ -52,20 +52,6 @@ function game.create( group, params )
 
 	game.nextLevel( group, level )
 
-	onLevelComplete = function ( event )
-		nextFrame( function() 
-			level = level + 1 
-			if( level > maxLevels ) then 
-				level = 1
-			end
-			game.nextLevel( group, level ) 
-		end )
-	end; listen("onLevelComplete", onLevelComplete)
-
-	onKillPlayer = function ( event )
-		nextFrame( function() game.nextLevel( group, level ) end )
-	end; listen("onKillPlayer", onKillPlayer)
-
 end
 
 function game.nextLevel( group, num ) 
