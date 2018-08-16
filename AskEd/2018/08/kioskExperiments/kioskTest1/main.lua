@@ -14,6 +14,7 @@ local size = 80
 local group
 
 local function onResize()
+	_G.recalcSizing()
 	display.remove( group )
 	group = display.newGroup()
 	local flash = display.newRect( group, 0, 0, 10000, 10000)
