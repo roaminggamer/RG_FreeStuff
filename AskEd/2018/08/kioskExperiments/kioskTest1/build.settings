@@ -1,0 +1,39 @@
+-- For more details on settings see these pages:
+--
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/guide/distribution/win32Build/index.html
+
+settings = {
+	build = { neverStripDebugInfo = true },
+    
+    orientation = 
+    {
+		default 	= "landscapeRight",
+		supported 	= { "landscapeRight", "landscapeLeft" },
+	},
+
+	window = {
+		defaultMode 			= "fullscreen",
+		resizable 				= true,
+
+		enableCloseButton 		= true,
+		suspendWhenMinimized 	= true,
+		enableMaximizeButton 	= false,
+
+		-- WARNING!! -- As of build 2015.2741, the width/height values are now ignorant of landscape or portrait.
+		--
+		defaultViewWidth 		= 960,  
+		defaultViewHeight 	= 640,  
+		minViewWidth 			= 480,  
+		minViewHeight			= 320,  
+
+		titleText = {
+			default 		= "Rowdy Raccoons",
+			--["en‐us"] 	= "Window Title Test (English‐USA)",
+			--["en‐gb"] 	= "Window Title Test (English‐UK)",
+			--["en"] 		= "Window Title Test (English)",
+			--["fr"] 		= "Window Title Test (French)",
+			--["es"] 		= "Window Title Test (Spanish)",
+        },
+    },
+}
