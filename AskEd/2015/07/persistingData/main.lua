@@ -25,13 +25,6 @@
 -- 1. Load SSK
 require "ssk2.loadSSK"
 _G.ssk.init()
-_G.ssk.init( { launchArgs 				= ..., 
-	            enableAutoListeners 	= true,
-	            exportCore 				= true,
-	            exportColors 			= true,
-	            exportSystem 			= true,
-	            exportSystem 			= true,
-	            debugLevel 				= 0 } )
 
 -- 2. Forward declare out data 'container' and a table for storing objets
 -- 
