@@ -1,7 +1,41 @@
 -- =============================================================
 -- Initialize sound manager and other game stuff all at once ...
 -- =============================================================
+-- Print to console immediately.
+--
+io.output():setvbuf("no") 
 
+-- Hide that pesky bar
+--
+display.setStatusBar(display.HiddenStatusBar)  
+
+-- Load globals right away
+require "scripts.globals"
+
+-- Load OOP buttons
+require "scripts.pushButtonClass"
+require "scripts.toggleButtonClass"
+
+-- Turn on debug output for composer + Various other settings
+--
+local composer 	= require "composer" 
+composer.isDebug = true
+--composer.recycleOnLowMemory = false
+--composer.recycleOnSceneChange = true
+
+
+-- Need multi-touch?  Enable it now.
+--
+--system.activate("multitouch") 
+
+--local physics = require "physics"
+--physics.setGravity( 0, 10 )
+--physics.setDrawMode( "hybrid" )
+
+
+--
+-- Initialize sound library
+--
 local soundMgr 	= require "scripts.soundMgr"
 soundMgr.addMusic( "soundtrack", "sounds/music/Kick Shock.mp3" )
 
@@ -18,5 +52,3 @@ soundMgr.addEffect( "count_9", "sounds/sfx/counting/count_9.mp3" )
 -- Set Music Volume Low
 soundMgr.setVolume( "music", 0.25 )
 
--- Start Soundtrack
-post( "onSound", { sound = "soundtrack", loops = -1, fadein = 3000 } )
