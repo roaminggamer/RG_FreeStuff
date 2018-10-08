@@ -39,6 +39,8 @@ composer.isDebug = true
 local soundMgr 	= require "scripts.soundMgr"
 soundMgr.addMusic( "soundtrack", "sounds/music/Kick Shock.mp3" )
 
+soundMgr.addEffect( "click", "sounds/sfx/click.wav" )
+
 soundMgr.addEffect( "count_1", "sounds/sfx/counting/count_1.mp3" )
 soundMgr.addEffect( "count_2", "sounds/sfx/counting/count_2.mp3" )
 soundMgr.addEffect( "count_3", "sounds/sfx/counting/count_3.mp3" )

@@ -83,6 +83,7 @@ end
 --				FUNCTION/CALLBACK DEFINITIONS						--
 ----------------------------------------------------------------------
 onBack = function ( self, event ) 
+	post( "onSound", { sound = "click" } ) 
 	composer.hideOverlay( "slideUp", 500  )	
 	return true
 end

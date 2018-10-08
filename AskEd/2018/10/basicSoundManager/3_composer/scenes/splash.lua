@@ -49,6 +49,7 @@ function scene:create( event )
 	--
 	back.touch = function( self, event )
 		if(event.phase == "ended") then
+			post( "onSound", { sound = "click" } ) 
 			timer.cancel(timerHandle)
 			goToMainMenu()
 		end

@@ -100,6 +100,7 @@ end
 --				FUNCTION/CALLBACK DEFINITIONS						--
 ----------------------------------------------------------------------
 onBack = function ( self, event ) 
+	post( "onSound", { sound = "click" } ) 
 	local options =
 	{
 		effect = "fromTop", -- See list here: http://docs.coronalabs.com/daily/api/library/composer/gotoScene.html
@@ -115,6 +116,7 @@ onBack = function ( self, event )
 end
 
 onNumberPress = function( self, event )
+	post( "onSound", { sound = "click" } ) 
 	post( "onSound", { sound = "count_" .. self.num } ) 
 end
 

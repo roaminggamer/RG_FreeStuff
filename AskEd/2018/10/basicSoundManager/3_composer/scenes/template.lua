@@ -80,6 +80,7 @@ end
 ----------------------------------------------------------------------
 onPush1 = function ( self, event ) 
 	print("Pressed button... do something.")
+	post( "onSound", { sound = "click" } ) 
 	local options =
 	{
 		effect = "fade", -- See list here: http://docs.coronalabs.com/daily/api/library/composer/gotoScene.html

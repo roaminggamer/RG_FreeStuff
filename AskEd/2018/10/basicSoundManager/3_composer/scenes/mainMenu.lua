@@ -82,6 +82,7 @@ end
 --				FUNCTION/CALLBACK DEFINITIONS						--
 ----------------------------------------------------------------------
 onPlay = function ( self, event ) 
+	post( "onSound", { sound = "click" } ) 
 	local options =
 	{
 		effect = "fromBottom", -- See list here: http://docs.coronalabs.com/daily/api/library/composer/gotoScene.html
@@ -97,6 +98,7 @@ onPlay = function ( self, event )
 end
 
 onOptions = function ( self, event ) 
+	post( "onSound", { sound = "click" } ) 
 	local options =
 	{
 		isModal = true, -- Don't let touches leak through
