@@ -16,7 +16,7 @@ secuenciadedatos =
  start = 1, 
  count = 60,
  time=3000,        
- loopCount = 1,    
+ loopCount = 0,    
  loopDirection = "forward",    
 }
 
