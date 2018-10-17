@@ -345,3 +345,15 @@ for i = 1, 5 do
     spots[i]:addEventListener( "touch", handleMove )
 end
 N_spots[3].text = " "  
+
+
+resetButton2 = widget.newButton({
+        label = "Reset",
+        x = display.contentCenterX +120,
+        y = display.contentHeight -320,
+        font = native.systemFontBold,
+        fontSize = 20,
+        labelColor = { default = { 1,1,1}, over = { 1, 0, 0 } },
+        onPress = resetGame
+    })
+    
