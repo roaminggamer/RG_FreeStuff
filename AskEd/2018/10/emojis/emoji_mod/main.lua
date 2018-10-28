@@ -8,6 +8,8 @@ _G.ssk.init( { measure = false } )
 -- =====================================================
 local isInBounds = ssk.easyIFC.isInBounds
 
+local font = "Lato Light Italic.ttf"
+
 -- =====================================================
 -- String with unicode encodings in it from this page: 
 -- https://apps.timwhitlock.info/emoji/tables/unicode
@@ -18,7 +20,7 @@ local uniString = "Hello😁😃" -- 7 characters?
 -- =====================================================
 -- 1. Print the string directly
 -- =====================================================
-local original = display.newText( uniString, centerX, top + 32, nil, 32 )
+local original = display.newText( uniString, centerX, top + 32, font, 32 )
 
 
 -- =====================================================
@@ -129,10 +131,11 @@ createEntireSet()
 local emojiMap = {}
 emojiMap[128513] = 294 -- I randomly mapped a emoji encoding to a index in the sheet
 emojiMap[128515] = 423 -- I randomly mapped a emoji encoding to a index in the sheet
-display.newEmojiText = function( parent, text, x, y, font, fontSize, tween ) 
+display.newEmojiText = function( parent, text, x, y, font, fontSize, tween, emojiSize ) 
 	parent = parent or display.currentStage
 	font = font or  native.systemFont 
 	fontSize = fontSize or 32
+	emojiSize = emojiSize or fontSize
 	tween = tween or 2
 	--
 	local utf8 = require( "plugin.utf8" ) -- https://docs.coronalabs.com/plugin/utf8/index.html
@@ -144,14 +147,15 @@ display.newEmojiText = function( parent, text, x, y, font, fontSize, tween )
 	for charpos, codepoint in utf8.codes( uniString ) do
 		local tmp 
 		if( codepoint <= 255 ) then
-			tmp = display.newText( text, string.char(codepoint), curX, 0, font, fontSize )
+			tmp = display.newText( text, string.char(codepoint), curX, 0, font, fontSize )			
+			tmp:translate( 0, tmp.baselineOffset * tmp.anchorY )
 		else
 			if( emojiMap[codepoint] ) then
-				tmp = display.newImageRect( text, sheet, emojiMap[codepoint], fontSize, fontSize)
+				tmp = display.newImageRect( text, sheet, emojiMap[codepoint], emojiSize, emojiSize)
 				tmp.x = curX
 				tmp.y = 0
 			else
-				tmp = display.newRect( text, curX, 0, fontSize, fontSize)
+				tmp = display.newRect( text, curX, 0, emojiSize, emojiSize)
 			end
 
 		end
@@ -166,6 +170,6 @@ display.newEmojiText = function( parent, text, x, y, font, fontSize, tween )
 end
 
 -- Draw emoji text below original example
-display.newEmojiText( nil, uniString, centerX, original.y + 40, native.systemFont, 32, 0 )
+display.newEmojiText( nil, uniString, centerX, original.y + 40, font, 32, 0, 28 )
 
 
