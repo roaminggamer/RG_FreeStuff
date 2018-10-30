@@ -1,0 +1,99 @@
+settings =
+{  	
+	win32 =
+    {
+        preferenceStorage = "registry",
+        singleInstance = false,
+    },
+
+    window =
+    {
+        defaultMode = "fullscreen",
+        resizable = true,
+        enableCloseButton = true,
+        enableMinimizeButton = true,
+        enableMaximizeButton = true,
+        suspendWhenMinimized = false,
+
+	    titleText =
+	    {
+		    default = "Window Title Test",
+		    ["en‐us"] = "Window Title Test (English‐USA)",
+		    ["en‐gb"] = "Window Title Test (English‐UK)",
+		    ["en"] = "Window Title Test (English)",
+		    ["fr"] = "Window Title Test (French)",
+		    ["es"] = "Window Title Test (Spanish)",
+		},
+    }, 
+	
+	orientation =
+	{
+		default = "landscapeLeft",
+		supported = { "landscapeLeft", "landscapeRight",}
+	},
+	
+	excludeFiles =
+	{
+		-- Include only the necessary icon files on each platform
+		iphone = { "Icon-*dpi.png", },
+		android = { "Icon.png", "Icon-Small-*.png", "Icon*@2x.png", },
+	},
+
+	--
+	-- iOS Section
+	--
+	iphone =
+	{
+		plist =
+		{
+			UIStatusBarHidden = false,
+			UIPrerenderedIcon = true, -- set to false for "shine" overlay
+			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend
+
+			CFBundleIconFiles =
+			{
+				"Icon.png",
+				"Icon@2x.png",
+				"Icon-167.png",
+				"Icon-60.png",
+				"Icon-60@2x.png",
+				"Icon-60@3x.png",
+				"Icon-72.png",
+				"Icon-72@2x.png",
+				"Icon-76.png",
+				"Icon-76@2x.png",
+				"Icon-Small.png",
+				"Icon-Small@2x.png",
+				"Icon-Small@3x.png",
+				"Icon-Small-40.png",
+				"Icon-Small-40@2x.png",
+				"Icon-Small-50.png",
+				"Icon-Small-50@2x.png",
+			},
+
+			--[[
+			-- iOS app URL schemes:
+			CFBundleURLTypes =
+			{
+				{
+					CFBundleURLSchemes =
+					{
+						"fbXXXXXXXXX",  -- replace XXXXXXXXX with your Facebook appId
+					}
+				}
+			}
+			--]]
+		}
+	},
+	
+	--
+	-- Android Section
+	--
+	android =
+	{
+		usesPermissions =
+		{
+			"android.permission.INTERNET",
+		},
+	},
+}
