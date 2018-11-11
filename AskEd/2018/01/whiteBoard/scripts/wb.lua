@@ -19,7 +19,7 @@ local quickLayers  		= ssk.display.quickLayers
 
 
 -- Generate olor Button Presets
-local mgr = require "ssk2.interfaces.buttons"
+local mgr = require "ssk2.core.interfaces.buttons"
 for i = 1, #colors do
 	local tmp = table.shallowCopy(colors[i])
 	--tmp[4] = 0.1

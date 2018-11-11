@@ -7,7 +7,7 @@
 -- =============================================================
 --   Last Updated: 15 DEC 2016
 -- =============================================================
-local mgr 				= require "ssk2.interfaces.buttons"
+local mgr 				= require "ssk2.core.interfaces.buttons"
 local imagePath 		= "images/targets/"
 local gameFont 		= ssk.gameFont() or native.systemFontBold
 

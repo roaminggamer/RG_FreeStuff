@@ -10,7 +10,7 @@
 --
 -- labelsInit.lua - Create Label Presets
 --
-local mgr = require "ssk2.interfaces.buttons"
+local mgr = require "ssk2.core.interfaces.buttons"
 local imagePath = "presets/eat/images/"
 local gameFont = gameFont or native.systemFontBold
 

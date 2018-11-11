@@ -179,7 +179,7 @@ function mainPane.redraw( resetPage )
 			function tmp.redraw( self )
 				--table.dump(self.rec.definition) -- EDO
 				local pdFields = require "scripts.pdFields"
-				local mgr = require "ssk2.interfaces.buttons"
+				local mgr = require "ssk2.core.interfaces.buttons"
 
 				local fieldSets = 
 				{
