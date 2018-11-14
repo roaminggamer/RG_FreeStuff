@@ -19,12 +19,20 @@ settings = {
       supported   = { orientation },
    },
 
-
-   --[[
    build =
    {
       neverStripDebugInfo = true,
    },
-   --]]
 
+
+   android = 
+   {
+      usesPermissions = 
+      {
+      "android.permission.INTERNET",
+      "android.permission.ACCESS_NETWORK_STATE",
+      },
+   },
+
+   iphone = { plist = { NSAppTransportSecurity = { NSAllowsArbitraryLoads = true, },  }, },
 }

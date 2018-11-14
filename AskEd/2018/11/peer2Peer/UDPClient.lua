@@ -44,10 +44,10 @@ end
 
 function clientClass:autoConnect()
 	self.udp = socket.udp()
-    self.udp:settimeout(0)
-    self.udp:setpeername(self.address, self.port) -- designates where future send() calls go 
+   self.udp:settimeout(0)
+   self.udp:setpeername(self.address, self.port) -- designates where future send() calls go 
 
-    --print(self.address, self.port)
+	print(self.address, self.port)
 
 	self.uid = system.getInfo( "deviceID" )
 	self.uid = self.uid:sub(1,clientIDLen)

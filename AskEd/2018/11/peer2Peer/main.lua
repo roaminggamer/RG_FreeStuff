@@ -66,7 +66,7 @@ local function onClient()
 	local client = require "UDPClient"
 
 	-- Initialize Client and start 'auto-connect' loop
-	--local ip,port = client.getIP()
+	local ip,port = client.getIP()
 	--client:setAddress( ip )
 	client:setAddress( "localhost" )
 	client:autoConnect()
