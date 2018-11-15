@@ -5,7 +5,7 @@ display.setStatusBar(display.HiddenStatusBar)
 local cleaned = require "cleaned"
 
 for kx = 1, 8 do
-	for ky = 1, 9 do
+	for ky = 1, 8 do
 		cleaned.run( { kx = kx, ky = ky, quiet = true } )
 	end
 end
