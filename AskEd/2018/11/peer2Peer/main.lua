@@ -67,8 +67,8 @@ local function onClient()
 
 	-- Initialize Client and start 'auto-connect' loop
 	local ip,port = client.getIP()
-	--client:setAddress( ip )
-	client:setAddress( "localhost" )
+	client:setAddress( ip )
+	--client:setAddress( "localhost" )
 	client:autoConnect()
 
 

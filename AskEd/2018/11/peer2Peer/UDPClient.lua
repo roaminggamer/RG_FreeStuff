@@ -27,7 +27,10 @@ local listenLoopTime     = 30
 
 local clientIDLen = 5
 
+local forceIPV4 	= true
+
 local clientClass = {}
+
 
 -- =============================================================
 -- External Use OK
@@ -42,8 +45,8 @@ function clientClass:setAddress( ip )
 	print( "Setting IP to:", ip)
 end
 
-function clientClass:autoConnect()
-	self.udp = socket.udp()
+function clientClass:autoConnect()	
+	self.udp = ( forceIPV4 ) and socket.udp4() or  socket.udp()
    self.udp:settimeout(0)
    self.udp:setpeername(self.address, self.port) -- designates where future send() calls go 
 
@@ -106,7 +109,7 @@ end
 
 clientClass.getIP = function( testIP, debugEn )
    testIP = testIP or "74.125.115.104"
-   local s = socket.udp() 
+   local s = ( forceIPV4 ) and socket.udp4() or  socket.udp()
    s:setpeername( testIP, 80 ) 
    local ip, port = s:getsockname()
    if( debugEn ) then

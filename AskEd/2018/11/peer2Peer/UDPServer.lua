@@ -28,6 +28,8 @@ local clientTimeoutDelay = 1000
 local heartBeatTime      = 300
 local listenLoopTime     = 30
 
+local forceIPV4 	= true
+
 local serverClass = {}
 
 
@@ -38,7 +40,7 @@ function serverClass:start()
 	self.address = "*" 
 	self.port    = 0xc001
 
-	self.udp = socket.udp()
+	self.udp = ( forceIPV4 ) and socket.udp4() or  socket.udp()
 
 	self.udp:settimeout(0)
 	self.udp:setsockname(self.address, self.port)
@@ -97,7 +99,7 @@ end
 
 serverClass.getIP = function( testIP, debugEn )
    testIP = testIP or "74.125.115.104"
-   local s = socket.udp() 
+   local s = ( forceIPV4 ) and socket.udp4() or  socket.udp()
    s:setpeername( testIP, 80 ) 
    local ip, port = s:getsockname()
    if( debugEn ) then
