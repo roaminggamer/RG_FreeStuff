@@ -22,7 +22,7 @@ function scene:create( event )
 	if(w>h) then back.rotation = 90 end
 
 	-- Create a label showing which scene this is
-	local label = display.newEmbossedText( sceneGroup, "Non Blocking", centerX, centerY, native.systemFont, 60 )
+	local label = display.newEmbossedText( sceneGroup, "Blocking", centerX, centerY, native.systemFont, 60 )
 	label:setFillColor( 0xCC/255, 1, 1  )
 	local color = 
 	{
