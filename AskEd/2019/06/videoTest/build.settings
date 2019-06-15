@@ -1,0 +1,31 @@
+-- For more details on settings see these pages:
+--
+-- https://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/guide/distribution/win32Build/index.html
+
+settings = {
+	build = { neverStripDebugInfo = true },
+    
+    orientation = 
+    {
+		default 	= "landscapeRight",
+		supported 	= { "landscapeRight", "landscapeLeft" },
+	},
+
+	window = {
+		defaultMode 				= "normal", -- fullscreen, maximized, normal
+		resizable 					= true,
+		enableCloseButton 		= true,
+		enableMaximizeButton 	= true,
+		suspendWhenMinimized 	= false,
+
+		defaultViewWidth 			= 960,  
+		defaultViewHeight 		= 540,  
+		minViewWidth 				= 480,  
+		minViewHeight				= 270,  
+
+		titleText = {
+			default 		= "Rowdy Raccoons",
+        },
+    },
+}
