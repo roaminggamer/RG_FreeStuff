@@ -102,5 +102,4 @@ end; listen( "enterFrame", paddle )
 
 
 -- Make Puck
-local paddle = newCircle( nil, centerX, minY, { radius = paddleRadius/2, fill = _C_, alpha = 1 }, { bodyType = "dynamic", density = 0.1 } )
-ssk.misc.addPhysicsDrag( paddle, { force = 1e6 } ) 
+local puck = newCircle( nil, centerX, minY, { radius = paddleRadius/2, fill = _C_, alpha = 1 }, { bodyType = "dynamic", density = 0.1 } )
