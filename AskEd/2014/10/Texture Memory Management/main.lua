@@ -25,7 +25,7 @@ system.activate("multitouch")
 ----------------------------------------------------------------------
 -- 4. Definitions
 ----------------------------------------------------------------------
-_G.numTextures = 100 -- Warning!!: Setting to 1000 generates ~= 100 MB of textures
+_G.numTextures = 250 -- Warning!!: Setting to 1000 generates ~= 100 MB of textures
 
 ----------------------------------------------------------------------
 -- 5. Execution
