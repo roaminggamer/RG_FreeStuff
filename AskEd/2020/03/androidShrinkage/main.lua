@@ -34,10 +34,10 @@ local factoryMgr = ssk.factoryMgr; local soundMgr = ssk.soundMgr
 -- =====================================================
 -- EXAMPLE BEGINS HERE
 -- =====================================================
--- Start with navigation bar hidden
 ssk.android.easyAndroidUIVisibility()
-
+display.setDefault( "background", 1, 0, 1 )
 local group = display.newGroup()
+newRect( group, centerX, centerY, { w = fullw, h = fullh, fill = _K_, alpha = 0.95 })
 
 --
 -- It is known, that opening a native dialog box in Android wil re-show the navigation bar if it was hidden.
@@ -49,25 +49,13 @@ local function reHide()
     ssk.android.easyAndroidUIVisibility()
 end
 
-local function onTouch( self, event )
-	if(event.phase == "ended") then
-		easyAlert( "Roaming Gamer Says...", 
-		            "Yo!  Navigation bar should be showing.  Want to re-hide it?",
-		             { { "Yes!", reHide }, {"Never Mind", nil } } )
-	end
-	return false
+local function openDialog( )
+	easyAlert( "Roaming Gamer Says...", 
+	            "Yo!  Navigation bar should be showing.  Want to re-hide it?",
+	             { { "Yes!", reHide }, {"Never Mind", nil } } )
 end
 
--- Basic background we can see scale.
-local back = newImageRect( group, centerX, centerY, "protoBackX.png", { w = 720,  h = 1386, rotation = fullw>fullh and 90, touch = onTouch } )
-
--- Some labels showing current x,y scale of display
-local xscale = display.newText( group, "", centerX, centerY - 100, native.systemFont, 16 )
-local yscale = display.newText( group, "", centerX, centerY + 100, native.systemFont, 16 )
-local function enterFrame()
-	xscale.text = "x-Scale: " .. tostring( round( group.xScale ) )
-	yscale.text = "y-Scale: " .. tostring( round( group.yScale ) )
-end; listen( "enterFrame", enterFrame )
+ssk.easyIFC:presetPush( group, "default", centerX, centerY, 200, 60, "Open Dialog", openDialog )
 
 
 
