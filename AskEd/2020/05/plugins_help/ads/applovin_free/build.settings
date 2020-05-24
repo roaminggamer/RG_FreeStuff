@@ -1,0 +1,13 @@
+local orientation = 'portrait' -- portrait, landscapeRight, ...
+settings = {
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+
+   android = {
+   },
+   plugins = {
+       ["plugin.applovin"] = { publisherId = "com.coronalabs" },
+   },
+}

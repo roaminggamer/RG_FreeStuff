@@ -1,0 +1,11 @@
+local orientation = 'portrait' -- portrait, landscapeRight, ...
+settings = {
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+
+   plugins = {
+      ["CoronaProvider.ads.vungle"] = { publisherId = "com.vungle" },
+   },
+}

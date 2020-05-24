@@ -1,0 +1,19 @@
+local orientation = 'portrait' -- portrait, landscapeRight, ...
+settings = {
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+
+   android = {
+      applicationChildElements = {
+         [[
+            <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="[YOUR_APP_ID_HERE]"/>  -- replace with your app id. See: https://goo.gl/fQ2neu
+         ]],
+      },
+   },
+   plugins = {
+      ["plugin.admob"] = { publisherId = "com.coronalabs" },
+   },
+}
