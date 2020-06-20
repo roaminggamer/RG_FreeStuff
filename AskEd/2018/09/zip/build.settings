@@ -11,18 +11,11 @@ settings = {
 		supported = { "landscapeRight", "landscapeLeft" },
 	},
 
-	iphone = 
+	plugins = 
 	{
-		plist = 
-		{
-			UIAppFonts = 
-			{ 
-				"Harrrowprint.ttf",
-			},
-			UIStatusBarHidden = true,
-			UIPrerenderedIcon = true,
-			UIApplicationExitsOnSuspend = false,
-			MinimumOSVersion = "6.0.0",
-		}, 
-	},
+        ["plugin.zip"] =
+        {
+            publisherId = "com.coronalabs"
+        },
+    },  
 }
