@@ -1,0 +1,58 @@
+Super Starter Kit 2 (SSK3)
+
+Author: Roaming Gamer, LLC.
+Copyright (C) Roaming Gamer, LLC. 2008-2018 (All Rights Reserved)
+
+SUPPORT
+=======
+> I WILL ONLY ANSWER FORUMS POSTS.
+> I do not provide UNPAID direct support to individuals.
+
+> Please be sure to read the docs here: https://roaminggamer.github.io/RGDocs/pages/ssk3/#help
+> Please do not e-mail me.  
+> Please do not private message me.  
+
+> IF YOU HAVE A QUESTION, *PLEASE* USE THE FORUMS.
+
+HOW TO POST TO FORUMS
+=====================
+Post here: https://forums.coronalabs.com/forum/553-other-third-party-tools/
+
+Title like this --> SSK3: Question Summary Here
+
+Body like this --> 
+
++ Version of SSK3 you're using.
++ Summary of issue or idea
+
+Additional, clear, concise, and precise paragraphs, and sentences supporting post.
+
+...
+
+LICENSE
+=======
+I am constantly developing this software to provide you with a better development experience and any suggestions are welcome. As noted above, just post questions and ideas to the forums.
+
+> SSK3 is a FREE product.
+> SSK3 can be used in a free or commercial game.
+> SSK3 can be used in a free or commercial app.
+> SSK3 can be used without crediting the author (Roaming Gamer, LLC.).
+> SSK3 can be used without crediting the project (SSK3).
+> SSK3 is NOT free to sell for anything.
+> SSK3 is NOT free to credit yourself with.
+> SSK3 source is NOT to be distributed in any form.
+
+Thanks for you support.
+
+DISCLAIMER
+==========
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE SOFTWARE.
+
+NOTE TO EDUCATORS
+=================
+If you wish to use SSK3 in your course(s) and/or course materials, please contact me here:
+roaminggamer+ssk3@gmail.com.
+

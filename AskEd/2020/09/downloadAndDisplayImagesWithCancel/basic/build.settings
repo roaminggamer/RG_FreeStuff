@@ -1,0 +1,160 @@
+-- =============================================================
+-- Copyright Roaming Gamer, LLC. 2008-2017 (All Rights Reserved)
+-- =============================================================
+--  build.settings
+-- =============================================================
+-- https://docs.coronalabs.com/daily/guide/distribution/buildSettings/index.html
+-- https://docs.coronalabs.com/daily/guide/tvos/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/win32Build/index.html
+-- https://docs.coronalabs.com/daily/guide/distribution/osxBuild/index.html
+-- =============================================================
+
+local orientation = 'portrait' -- portrait, landscapeRight, ...
+
+
+settings = {
+-------------------------------------------------------------------------------
+--  Orientation Settings 
+-------------------------------------------------------------------------------
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+
+
+-------------------------------------------------------------------------------
+--  Plugins
+-------------------------------------------------------------------------------
+   plugins = {
+--[[   
+      -- Vungle
+      ["CoronaProvider.ads.vungle"] = { publisherId = "com.vungle", supportedPlatforms = { iphone = true, android = true, },  },
+
+      -- Google Play Services
+      ["plugin.google.play.services"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true, android = true, ["android-kindle"] = true, },  },
+
+      -- Media Brix
+      ["plugin.mediaBrix"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true, android = true, },  },
+
+      -- inMobi
+      ["plugin.inMobi"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true, android = true, },  },
+
+      -- AppLovin
+      ["plugin.applovin"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true, android = true, appletvos = true, },  },
+
+      -- RevMob
+      ["plugin.revmob"] = { publisherId = "com.coronalabs", supportedPlatforms = { iphone = true, android = true, },  },
+--]]
+   },
+
+-------------------------------------------------------------------------------
+--  iOS Settings
+-------------------------------------------------------------------------------
+--[[
+   iphone = {
+      skipPNGCrush                    = false,
+      -- https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009248-SW1
+      plist = {
+         UIApplicationExitsOnSuspend     = false,
+         UIPrerenderedIcon               = true,
+         UIStatusBarHidden               = true,
+         MinimumOSVersion                = "7.0",
+      },
+   },
+--]]
+
+-------------------------------------------------------------------------------
+--  Android Settings 
+-------------------------------------------------------------------------------
+--[[
+   android = {
+      versionCode                     = "1",
+      largeHeap                       = true,
+      usesExpansionFile               = false,
+      supportsTV                      = true,
+      isGame                          = true,
+      minSdkVersion                   = "14",
+      mainIntentFilter = {
+      },
+
+      usesPermissions = {
+         "android.permission.ACCESS_NETWORK_STATE",
+         "android.permission.INTERNET",
+         "android.permission.WRITE_EXTERNAL_STORAGE",
+      },
+
+      usesFeatures = {
+      },
+   },
+--]]
+
+-------------------------------------------------------------------------------
+--  Desktop Settings 
+-------------------------------------------------------------------------------
+--[[
+
+   window = {
+      defaultMode                     = "normal",
+      resizable                       = true,
+      enableCloseButton               = true,
+      suspendWhenMinimized            = true,
+      enableMaximizeButton            = true,
+      defaultViewWidth                = 540,
+      defaultViewHeight               = 960,
+      minViewWidth                    = 540,
+      minViewHeight                   = 960,
+      titleText = {
+         default  = "",
+         ["en‐us"] = " (English‐USA)",
+         ["en‐gb"] = " (English‐UK)",
+         ["en"]   = " (English)",
+         ["fr"]   = " (French)",
+         ["es"]   = " (Spanish)",
+      },
+   },
+--]]
+
+-------------------------------------------------------------------------------
+--  TV OS Settings 
+-------------------------------------------------------------------------------
+--[[   
+   tvos = {
+      -- Apple TV app icons consist of multiple "layers" in both small and large sizes
+      icon =
+      {
+         -- A collection of 400x240 images, in order from top to bottom
+         small =
+         {
+            "Icon-tvOS-Small-4.png",
+            "Icon-tvOS-Small-3.png",
+            "Icon-tvOS-Small-2.png",
+            "Icon-tvOS-Small-1.png",
+         },
+
+         -- A collection of 1280x768 images, in order from top to bottom
+         large =
+         {
+            "Icon-tvOS-Large-4.png",
+            "Icon-tvOS-Large-3.png",
+            "Icon-tvOS-Large-2.png",
+            "Icon-tvOS-Large-1.png",
+         },
+      },
+   },
+--]]
+
+-------------------------------------------------------------------------------
+--  File Exclusions 
+-------------------------------------------------------------------------------
+--[[
+   excludeFiles = {
+      all      = { "*secret.txt", "*.pdf", },
+      iphone   = { "Icon-*dpi.png", "music/*.ogg", },
+      android  = { "Icon.png", "*@2x.png", "music/*.m4a", },
+      tvos     = { "Icon-*dpi.png", "music/*.ogg", },
+      osx      = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns", },
+      win32    = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns", },
+   },
+--]]   
+}
+return settings

@@ -1,0 +1,107 @@
+====
+2017
+====
+2017.014
++ added new actions.* movers: movep.toward and movep.thrustToward
++ Fixed `cancel()` bug found in timer2 timer.* extension.
++ Fixed typo in RGFiles.* standalone module export naming.
++ Added eachBench benchmarking library.
++ Updated persist.* to efficiently handle multiple saves in same clock/period thus saving battery live and completely eradicating slowdown in these cases.
++ Added soundMgr.mute() function.
++ Continued to modify WIP vscroller lib.
+
+
+
+2017.013
++ Added save coalescing feature to save battery life and simplify ssk.persist.* usage.
++ Added new function ssk.persist.setSaveDelay( delay ) to change delay from default of 15 ms to 'delay' ms.
+
+
+2017.012
+No notes.
+
+2017.011
++ table.dump() can take 'note' argument 2nd or 3rd field now - UPDATE
++ Filled rectangle toggle buttons do not properly update - FIXED
++ Safety code in 'stopCamera' method of tracking camera. - ADDED
++ Documents and Destkop roots not properly discovered on OS X - FIXED
++ Added ability to 'stop' a blocker created with misc.blockTouchesForDuration( duration, subtle ) instead of relying on an internal timer.
++ Added third default images (square) for dialog tray.
++ WIP: logger tool, event reflector tool, vScroller.
+
+
+
+2017.010
++ lite + PRO merged into a single FREE release.
++ New math.* extension: math.isOdd()
++ New math.* extension: math.isEven()
++ Modified core/variables.lua to allow for 're-calculation on resize'  Calling: ssk.core.calculateGlobals() will re-calculate.
++ Improved 'marker' code in table.dump(), etc.
++ Fixed typo in [Files](libraries/files) library.
++ Swapped image order for "default_sound" button preset.
++ Fixed typo in [Factory Manager](libraries/factorymgr)
++ Added new function to  [Factory Manager](libraries/factorymgr) - get( name ) returns reference to named factory.
++ Added new custom editor features to [Factory Manager](libraries/factorymgr).  I'm working on making it easier to implement in-game editors with factories.
++ Modified [Easy Alert](libraries/misc/#easyalert) so that passing a blank buttons list will default to a single 'OK' button that simply closes the dialog.
++ Added features to Sound Manager](libraries/soundMgr): altVolume field to further attenuate specific sounds within a category, removeAll() to stop and release all sounds.
++ Incorporated fixes to [Tiled Loader](libraries/tiled) to optionally switch pieces to 'center-anchored', support rotated elements.
++ Incorporated timer2 timer-library extention from [Jason Schroeder's library](http://www.jasonschroeder.com/2015/02/25/timer-2-0-library-for-corona-sdk/).
++ Added: _G.unrequire( path )
++ Added: _G.trace( msg [, depth ] ) - A function and variable debug tracing helper.
++ Added: table.xinspect( tbl ) - A safe version of table.print_r()
+
+2017.009 
+* Both - Fixed bug in pex.lua where particle emitter was not added to (passed) group.
+* Both - Fixed bug with optional `retval` for misc.smartTouch and misc.smartDrag.
+* Both - Fixed pingPong tag bug.  Common tag name not propogated to ping/pong transitions.
+* Both - Added delay parameter to ssk.misc.easyShake()
+* PRO - Added Ad helpers modules for: admob, applovin, house ads, inmobi, mediabrix, revmob, and vungle (not documented yet)
+* PRO - Fixed bug where Android rating calls crashed.
+* PRO - Fixed social.* docs. 
+* PRO - Added composer.* swipe extension (still work in progress so may change before final release.)
+* PRO - Modified debug output levels for soundMgr to make it less verbose during normal use.
+
+2017.008
+* Both - Fixed issue with factoryMgr.new() - Previously if nil was passed for < x, y > then < centerX, centerY > was used as a default.  This broke some of my standard factories which relied on nil values to mean: 'auto-place'.  From now on, < x, y > values are passed to the factory instances without change.
+* Both - Added ssk.misc.createPieChart() factory
+* Both - Added ssk.misc.genCircleMask() helper
+* Both - Added ssk.misc.pingPong() helper
+* Both - Bug fix (key event autolistener not hooking up)
+* Both - Added table.tokenize() function to create token separated strings from tables (opposite of string.split()).
+* Fixed bug in autolan require() that caused crash when enabling external libraries.
+
+
+2017.007
+* Both - Changed string.startswith to camelCase: string.startsWith
+* Both - Changed string.endswith to camelCase: string.endsWith
+* Both - Updated transition.color onComplete to handle functions and methods.
+* Both - Fixed math2d.angleBetween() so that it takes vector tables and discrete values.
+* Both - Modified ssk.misc.rotateAbout() to make it more flexible.
+* Both - Added Run Length Encode/Decode Module
+
+
+2017.006
+* Both - Critical fix to Math2D, adding two missing functions/dependencies.
+* Both - Added ssk.misc.addSmartTouch( obj, params ) - Adds a touch handler that will work in all setups.
+* Both - Added ssk.misc.addSmartDrag( obj, params ) - Adds a touch handler that gives the object a drag-n-drop ability.
+* Both - Added ssk.misc.addPhysicsDrag( obj, params ) - Adds a touch handler that gives the object a drag-n-drop ability using physics.
+
+
+2017.005
+* PRO - Added Easy Positioner Tool/Module
+* PRO - Added First Version of Tiled Loader
+* Both - Added First Version of Factory Manager
+* Both - Added 'custom' dialog tray factory.
+* Both - Added forEach() as table.* extention
+* Both - Added forEachi() as table.* extention
+* Both - Added optional locked image/rect to buttons library (2/3/4 state button)
+* Both - Added optional toggled image/rect to buttons library (2/3/4 state button)
+* Both - Updated 'ignoreList' to allow it to gracefully handle 'nil' objects.
+* Both - Updated ssk.misc.getImageSize() to more nicely handle bad path.
+
+
+====
+2016
+====
+2016.001 .. 2016.004
+* Initial Releases
