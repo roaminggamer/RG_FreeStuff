@@ -85,7 +85,7 @@ function tiledLoader.new( params )
 	--
 	function loader.load( path )
 
-		print(levelsPath .. "." .. path)
+		-- print(levelsPath .. "." .. path)
 
 		-- Raw Tiled Level
 		levelData = table.deepCopy(require( levelsPath .. "." .. path ))
@@ -99,11 +99,11 @@ function tiledLoader.new( params )
 			if( layerData.type == "tilelayer" ) then
 				-- Skip these
 			elseif( layerData.name == "logic" ) then
-				table.print_r(objects[i] )
+				-- table.print_r(objects[i])
 				for i = 1, #objects do				
 					logic[#logic+1] = table.deepCopy( objects[i] )
 				end
-				table.print_r(logic[#logic])
+				-- table.print_r(logic[#logic])
 			
 			elseif( layerData.name == "ignore" ) then
 			elseif( layerData.type == "objectgroup" ) then 
@@ -244,7 +244,7 @@ function tiledLoader.new( params )
 	   			local animObj = obj
 	   			local curFrame = 1
 		   		local frameAnimator
-		   		table.print_r(animation)
+		   		-- table.print_r(animation)
 		   		frameAnimator = function()
 		   			if( not isValid(animObj) ) then return end
 	   				curFrame = curFrame + 1
