@@ -1,0 +1,41 @@
+settings = {
+   android = {
+      applicationChildElements = {
+         [[
+            <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="[ca-app-pub-################~##########]"/>  -- replace with your app id. See: https://goo.gl/fQ2neu
+         ]],
+      },
+   },
+   
+   iphone = {
+      plist = {
+         xcassets = "Images.xcassets",
+         UIStatusBarHidden = false,
+         UILaunchStoryboardName = "LaunchScreen",
+         ITSAppUsesNonExemptEncryption = false, -- This sample doesn't use custom encryption
+
+         GADApplicationIdentifier = "[ca-app-pub-################~##########]",
+         SKAdNetworkItems = {
+            {
+               SKAdNetworkIdentifier = "cstr6suwn9.skadnetwork",
+            },
+         },
+      },
+   },
+
+   orientation = {
+      default = "portrait",
+      supported = { "portrait" }
+   },
+
+   window = {
+      titleText = {
+         default = "Admob Test",
+      },
+   },
+
+   plugins = {
+      ["plugin.admob"] = { publisherId = "com.coronalabs" },      
+   },
+}
