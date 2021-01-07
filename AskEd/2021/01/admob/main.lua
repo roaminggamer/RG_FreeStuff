@@ -13,33 +13,34 @@ _G.bannerID       = "ca-app-pub-################/##########"
 _G.interstitialID = "ca-app-pub-################/##########"
 _G.testMode       = true
 
--- local function test1()
---    local admob = require( "plugin.admob" )
+local function test1()
+   local admob = require( "plugin.admob" )
 
---    local function adListener( event )
---       for k,v in pairs( event ) do
---          print("adListener ", k, v ) -- so you see everything you get
---       end
---    end
+   local function adListener( event )
+      for k,v in pairs( event ) do
+         print("adListener ", k, v ) -- so you see everything you get
+      end
+   end
 
---    admob.init( adListener, { appId = appId, testMode = testMode } )
+   admob.init( adListener, { appId = appId, testMode = testMode } )
 
---    timer.performWithDelay( 2000,
---       function()
---          admob.load( "banner", { adUnitId  = bannerID } )
---       end )
+   timer.performWithDelay( 2000,
+      function()
+         admob.load( "banner", { adUnitId  = bannerID } )
+      end )
 
---    timer.performWithDelay( 4000,
---       function()
---          admob.show( "banner", {  y = "top"  } )
---       end )
--- end
+   timer.performWithDelay( 4000,
+      function()
+         admob.show( "banner", {  y = "top"  } )
+      end )
+end
 
--- local function test2()
---    local admob_test = require "admob_test"
---    admob_test.create()
--- end
+local function test2()
+   local admob_test = require "admob_test"
+   admob_test.create()
+end
 
 
--- -- test1()
--- test2()
+-- test1()
+
+test2()
