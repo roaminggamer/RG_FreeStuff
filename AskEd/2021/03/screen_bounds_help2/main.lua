@@ -63,4 +63,54 @@ local function v3()
 	timer.performWithDelay( 1000, draw_stuff )
 end
 
-v1()
+
+local results = {}
+local function display_params_tester( tag )
+	local values = { 
+		"actualContentHeight",
+		"actualContentWidth",
+		"contentCenterX",
+		"contentCenterY",
+		"contentHeight",
+		"contentScaleX",
+		"contentScaleY",
+		"contentWidth",
+		"pixelHeight",
+		"pixelWidth",
+		"safeActualContentWidth",
+		"safeActualContentHeight",
+		"safeScreenOriginX",
+		"safeScreenOriginY",
+		"screenOriginX",
+		"screenOriginY",
+		"statusBarHeight",
+		"topStatusBarContentHeight",
+		"viewableContentHeight",
+		"viewableContentWidth",
+	}
+
+	for idx,name in pairs(values) do
+		if( tag == "before" ) then
+			results[name] = display[name]
+		else
+			local out
+			if(display[name] == results[name]) then
+				out = tostring(name) .. " " ..  tostring(results[name]) .. " " ..  tostring(display[name])
+			else
+				out = tostring(name) .. " " ..  tostring(results[name]) .. " " ..  tostring(display[name]) .. " !!!! CHANGED !!!!" 
+			end
+			print( out )
+			local l = display.newText(  out, 10, 80 + 20 * idx, native.systemFont, 12 )
+			l.anchorX = 0
+		end		
+	end
+end
+
+local function v4()
+	display_params_tester("before")
+	print()
+	timer.performWithDelay( 1000, common.easyAndroidUIVisibility )
+	timer.performWithDelay( 2000, function() display_params_tester("after") end )
+end
+
+ v3()
