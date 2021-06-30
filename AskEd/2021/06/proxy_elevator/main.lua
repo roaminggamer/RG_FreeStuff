@@ -58,7 +58,7 @@ function elevator2:propertyUpdate( event )
 	if( event.key == "yVel" ) then
 		elevator2:setLinearVelocity( 0, event.value )
 		if( math.abs(event.value) < 0.1 ) then
-			player2.linearDamping = 20
+			player2.linearDamping = 0
 		end
 	end
 end
