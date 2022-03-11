@@ -72,33 +72,7 @@ pivotJoint.isMotorEnabled = true
 -- Use keyboard left/right arrows to turn wheel
 local wheelSpeed = 600
 
-onLeft = function( event )
-	if(event.target:pressed()) then
-		rightAxle.isMotorEnabled = true
-		rightAxle.motorSpeed = -wheelSpeed
-		rightAxle.maxMotorTorque = 100000
-	else
-		rightAxle.isMotorEnabled = false
-		rightAxle.motorSpeed = 0
-		rightAxle.maxMotorTorque = 100000
-	end
-	return true
-end
-
-onRight = function( event )
-	if(event.target:pressed()) then
-		leftAxle.isMotorEnabled = true
-		leftAxle.motorSpeed = wheelSpeed
-		leftAxle.maxMotorTorque = 100000
-	else
-		leftAxle.isMotorEnabled = false
-		leftAxle.motorSpeed = 0
-		leftAxle.maxMotorTorque = 100000
-	end
-	return true
-end
-
- -- require SSK2 string.* and table.* extensions to get table.dump() function
+-- require SSK2 string.* and table.* extensions to get table.dump() function
 require "extensions.string"
 require "extensions.table" 
 
