@@ -13,7 +13,7 @@ local bottom = cy + fullh/2
 local physics = require "physics"
 physics.start()
 physics.setGravity(0,10)
--- physics.setDrawMode("hybrid")
+--physics.setDrawMode("hybrid")
 
 local back = display.newImageRect( "protoBackX.png", 720, 1386 )
 back.x = cx
@@ -33,8 +33,8 @@ myCC:addName( "ground" )
 myCC:addName( "wheel" )
 myCC:addName( "crate" )  
 myCC:collidesWith( "player", { "crate", "ground" } )
-myCC:collidesWith( "crate", { "ground" } )
-myCC:collidesWith( "wheel", { "ground" } )
+myCC:collidesWith( "crate", { "ground", "crate" } )
+myCC:collidesWith( "wheel", { "ground", "crate" } )
 
 local ground = display.newImageRect( "fillW.png", 700, 50 )
 ground.x = cx
@@ -42,12 +42,27 @@ ground.y = cy + 250
 ground:setFillColor(0,0.4,0)
 physics.addBody( ground, "static", { friction = 1, filter = myCC:getCollisionFilter( "ground" ) } )
 
+local blocker = display.newImageRect( "fillW.png", 50, 50 )
+blocker.x = cx - 325
+blocker.y = cy + 200
+blocker:setFillColor(0,0.4,0)
+physics.addBody( blocker, "static", { friction = 1, filter = myCC:getCollisionFilter( "ground" ) } )
+
 
 local crate = display.newImageRect( "boxCrate.png", 40, 40 )
+crate.x = cx + 150
+crate.y = cy
+physics.addBody( crate, "dynamic", { friction = 0.5, filter = myCC:getCollisionFilter( "crate" )   } )
+
+local crate = display.newImageRect( "boxCrate.png", 20, 20 )
+crate.x = cx - 100
+crate.y = cy
+physics.addBody( crate, "dynamic", { friction = 0.5, filter = myCC:getCollisionFilter( "crate" )   } )
+
+local crate = display.newImageRect( "boxCrate.png", 20, 20 )
 crate.x = cx + 100
 crate.y = cy
-physics.addBody( crate, "dynamic", { friction = 1, filter = myCC:getCollisionFilter( "crate" )   } )
-crate.isFixedRotation = true
+physics.addBody( crate, "dynamic", { friction = 0.5, filter = myCC:getCollisionFilter( "crate" )   } )
 
 
 local player = display.newImageRect( "girl.png", 80, 90 )
