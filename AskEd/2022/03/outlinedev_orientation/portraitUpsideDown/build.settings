@@ -1,0 +1,7 @@
+local orientation = 'portraitUpsideDown' -- portrait, portraitUpsideDown, landscapeLeft, and landscapeRight
+settings = {
+   orientation = {
+      default     = orientation,
+      supported   = { orientation },
+   },
+}
