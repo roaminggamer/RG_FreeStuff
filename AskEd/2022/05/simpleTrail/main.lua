@@ -93,7 +93,7 @@ local function onEnterFrame( )
 
 	if (dt> minTrailDT) then
 		lastTime = curTime
-		local trail = display.newCircle( circle.x, circle.y, 30 )
+		local trail = display.newCircle( layers.trail, circle.x, circle.y, 30 )
 		trail.alpha = 0.7
 		transition.to( trail, { alpha = 0, xScale = 0.01, yScale = 0.01, time = 1500, onComplete = display.remove } )
 	end
