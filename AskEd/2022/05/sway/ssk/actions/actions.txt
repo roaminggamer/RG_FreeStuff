@@ -1,0 +1,153 @@
+*****
+***** OUT OF DATE - Temporarily Retained for Review 
+*****
+*****
+***** Roaming Gamer - 22 APR 2015
+*****
+EFM - need to add utility functions directly to objects and store settings in objects.
+EFM - need conflict checking as actions are added (safeSet(obj,func,actionName))
+
+Basic Usage
+===========
+local actions 		= require "actions.actions"
+local aim 			= require "actions.aim"
+local move 			= require "actions.move"
+local target 		= require "actions.target"
+...
+
+
+local tmp = newImageRect( ... )	
+local arrow = newImageRect( ... )
+
+target.set( arrow, tmp )
+
+actions.add_enterFrame( arrow, aim.atRate, { rate = 120 } )
+actions.add_enterFrame( arrow, target.debugLine )
+actions.add_enterFrame( arrow, target.debugAngleDist, { xOffset = 0, yOffset = 35} )
+
+
+Action Modules - Quick References
+=================================
+
+
+Action
+------
+
+Utility functions
+~~~~~~~~~~~~~~~~~
+add_enterFrame( obj, action, params ) - Add action that executes on 'enterFrame'
+remove_enterFrame( obj, action ) - Remove action that executes on 'enterFrame'.  If not 'action' specified, remove all 'enterFrame' actions and stop 'enterFrame' listener.
+
+
+
+Aim (Requires '_target' or '_targetAngle' set via target module.)
+---
+
+Actions
+~~~~~~~
+
+aimAtImmediate - Aim at immediately.  
+
+aimAtRate - Aim at _target over time at specified rate. 
+	Params:
+		rate - Rotation rate in degrees per second.
+
+ EFM - more to come
+
+
+Move
+----
+
+Actions
+~~~~~~~
+
+limitVelocity - Limits velocity of object via setLinearVelocity(). Requires physics body.
+	Params:
+		rate - Maximum velocity in pixels-per-second.
+
+atPixelsPerFrame - Move object by < x, y> pixels-per-frame.  No body required.
+	Params:
+		x - x-dimension rate in pixels-per-frame.
+		y - y-dimension rate in pixels-per-frame.
+
+atPixelsPerSecond - Move object by < x, y> pixels-per-second.  No body required.
+	Params:
+		x - x-dimension rate in pixels-per-second.
+		y - y-dimension rate in pixels-per-second.
+
+atVelocity - Move object at fixed velocity using setLinearVelocity().  Requires physics body.
+	Params:
+		x - x-dimension rate in pixels-per-second.
+		y - y-dimension rate in pixels-per-second.
+
+byForce - Move object by applying a force in a fixed direction.  Requires physics body.
+	Params:
+		x - x-dimension force.
+		y - y-dimension force.
+
+forwardAtPixelsPerFrame() - Move object in the direction it is facing at a number of pixels-per-frame.	
+	Params:
+		rate - Movement rate in pixels-per-frame.
+
+forwardAtPixelsPerSecond() - Move object in the direction it is facing at a number of pixels-per-second.	
+	Params:
+		rate - Movement rate in pixels-per-second.
+
+forwardAtVelocity() - Move object in the direction it is facing at a number of pixels-per-second using setLinearVelocity(). Requires physics body.
+	Params:
+		rate - Movement rate in pixels-per-second.
+
+forwardByForce() - Move object in the direction it is facing by applying a force through the center of its body.  Requires physics body.
+	Params:
+		magnitude - Magnitude of force to apply.
+
+
+
+Target
+------
+
+Utility functions
+~~~~~~~~~~~~~~~~~
+set( obj, target ) - Set '_target' field on 'obj' to 'target'.
+drawDebugLine() - Draw a line between the 'obj' and its current '_target' if any.
+
+debugDist() - Draw a label showing the distance from the object to '_target' if any.
+	Params:
+		xOffset (0) - Position label at object.x + xOffset.
+		yOffset (0) - Position label at object.y + yOffset.
+		color - EFM add this.
+
+debugAngleDist() - Draw a label showing the angle and distance from the object to '_target' if any.
+	Params:
+		xOffset (0) - Position label at object.x + xOffset.
+		yOffset (0) - Position label at object.y + yOffset.
+		color - EFM add this.
+
+
+Actions
+~~~~~~~
+acquireNearest() - If current '_target' not set, search through table of targets and select nearest object.
+	Params:
+		targets - Table of target objects.
+
+loseOnDestroyed() - Clear '_target' if it was destroyed. i.e. Not a valid display object any longer.
+
+loseAtMaxDistance() - Clear '_target' if it is 'maxDist' pixels or more from action object.
+	Params:
+		maxDist - Maximum distance in pixels.
+
+loseAtMinAlpha() - Clear '_target' if has a alpha at or below 'alpha'.
+	Params:
+		alpha (0.5) - Alpha at or below which '_target' is cleared.
+
+loseNotVisible() - Clear '_target' if is not visible.
+
+loseOccluded() - EFM Not available yet.  Lose target it it is occluded by any physics bodies.  Uses raycast?  Faster way to do this?
+	Params:
+		EFM - EFM
+
+
+
+
+
+
